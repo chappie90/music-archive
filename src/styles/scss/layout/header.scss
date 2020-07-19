@@ -1,0 +1,51 @@
+.header {
+  background-color: $color-tertiary-black;
+
+  .wrapper {
+    height: 90px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px 20px 0;
+  }
+
+  .logo {
+
+    img {
+      width: 160px;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+  
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .header {
+
+    .wrapper {
+      height: 120px;
+      align-items: flex-end;
+      padding: 0 10px 25px 20px;
+    }
+
+    .logo {
+      
+      img {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  
+}

@@ -1,0 +1,25 @@
+{
+  "name": "bob-harris",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bob Harris Whispering site backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js"
+  },
+  "author": "Stoyan Garov",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "moment": "^2.24.0",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
+    "sequelize": "^4.44.3",
+    "serve-index": "^1.9.1",
+    "uuid": "^3.3.2"
+  }
+}

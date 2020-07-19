@@ -1,0 +1,45 @@
+.sidebar {
+   width: 240px;
+   background-color: $color-primary-green-lighter;
+
+  .list {
+    padding: 0;
+  }
+
+  .item {
+    list-style-type: none;
+
+    &:hover {
+      background-color: $color-primary-green;
+    }
+  }
+
+  .item-welcome {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid $color-primary-green-dark;
+    min-height: 80px;
+
+    .welcome {
+      width: 70%;
+      color: $color-white;
+      text-align: center;
+      font-size: $heading-medium;
+      font-family: $font-sans, sans-serif;
+    }
+  }
+
+  .link {
+    display: block;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: $color-white;
+    font-size: $heading-small;
+    font-size: $heading-medium;
+    font-family: $font-sans, sans-serif;
+  }
+
+  .active {
+    background-color: $color-secondary-yellow-dark;
+  }
+}

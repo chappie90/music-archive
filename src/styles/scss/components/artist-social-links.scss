@@ -1,0 +1,66 @@
+.artist-social-links {
+
+  .list {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    background-color: $color-tertiary-black;
+    padding: 15px;
+  }
+
+  .item {
+    width: calc(100% / 4 - 10px);
+
+    &:not(:last-of-type) {
+      margin-right: 15px;
+    }
+  }
+
+  .link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    background-color: $color-secondary-yellow;
+    color: $color-black;
+    height: 35px;
+    padding: 0 10px;
+    transition: all .4s;
+
+     &:hover {
+      background-color: $color-secondary-yellow-dark;
+    }
+  }
+
+  .icon {}
+   
+
+  .icon-label {
+    margin-left: 8%;
+    font-size: $paragraph-medium;
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .artist-social-links {
+    .list {
+    }
+
+    .item {
+    }
+
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  
+}

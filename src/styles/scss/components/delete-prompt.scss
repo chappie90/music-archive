@@ -1,0 +1,67 @@
+.delete-prompt {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper {
+    padding: 40px 20px 20px;
+  }
+
+  .heading {
+    margin-bottom: 40px;
+    font-size: $heading-medium;
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+    p {
+      font-size: $paragraph-medium;
+      margin: 5px;
+
+      .identifier {
+        font-weight: 300;
+      }
+    }
+  }
+
+  .buttons {
+
+    button {
+      margin: 6px;
+      padding: 4px 14px;
+      font-size: $heading-small;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  .cancel-btn {
+    border: none;
+    background-color: $color-grey-light;
+  }
+
+  .delete-btn {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    background-color: $color-red;
+    color: $color-white;
+    border: 1px solid $color-red-dark;
+
+    .sweet-loading {
+      margin-right: 10px;
+    }
+  }
+
+  .in-progress {
+    background-color: $color-red-dark;
+  }
+}
+
+
+

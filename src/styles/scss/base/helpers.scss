@@ -1,0 +1,21 @@
+@import '../abstracts/variables.scss';
+
+.display-flex {
+  display: flex;
+}
+
+.align-items-vertically {
+  align-items: center;
+}
+
+.margin-right-small {
+  margin-right: 10px !important;
+}
+
+.no-left-margin {
+  margin-left: 0 !important;
+}
+
+.align-right { 
+  margin-left: auto !important;
+}

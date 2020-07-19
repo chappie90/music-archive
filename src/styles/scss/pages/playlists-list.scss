@@ -1,0 +1,756 @@
+.playlists-list {
+
+  .playlists-list-section {
+    background-color: $color-primary-green;
+
+    .years-list {
+      margin-bottom: 25px;
+      min-height: 45px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        height: 35px;
+        width: 60px;
+        color: $color-white;
+        font-size: $paragraph-small;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-tertiary-black;
+        border: 1px solid $color-tertiary-black;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .active {
+        color: $color-black;
+        background-color: $color-secondary-yellow;
+      }
+    }
+
+    .months-list {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .months-item {
+        padding: 15px 15px 9px 15px;
+        list-style-type: none; 
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        width: 100%;
+        background-color: $color-primary-green-lighter;    
+      }
+
+      .month {
+        margin-bottom: 10px;
+        display: inline-block;
+        color: $color-white;
+        font-size: $heading-small;
+      }
+
+    }
+
+    .dates-list {
+      display: flex;
+      flex-wrap: wrap;
+
+      .dates-item {      
+        margin-right: 5px;
+        font-size: $heading-small;
+        cursor: pointer;
+
+        &:hover .link {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+
+      }
+
+      .link {
+        display: inline-block;
+        padding: 6px;
+      }
+    }
+
+
+  }
+  .most-played-tracks {
+    background-color: $color-primary-green-dark;
+
+     .section-wrapper {
+      height: 362px;
+
+      .slick-slider {
+
+        .slider-item {
+          display: flex !important;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          outline: none;
+        }
+
+        .slider-item {
+          .img {
+            width: 200px;
+            height: 135px;
+            object-fit: cover;
+            display: block;
+          }
+
+          .placeholder-img {
+            width: 200px;
+            height: 135px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $color-primary-green;
+            color: $color-grey;
+          }
+
+          .description {
+            height: 90px;
+            color: $color-white;
+            font-size: $heading-medium;
+            font-weight: 300;
+            font-family: $font-sans, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: $color-primary-green-light;
+            width: 200px;
+            text-decoration: none;
+            padding: 0 8px;
+
+            .artist-name {
+              color: $color-grey;
+            }
+
+            &:hover {
+              color: $color-secondary-yellow;
+            
+            }
+
+            .track-name {
+              margin-bottom: 6px;
+            }
+          }
+        }
+
+        .slick-arrow {
+          z-index: 2;
+        }
+
+        .slick-prev {
+          left: 0;
+        }
+
+        .slick-next {
+          right: 0;
+        }
+      }
+
+      .list {
+        display: flex;
+
+        .item {
+          width: calc(25% - 20px);
+          margin: 10px;
+          height: 200px;
+          background-color: $color-primary-green-light;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-mobile-small) {
+  .playlists-list {
+
+  .playlists-list-section {
+
+    .years-list {
+      margin-bottom: 25px;
+      min-height: 45px;
+
+      .item {
+        height: 35px;
+        width: 60px;
+        color: $color-white;
+        font-size: $paragraph-small;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-tertiary-black;
+        border: 1px solid $color-tertiary-black;
+        cursor: pointer;
+      }
+    }
+
+    .months-list {
+      margin-top: 20px;
+
+      .months-item {
+        list-style-type: none; 
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        width: calc(50% - 10px);
+        background-color: $color-primary-green-lighter;    
+      }
+
+      .month {
+        margin-bottom: 10px;
+        display: inline-block;
+        color: $color-white;
+        font-size: $heading-small;
+      }
+
+    }
+
+    .dates-list {
+      display: flex;
+      flex-wrap: wrap;
+
+      .dates-item {      
+        margin-right: 5px;
+        font-size: $heading-small;
+        cursor: pointer;
+
+        &:hover .link {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+
+      }
+
+    }
+
+
+  }
+  .most-played-tracks {
+    background-color: $color-primary-green-dark;
+
+     .section-wrapper {
+      height: 362px;
+
+      .slick-slider {
+
+        .slider-item {
+          display: flex !important;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          outline: none;
+        }
+
+        .slider-item {
+          .img {
+            width: 200px;
+            height: 135px;
+            object-fit: cover;
+            display: block;
+          }
+
+          .placeholder-img {
+            width: 200px;
+            height: 135px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $color-primary-green;
+            color: $color-grey;
+          }
+
+          .description {
+            height: 90px;
+            color: $color-white;
+            font-size: $heading-medium;
+            font-weight: 300;
+            font-family: $font-sans, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: $color-primary-green-light;
+            width: 200px;
+            text-decoration: none;
+            padding: 0 8px;
+
+            .artist-name {
+              color: $color-grey;
+            }
+
+            &:hover {
+              color: $color-secondary-yellow;
+            
+            }
+
+            .track-name {
+              margin-bottom: 6px;
+            }
+          }
+        }
+
+        .slick-arrow {
+          z-index: 2;
+        }
+
+        .slick-prev {
+          left: 0;
+        }
+
+        .slick-next {
+          right: 0;
+        }
+      }
+
+      .list {
+        display: flex;
+
+        .item {
+          width: calc(25% - 20px);
+          margin: 10px;
+          height: 200px;
+          background-color: $color-primary-green-light;
+        }
+      }
+    }
+  }
+
+}
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+  .playlists-list {
+    .playlists-list-section {
+
+      .years-list {
+        margin-bottom: 25px;
+        min-height: 45px;
+        display: flex;
+        flex-wrap: wrap;
+
+        .item {
+          height: 35px;
+          width: 60px;
+          color: $color-white;
+          font-size: $paragraph-small;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $color-tertiary-black;
+          border: 1px solid $color-tertiary-black;
+          cursor: pointer;
+        }
+
+        .active {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .months-list {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+
+        .months-item {
+          padding: 10px;
+          list-style-type: none; 
+          display: inline-block;
+          margin-bottom: 10px;
+          margin-right: 10px;
+          width: calc(50% - 10px);
+          background-color: $color-primary-green-lighter;    
+        }
+
+        .month {
+          margin-bottom: 10px;
+          display: inline-block;
+          color: $color-white;
+          font-size: $heading-small;
+        }
+
+      }
+
+      .dates-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        .dates-item {      
+          margin-right: 5px;
+          font-size: $heading-small;
+          cursor: pointer;
+
+          &:hover .link {
+            color: $color-black;
+            background-color: $color-secondary-yellow;
+          }
+
+        }
+
+        .link {
+          display: inline-block;
+          padding: 6px;
+        }
+      }
+
+
+    }
+    .most-played-tracks {
+      background-color: $color-primary-green-dark;
+
+       .section-wrapper {
+        height: 362px;
+
+        .slick-slider {
+
+          .slider-item {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+          }
+
+          .slider-item {
+            .img {
+              width: 200px;
+              height: 135px;
+              object-fit: cover;
+              display: block;
+            }
+
+            .placeholder-img {
+              width: 200px;
+              height: 135px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: $color-primary-green;
+              color: $color-grey;
+            }
+
+            .description {
+              height: 90px;
+              color: $color-white;
+              font-size: $heading-medium;
+              font-weight: 300;
+              font-family: $font-sans, sans-serif;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              background-color: $color-primary-green-light;
+              width: 200px;
+              text-decoration: none;
+              padding: 0 8px;
+
+              .artist-name {
+                color: $color-grey;
+              }
+
+              &:hover {
+                color: $color-secondary-yellow;
+              
+              }
+
+              .track-name {
+                margin-bottom: 6px;
+              }
+            }
+          }
+
+          .slick-arrow {
+            z-index: 2;
+          }
+
+          .slick-prev {
+            left: 0;
+          }
+
+          .slick-next {
+            right: 0;
+          }
+        }
+
+        .list {
+          display: flex;
+
+          .item {
+            width: calc(25% - 20px);
+            margin: 10px;
+            height: 200px;
+            background-color: $color-primary-green-light;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .playlists-list {
+
+    .playlists-list-section {
+      .months-list {
+        display: block;
+        width: 100%;
+
+        .months-item {
+          padding: 20px;
+          width: calc(33% - 30px);
+          margin-bottom: 15px;
+          margin-right: 15px;
+        }
+
+        .month {  
+          margin-bottom: 20px;
+        }
+
+      }
+
+      .dates-list {
+
+        .dates-item {      
+          margin-right: 10px;
+        }
+
+        .link {
+          display: inline-block;
+          padding: 6px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .playlists-list {
+
+    .playlists-list-section {
+      .months-list {
+        width: 85%;
+
+        .months-item {
+
+        }
+
+        .month {
+
+        }
+
+      }
+
+        .dates-list {
+
+        .dates-item {      
+
+          &:hover .link {
+          }
+
+        }
+
+        .link {
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  .playlists-list {
+
+  .playlists-list-section {
+    background-color: $color-primary-green;
+
+    .programme-name {
+      margin: 20px 0 30px;
+      color: $color-white;
+      font-size: $heading-big;
+      font-family: $font-serif, serif;
+    }
+
+    .years-list {
+      margin-bottom: 25px;
+      min-height: 45px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        height: 35px;
+        width: 60px;
+        color: $color-white;
+        font-size: $paragraph-small;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-tertiary-black;
+        border: 1px solid $color-tertiary-black;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .active {
+        color: $color-black;
+        background-color: $color-secondary-yellow;
+      }
+    }
+
+    .months-list {
+      margin-top: 20px;
+      width: 75%;
+
+      .months-item {
+        padding: 20px;
+        list-style-type: none; 
+        display: inline-block;
+        margin-bottom: 15px;
+        margin-right: 15px;
+        width: calc(33% - 30px);
+        background-color: $color-primary-green-lighter;    
+      }
+
+      .month {
+        margin-bottom: 20px;
+        display: inline-block;
+        color: $color-white;
+        font-size: $heading-small;
+      }
+
+    }
+
+    .dates-list {
+      display: flex;
+
+      .dates-item {      
+        margin-right: 10px;
+        font-size: $heading-small;
+        cursor: pointer;
+
+        &:hover .link {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+
+      }
+
+      .link {
+        display: inline-block;
+        padding: 6px;
+      }
+    }
+
+
+  }
+  .most-played-tracks {
+    background-color: $color-primary-green-dark;
+
+     .section-wrapper {
+      height: 362px;
+
+      .slick-slider {
+
+        .slider-item {
+          display: flex !important;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          outline: none;
+        }
+
+        .slider-item {
+          .img {
+            width: 200px;
+            height: 135px;
+            object-fit: cover;
+            display: block;
+          }
+
+          .placeholder-img {
+            width: 200px;
+            height: 135px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $color-primary-green;
+            color: $color-grey;
+          }
+
+          .description {
+            height: 90px;
+            color: $color-white;
+            font-size: $heading-medium;
+            font-weight: 300;
+            font-family: $font-sans, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: $color-primary-green-light;
+            width: 200px;
+            text-decoration: none;
+            padding: 0 8px;
+
+            .artist-name {
+              color: $color-grey;
+            }
+
+            &:hover {
+              color: $color-secondary-yellow;
+            
+            }
+
+            .track-name {
+              margin-bottom: 6px;
+            }
+          }
+        }
+
+        .slick-arrow {
+          z-index: 2;
+        }
+
+        .slick-prev {
+          left: 0;
+        }
+
+        .slick-next {
+          right: 0;
+        }
+      }
+
+      .list {
+        display: flex;
+
+        .item {
+          width: calc(25% - 20px);
+          margin: 10px;
+          height: 200px;
+          background-color: $color-primary-green-light;
+        }
+      }
+    }
+  }
+
+}
+}

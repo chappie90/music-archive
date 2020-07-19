@@ -1,0 +1,138 @@
+@import '../abstracts/variables.scss';
+
+// Add fonts
+// Sans
+@font-face {
+  font-family: 'Sailec';
+  font-weight: 300;
+  src: local('Sailec'), url(../../fonts/Sailec-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Sailec';
+  font-weight: 400;
+  src: local('Sailec'), url(../../fonts/Sailec-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Sailec';
+  font-weight: 500;
+  src: local('Sailec'), url(../../fonts/Sailec-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Sailec';
+  font-weight: 700;
+  src: local('Sailec'), url(../../fonts/Sailec-Bold.ttf) format('truetype');
+}
+
+// Serif
+@font-face {
+  font-family: 'Lora';
+  font-weight: 400;
+  src: local('Lora'), url(../../fonts/Lora-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  font-weight: 500;
+  src: local('Lora'), url(../../fonts/Lora-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  font-weight: 700;
+  src: local('Lora'), url(../../fonts/Lora-Bold.ttf) format('truetype');
+}
+
+// Reset
+html {
+  box-sizing: border-box;
+}
+
+*, 
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  // min-height: 100%;
+}
+
+body {
+  font-family: $font-sans, sans-serif;
+}
+
+#root, .site-wrapper {
+ // height: 100%;
+}
+
+.site-wrapper {
+
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-serif, serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  li {
+    list-style-type: none;
+  }
+}
+
+::selection {
+  background-color: $color-secondary-yellow-dark;
+}
+
+.heading-white {
+  color: $color-white;
+}
+
+.heading-black {
+  color: $color-black;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link-white {
+  color: $color-white;
+}
+
+.link-black {
+  color: $color-black;
+}
+
+.paragraph-white {
+  color: $color-white;
+}
+
+.logo {
+  text-decoration: none;
+  position: relative;
+  z-index: 11;
+}
+
+
+
+
+
+

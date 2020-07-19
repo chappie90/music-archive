@@ -1,0 +1,266 @@
+@import '../abstracts/variables.scss';
+
+.sessions-list {
+
+  .sessions-list-section {
+    background-color: $color-primary-green;
+
+    .wrapper {
+      max-width: 1200px;
+      margin: auto;
+      min-height: calc(100vh - 128px);
+      display: flex;
+      flex-direction: column;
+      padding: 0 30px 15px;
+      background-color: $color-primary-green-lighter;
+    }
+
+    .programme-name {
+      margin: 20px 0 30px;
+      color: $color-white;
+      font-size: $heading-big;
+      font-family: $font-serif, serif;
+    }
+
+    .slash {
+      color: $color-secondary-yellow-dark;
+      margin: 0 10px;
+    }
+
+    .years-list {
+      margin-bottom: 25px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        padding: 12px 16px;
+        color: $color-white;
+        font-size: $heading-medium;
+        font-weight: 300;
+        font-family: $font-sans, sans-serif;
+        background-color: $color-primary-green-dark;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-secondary-yellow-dark;
+        }
+      }
+
+      .active {
+        background-color: $color-secondary-yellow-dark;
+      }
+    }
+
+    .sessions-list {
+
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 700px;
+        margin-bottom: 20px;
+        background-color: $color-primary-green;
+      }
+
+      .left-column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .img {
+        width: 200px;
+        display: block;
+      }
+
+      .cta-listen {
+        background-color: $color-secondary-yellow;
+        text-align: center;
+        padding: 4px 8px;
+
+        .link {
+          color: $color-black;
+          font-size: $heading-small;
+          font-weight: 300;
+          font-family: $font-sans, sans-serif;
+          text-decoration: none;
+        }
+      }
+
+      .title {
+        color: $color-white;
+        font-size: $heading-medium;
+        font-weight: 300;
+        font-family: $font-sans, sans-serif;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-secondary-yellow-dark;
+        }
+
+      }
+
+      .details {
+        flex: 1;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .tracks-list {
+        margin-left: 20px;
+
+        .track {
+          list-style-type: none;
+          color: $color-white;
+          font-size: $heading-medium;
+          font-weight: 300;
+          font-family: $font-sans, sans-serif;
+        }
+      }
+
+      .date {
+        margin: 12px;
+        color: $color-white;
+        font-size: $heading-small;
+        font-weight: 300;
+        font-family: $font-sans, sans-serif;
+        align-self: flex-end;
+        justify-self: flex-end;
+      }
+
+    }
+
+    .item {
+      list-style-type: none;
+    }
+  }
+
+  .bbc-live-sessions {
+    background-color: $color-primary-green;
+
+     .wrapper {
+      width: 100%;
+      max-width: 1200px;
+      height: 362px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 30px;
+      background-color: $color-primary-green-dark;
+
+      .section-heading {
+        margin-bottom: 30px;
+        color: $color-white;
+        font-size: $heading-big;
+        font-family: $font-serif, serif;
+      }
+
+      .slick-slider {
+
+        .slider-item {
+          display: flex !important;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          outline: none;
+        }
+
+        .slider-item {
+          .img {
+            width: 200px;
+            height: 135px;
+            object-fit: cover;
+            display: block;
+          }
+
+          .description {
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: space-between;
+            text-align: center;
+            background-color: $color-primary-green-light;
+            width: 200px;
+            text-decoration: none;
+            // padding: 0 8px;
+
+            .artist {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex: 1;
+            }
+            .artist-name {
+              color: $color-white;
+              font-size: $heading-medium;
+              font-weight: 300;
+              font-family: $font-sans, sans-serif;
+              margin-bottom: 10px;
+            }
+
+            .cta-listen {
+              text-decoration: none;
+              color: $color-black;
+              background-color: $color-secondary-yellow-dark; 
+              font-size: $heading-medium;
+              font-family: $font-sans, sans-serif;
+              padding: 8px 12px;
+            }
+          }
+
+
+        }
+
+        .slick-arrow {
+          z-index: 2;
+        }
+
+        .slick-prev {
+          left: 0;
+        }
+
+        .slick-next {
+          right: 0;
+        }
+      }
+
+      .list {
+        display: flex;
+
+        .item {
+          width: calc(25% - 20px);
+          margin: 10px;
+          height: 200px;
+          background-color: $color-primary-green-light;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  
+  .sessions-list {
+
+    .sessions-list-section {
+      .wrapper {
+        min-height: calc(100vh - 168px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  
+}

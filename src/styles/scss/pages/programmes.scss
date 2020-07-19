@@ -1,0 +1,267 @@
+.programmes {
+
+  .programmes-list-section {
+    background-color: $color-primary-green;
+
+      .list {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .item {
+        width: 100%;      
+        background-color: $color-primary-green-lighter;
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-of-type) {
+          margin-bottom: 15px; 
+        }
+      }
+
+      .info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+
+        .primary {
+          padding: 20px 10px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .heading {
+          font-size: $heading-big;
+          display: flex;
+          margin-bottom: 8px;
+        }
+
+        .station {
+          color: $color-white;
+          font-size: $paragraph-medium;
+        }
+
+        .dates {
+          font-family: $font-sans, sans-serif;
+          font-size: $paragraph-medium;
+          padding: 15px 10px;
+          color: $color-grey-medium;
+          background-color: $color-primary-green-light;
+        }
+
+        .date {
+          color: $color-grey-medium;
+          text-decoration: underline;
+        }
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: $paragraph-small;
+        background-color: $color-secondary-yellow;
+
+        &:hover .icon {}
+
+        .text {
+          text-align: center;
+          text-transform: uppercase;
+          font-weight: 500;
+          line-height: 1.5;
+          padding: 0px 10px;
+        }
+
+        .icon-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 60px;
+          padding: 3.5px;
+          background-color: $color-secondary-yellow-dark;
+        }
+
+        .icon {}
+      }
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-mobile-small) {
+  .programmes {
+
+    .programmes-list-section {
+
+        .list {
+          flex-direction: column;
+        }
+
+        .item {
+          width: 100%;      
+          display: flex;
+          flex-direction: row;
+
+          &:not(:last-of-type) {
+            margin-bottom: 15px; 
+          }
+        }
+
+        .info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: space-between;
+
+          .primary {
+            padding: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          .heading {}
+
+          .station {}
+
+          .dates {
+            padding: 10px;
+          }
+        }
+
+        .link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          width: 125px;
+          font-size: $heading-small;
+
+          &:hover .icon {}
+
+          .text {
+            text-align: center;
+            padding: 25px 20px 15px;
+          }
+
+          .icon-wrapper {
+            width: 100%;
+          }
+
+          .icon { }
+        }
+    }
+
+  }
+}
+
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .programmes {
+
+    .programmes-list-section {
+
+        .list {
+          margin: 25px -7.5px -10px;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .item {
+          margin: 0 7.5px 30px; 
+          width: calc(50% - 15px);     
+
+          &:last-of-type {
+            margin-bottom: 15px; 
+          } 
+        }
+
+        .info {
+
+          .primary {
+            padding: 10px;
+          }
+
+          .heading { }
+
+          .dates { }
+        }
+
+        .link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          width: 125px;
+          font-size: $heading-small;
+
+          &:hover .icon {
+            transform: translateX(10px);
+          }
+
+          .icon-wrapper {
+
+          }
+
+          .icon {
+            transition: all .3s;
+          }
+        }
+    }
+
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .programmes {
+
+    .programmes-list-section {
+
+        .list {
+          margin: 25px -15px -30px;
+
+          .item {
+            margin: 0 15px 30px; 
+            width: calc(50% - 30px); 
+          }
+        }
+
+        .info {
+
+          .primary {
+            padding: 20px;
+          }
+
+          .heading {
+            font-size: $heading-large;
+          }
+
+          .dates {
+            padding: 10px 20px;
+          }
+        }
+
+        .link {
+
+          &:hover .icon {}
+
+          .icon-wrapper {}
+
+          .icon {}
+        }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  
+}

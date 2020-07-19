@@ -1,0 +1,497 @@
+.dashboard-form {
+  padding: 10px 25px 30px;
+
+  input, 
+  select, 
+  textarea {
+    width: 100%;
+    border: 1px solid $color-grey;
+    padding: 5px;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $color-secondary-yellow;
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  label {
+    display: block;
+  }
+
+  .submit-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .button {
+    border: none;
+    padding: 8px 14px;
+    margin: 0 8px;
+    font-size: $heading-small;
+    font-family: $font-sans, sans-serif;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .button-small {
+    padding: 4px 8px;
+    margin: 0 4px;
+    font-size: $paragraph-small;
+  }
+
+  .button-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .dismiss-button {
+    background-color: $color-grey-light;
+  }
+
+  .positive-button {
+    background-color: $color-blue;
+    color: $color-white;
+  }
+
+  .action-button {
+    background-color: $color-secondary-yellow;
+    color: $color-white;
+  }
+
+  .delete-button {
+    background-color: $color-red;
+    color: $color-white;
+  }
+
+  .submit-button {
+    display: flex;
+    align-items: center;
+    height: 34px;
+
+    .sweet-loading {
+      margin-right: 10px;
+    }
+  }
+
+  .in-progress {
+    background-color: $color-secondary-yellow-dark;
+  }
+
+  .checkbox {
+    margin-left: 10px;
+    margin-bottom: 3px;
+    width: auto;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 25px !important;
+  }
+
+  .input-group-array {
+    position: relative;
+    margin-bottom: 5px;
+
+    .autocomplete {
+      top: 62px;
+    }
+
+    .autocomplete-less-margin {
+      top: 33px;
+    }
+
+  }
+
+  .input-group-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    label {
+      margin: 0;
+      margin-right: 10px;
+    }
+  }
+
+  .input-group-footer {
+    display: flex;
+    align-items: center;
+
+    .group-array-notification {
+      width: 100%;
+      margin-left: auto;
+      margin-top: 5px;
+      padding: 4px 10px;
+      font-size: $paragraph-small;
+      background-color: $color-secondary-yellow-light;
+      border: 1px solid $color-secondary-yellow;
+      font-weight: 300;
+    }
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+
+  .label-optional {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .input-type {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .instructions {
+    font-size: $paragraph-small;
+    font-family: $font-sans, sans-serif;
+    font-weight: 300;
+
+    p {
+      line-height: 16px;
+      margin: 5px 0;
+    }
+
+    .important {
+      font-weight: 400;
+    }
+  }
+
+  .field-array-group {
+    padding: 5px 15px;
+  }
+
+  .field-array-empty {
+    padding: 0;
+  }
+
+  .field-array-field {
+    margin-top: 8px;
+  }
+
+  .field-array-label {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 0 !important; 
+  }
+
+  .error {
+    color: $color-red;
+  }
+
+  .error-array {
+    position: absolute;
+    top: 3px;
+    left: 206px;
+  }
+
+  .error-array-field {
+    display: inline-block;
+    margin: 3px 6px;
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  .input-spinner {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+  }
+
+  .img-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-grey-light;
+    margin: 15px 0;
+
+    .delete-banner {
+      position: absolute;
+      width: 50px;
+      height: 40px;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      cursor: pointer;
+
+      &:hover .delete-banner-background {
+        opacity: 0.9;
+      }
+
+      .trash-icon {
+        position: absolute;
+        color: $color-white;
+        right: 12.5px;
+        top: 7.5px;
+        z-index: 3;
+      }
+
+      .delete-banner-background {
+        width: 100%;
+        height: 100%;
+        background-color: $color-black;
+        opacity: 0.75;
+        transition: all .4s;
+        border: 2px solid $color-black;
+      }
+    }
+
+    .caption-box {
+      textarea {
+        outline: none;
+      }
+    }
+
+    .image-status {
+      position: absolute;
+      padding: 8px;
+      height: 40px;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      opacity: .9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+    }
+
+    .image-status-current {
+      background-color: $color-grey-light;  
+    }
+
+    .image-status-new {
+      background-color: $color-blue;
+      color: $color-white;
+    }
+  }
+
+  .img-container-banner {
+    width: 200px;
+    height: 135px;
+  }
+
+  .img-container-album {
+    width: 150px;
+    height: 150px;
+  }
+
+  .img-container-artist {
+    width: 200px;
+    height: 135px;
+  }
+
+  .img-container-playlist {
+    width: 200px;
+    height: 135px;
+  }
+
+  .image-placeholder {
+    background-color: $color-grey-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    object-fit: cover;
+    transition: all .4s;
+    width: 133px;
+    height: 90px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .artist-cover-image {
+    width: 200px;
+    height: 135px;
+    object-fit: cover;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .album-cover-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .playlist-intro-image {
+    height: 135px;
+    max-width: 100%;
+    object-fit: cover;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .gallery-images-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    .item {
+      display: flex;
+      align-items: flex-start;
+      transition: all .3s;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .img-container {
+      cursor: default;
+      width: 200px;
+      height: 135px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-grey-light;
+      margin-right: 20px;
+    }
+
+    .img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+
+    .caption-box {
+      flex: 1;
+
+      textarea {
+        width: 100%;
+        resize: none;
+      }
+    }
+  }
+
+  .trash-icon { 
+    color: $color-white;
+  }
+
+  .autocomplete {
+    position: absolute;
+    top: 57px;
+    left: 0;
+    background-color: $color-white;
+    z-index: 2;
+    // border: 1px solid $color-grey-whitesmoke;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+
+    .list {
+
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 6px 14px;
+        cursor: pointer;
+        border-bottom: 1px solid $color-grey-light;
+
+        .img {
+          width: 100px;
+          height: 76px;
+          display: block;
+          object-fit: cover;
+          margin-right: 10px;
+        }
+
+        .img-container {
+          width: 100px;
+          height: 76px;
+          margin-right: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $color-grey-light;
+        }
+
+        .item-info {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        .primary {
+          margin-bottom: 5px;
+        }
+
+        .secondary {
+          color: $color-grey;
+          font-weight: 300;
+        }
+
+        &:hover {
+          background-color: $color-secondary-yellow;
+          color: $color-white;
+        }
+      }
+
+      .active {
+        background-color: $color-secondary-yellow;
+        color: $color-white;
+      }
+    }
+  }
+
+  .autocomplete-small {
+    width: 300px;
+  }
+
+  .autocomplete-big {
+    width: 500px;
+  }
+
+  .notification {
+    margin-top: 8px;
+    padding: 4px 10px;
+    font-size: $paragraph-small;
+    background-color: $color-secondary-yellow-light;
+    border: 1px solid $color-secondary-yellow;
+    font-weight: 300;
+    position: absolute;
+    right: 0;
+    top: -15px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .dashboard-form {
+ 
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  
+}
+
+

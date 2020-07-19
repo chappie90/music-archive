@@ -1,0 +1,44 @@
+// Core variables
+@import './abstracts/variables.scss';
+
+// Reset, base styles and helper classes
+@import './base/base.scss';
+@import './base/helpers.scss';
+
+// Vendors 
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+// Components
+@import './components/dashboard-form.scss';
+@import './components/dashboard-modal.scss';
+@import './components/date-picker.scss';
+@import './components/delete-prompt.scss';
+@import './components/image-slider.scss';
+@import './components/pagination.scss';
+@import './components/social-links.scss';
+@import './components/artist-social-links.scss';
+@import './components/youtube-video.scss';
+
+// Layout
+@import './layout/dashboard-sidebar.scss';
+@import './layout/footer.scss';
+@import './layout/header.scss';
+@import './layout/navigation.scss';
+
+// Pages
+@import './pages/content-page.scss';
+@import './pages/homepage.scss';
+@import './pages/artist.scss';
+@import './pages/artists-list.scss';
+@import './pages/playlists-search.scss';
+@import './pages/programmes.scss';
+@import './pages/playlists-list.scss';
+@import './pages/playlist-programme.scss';
+@import './pages/gallery.scss';
+@import './pages/terms.scss';
+@import './pages/dashboard/dashboard-page.scss';
+@import './pages/dashboard/tracks-manager.scss';
+@import './pages/dashboard/albums-manager.scss';
+@import './pages/dashboard/artists-manager.scss';
+@import './pages/dashboard/playlists-manager.scss';
+@import './pages/dashboard/programmes-manager.scss';
