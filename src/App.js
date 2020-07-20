@@ -7,7 +7,7 @@ import Header from './components/layout/Header';
 import NavList from './components/layout/NavList';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import ArtistsList from './pages/ArtistsList';
+import NewReleases from './pages/NewReleases';
 import Artist from './pages/Artist';
 import SessionsList from './pages/SessionsList';
 import Search from './pages/Search';
@@ -34,7 +34,7 @@ const App = () => {
       <main className="main">
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
-        <Route exact path="/artists/:letter/:search?/:page" component={ArtistsList} />
+        <Route exact path="/new-releases/:page" component={NewReleases} />
         <Route exact path="/artist/:artist/:id" component={Artist} />
         <Route exact path="/genres/:genre/:decade/:page" component={Genre} />
         <Route exact path="/playlists/:programme/:date/:progcode" component={PlaylistProgramme} />

@@ -19,7 +19,7 @@ const NavList = props => {
         break;
       case 'artists':
       case 'artist':
-        setActiveNav('artists');
+        setActiveNav('new-releases');
         break;
       case 'search':
         setActiveNav('search');
@@ -63,8 +63,8 @@ const NavList = props => {
               toggleNavMenu(false);
             }}
             className={`${activeNav === 'artists' ? 'nav-link-active' : 'nav-link'} link link-white`} 
-            to="/artists/a/1">
-            Artists
+            to="/new-releases/1">
+            New Releases
           </Link>
         </li>
         <li className="item">

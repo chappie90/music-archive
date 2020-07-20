@@ -1,0 +1,155 @@
+.artists-list {
+
+  .list-section {
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .count {
+      color: $color-grey;
+      font-size: $heading-medium;
+    }
+
+      .no-results {
+        color: $color-white;
+        font-size: $paragraph-medium;
+        margin-left: 15px;
+      }
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        .item {
+          width: 100%;
+          height: 270px;
+          margin-bottom: 15px;
+          background-color: $color-primary-green-lighter;
+        }
+
+        .link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .img {
+          display: block;
+          height: 185px;
+          width: 100%;
+          object-fit: cover;
+          object-position: 50% 10%;
+        }
+
+        .artist {
+          font-size: heading-small;
+          color: $color-white;
+          margin: 10px;
+          flex: 1;
+        }
+      }
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+  .artists-list {
+
+    .list-section {
+      .search-container {
+      }
+
+    }
+  }
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .artists-list {
+
+  .list-section {
+
+      .no-results {
+        color: $color-white;
+        font-size: $paragraph-medium;
+        margin-left: 15px;
+      }
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .item {
+          width: calc(50% - 7.5px);
+          background-color: $color-primary-green-lighter;
+
+          &:hover {
+            background-color: $color-primary-green-hover;
+          }
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+      }
+  }
+
+}
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .artists-list {
+
+    .list-section {
+
+        .no-results {
+          color: $color-white;
+          font-weight: 300;
+          font-size: $paragraph-medium;
+          font-family: $font-sans, sans-serif;
+          margin-left: 15px;
+        }
+
+        .list {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+
+          .item {
+            width: calc(20% - 15px);
+            margin-bottom: 30px;
+            background-color: $color-primary-green-lighter;
+          }
+
+          .artist {
+            font-size: $heading-small;
+          }
+        }
+
+        .img {
+          height: 135px;
+          width: 200px;
+        }
+    }
+
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  .artists-list {
+
+    .list-section {
+
+    }
+
+  }
+}
+

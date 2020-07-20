@@ -31,14 +31,14 @@ const searchPlaylists = async (req, res) => {
   }
 };
 
-const getArtists = async (req, res) => {
+const getNewReleases = async (req, res) => {
   try {
-    const search = req.query.search;
     const page = req.query.page;
 
+    console.log(page)
+
     const response = await axios.get(`${
-      config.BASE_URL}/database/search?query=${
-      search ? search : ''}&type=artist&page=${page}&per_page=20`,
+      config.BASE_URL}/database/search?&type=release&year=${new Date().getFullYear()}&page=${page}&per_page=50`,
       { 
         headers: { 
           'User-Agent': config.USER_AGENT,
@@ -114,9 +114,9 @@ const getReleasesByGenre = async (req, res) => {
 
 module.exports = {
   searchPlaylists,
-  getArtists,
   getArtist,
-  getReleasesByGenre
+  getReleasesByGenre,
+  getNewReleases
 };
 
 

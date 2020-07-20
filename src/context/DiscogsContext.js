@@ -13,11 +13,12 @@ const discogsDataReducer = (state, action) => {
         searchResults: action.payload.results,
         resultsCount: action.payload.pagination.pages
       };
-    case 'get_artists':
+    case 'get_new_releases':
       return { 
         ...state, 
-        artists: action.payload.results, 
-        artistsCount: action.payload.pagination.pages 
+        releases: action.payload.results, 
+        releasesCount: action.payload.pagination.pages,
+        totalReleases: action.payload.pagination.items
       };
     case 'get_releases_by_genre':
       return {
@@ -140,7 +141,7 @@ const getReleasesByGenre = dispatch => async (genre, decade, page) => {
   }
 };
 
-const getArtists = dispatch => async (letter, search, page) => {
+const getNewReleases = dispatch => async (page) => {
   if (source) {
     source.cancel();
   }
@@ -148,18 +149,16 @@ const getArtists = dispatch => async (letter, search, page) => {
   source = CancelToken.source();
 
   try {
-    const params = { letter, search, page };
+    const params = { page };
 
-    const response = await API.get('/discogs/artists', { 
+    const response = await API.get('/discogs/new-releases', { 
       params,
       cancelToken: source.token 
     });
 
     console.log(response)
 
-    dispatch({ type: 'get_artists', payload: response.data });
-
-    return response.data.artists;
+    dispatch({ type: 'get_new_releases', payload: response.data });
   } catch (err) {
     if (API.isCancel(err)) {
       console.log('Request cancelled', err);
@@ -261,19 +260,20 @@ export const { Context, Provider } = createDataContext(
   discogsDataReducer,
   { 
     searchAll,
-    getArtists, 
     getArtist, 
     getReleasesByGenre,
     getPlaylistResultsArtist,
     resetLocalArtistsState,
     resetArtistsState,
-    searchArtists
+    searchArtists,
+    getNewReleases
   },
   { 
     artists: [], 
     artistsCount: 0, 
     releases: [],
     releasesCount: 0,
+    totalReleases: '',
     artist: null, 
     artistReleases: [],
     artistPlaylistResults: {}, 
