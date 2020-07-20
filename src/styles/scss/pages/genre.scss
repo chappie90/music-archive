@@ -1,0 +1,249 @@
+.genre {
+
+  .playlists-list-section {
+    background-color: $color-primary-green;
+
+    .years-list {
+      margin-bottom: 25px;
+      min-height: 45px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        height: 35px;
+        width: 60px;
+        color: $color-white;
+        font-size: $paragraph-small;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-tertiary-black;
+        border: 1px solid $color-tertiary-black;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .active {
+        color: $color-black;
+        background-color: $color-secondary-yellow;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      .item {
+        width: 100%;
+        margin-bottom: 15px;
+        background-color: $color-primary-green-lighter;
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .img {
+        display: block;
+        height: 115px;
+        width: 170px;
+        object-fit: cover;
+      }
+
+      .info {
+        margin: 0 10px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .primary {
+        font-size: $heading-small;
+        color: $color-white; 
+        margin-bottom: 5px;
+      }
+
+      .secondary {
+        color: $color-grey;
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-mobile-small) {
+  .genre {
+
+  .playlists-list-section {
+
+    .years-list {
+      margin-bottom: 25px;
+      min-height: 45px;
+
+      .item {
+        height: 35px;
+        width: 60px;
+        color: $color-white;
+        font-size: $paragraph-small;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-tertiary-black;
+        border: 1px solid $color-tertiary-black;
+        cursor: pointer;
+      }
+    }
+  }
+    }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+  .genre {
+    .playlists-list-section {
+
+      .years-list {
+        margin-bottom: 25px;
+        min-height: 45px;
+        display: flex;
+        flex-wrap: wrap;
+
+        .item {
+          height: 35px;
+          width: 60px;
+          color: $color-white;
+          font-size: $paragraph-small;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $color-tertiary-black;
+          border: 1px solid $color-tertiary-black;
+          cursor: pointer;
+        }
+
+        .active {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+      }
+    }
+
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .genre {
+
+    .playlists-list-section {
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .item {
+          width: calc(50% - 7.5px);
+          background-color: $color-primary-green-lighter;
+
+          &:hover {
+            background-color: $color-primary-green-hover;
+          }
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .genre {
+
+    .playlists-list-section {
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .item {
+          list-style-type: none;
+          width: calc(50% - 15px);
+          margin-bottom: 30px;
+          background-color: $color-primary-green-lighter;
+          display: flex;
+          align-items: center;
+        }
+
+        .info {
+          margin-left: 30px;
+        }
+
+        .primary {
+          font-size: $heading-medium;
+        }
+      }
+
+      .img {
+        height: 135px;
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  .genre {
+
+  .playlists-list-section {
+    background-color: $color-primary-green;
+
+    .programme-name {
+      margin: 20px 0 30px;
+      color: $color-white;
+      font-size: $heading-big;
+      font-family: $font-serif, serif;
+    }
+
+    .years-list {
+      margin-bottom: 25px;
+      min-height: 45px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        height: 35px;
+        width: 60px;
+        color: $color-white;
+        font-size: $paragraph-small;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-tertiary-black;
+        border: 1px solid $color-tertiary-black;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .active {
+        color: $color-black;
+        background-color: $color-secondary-yellow;
+      }
+    }
+
+  }
+}
+}

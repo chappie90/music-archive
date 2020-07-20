@@ -128,68 +128,6 @@ const getPlaylist = dispatch => async (programmeCode, date) => {
   }
 };
 
-const savePlaylist = dispatch => async (playlistData) => {
-  try {
-    return await API.post('/playlist/new', playlistData,
-      { 
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
-    );
-  } catch (err) {
-    console.log(err);
-    if (err.response) {
-      console.log(err.response.data.message);
-    }
-    throw err;
-  }
-};
-
-const updatePlaylist = dispatch => async (playlistData) => {
-  try {
-    return await API.patch('/playlist/update', playlistData, 
-      { 
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
-    );
-  } catch (err) {
-    console.log(err);
-    if (err.response) {
-      console.log(err.response.data.message);
-    }
-    throw err;
-  }
-};
-
-const deletePlaylist = dispatch => async (progcode) => {
-  if (source) {
-    source.cancel();
-  }
-
-  source = CancelToken.source();
-
-  try {
-    const params = { progcode };
-
-    return await API.delete('/playlist/delete', { 
-      params,
-      cancelToken: source.token
-    });
-  } catch (err) {
-    if (API.isCancel(err)) {
-      console.log('Request cancelled', err);
-    } else {
-      console.log(err);
-      if (err.response) {
-        console.log(err.response.data.message);
-      }
-      throw err;
-    }
-  }
-};
 
 const resetPlaylistsState = dispatch => async () => {
   dispatch({ type: 'reset_state' });
@@ -265,9 +203,6 @@ export const { Context, Provider } = createDataContext(
   playlistsReducer,
   { 
     getPlaylist, 
-    savePlaylist, 
-    updatePlaylist, 
-    deletePlaylist, 
     getPlaylistsByYear, 
     resetPlaylistsState,
     searchPlaylists,

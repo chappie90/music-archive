@@ -1,0 +1,244 @@
+.search {
+
+  .search-section {
+    background-color: $color-primary-green;
+
+      .form {
+        display: flex;
+      }
+
+      .input-group {
+        position: relative;
+        display: inline-block;
+      }
+
+      .reset-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: $color-grey;
+        cursor: pointer;
+      }
+        
+      .input {
+        height: 35px;
+        width: 320px;
+        padding: 0 15px;
+        font-size: $heading-small;
+        color: $color-black;
+        background-color:$color-white;
+        border:none;
+        outline: none;
+
+        &::placeholder {
+          color: $color-grey;
+        }
+      }
+
+      .submit-button {
+        height: 35px;
+        width: 100px;
+        text-align: center;
+        color: $color-black;
+        font-size: $heading-small;
+        background-color: $color-secondary-yellow;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .categories-list {
+        display: flex;
+        margin: 15px 0;
+
+        .item {
+          list-style-type: none;     
+          width: 170px;
+          height: 35px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $color-white;
+          font-size: $heading-medium;
+          cursor: pointer;
+          background-color: $color-tertiary-black;
+          border: 1px solid $color-tertiary-black;
+
+          &:hover {
+            background-color: $color-secondary-yellow;
+            color: $color-black;
+          }
+        }
+
+        .active {
+          color: $color-black;
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .filters-form {
+        .input-wrapper {
+          display: flex;
+          align-items: center;
+        }
+
+        .filter {
+          width: 160px;
+          font-size: $paragraph-small;
+          background-color: $color-tertiary-black;
+          color: $color-white;
+          outline: none;
+          border:none;
+          margin-right: 10px;
+          height: 35px;
+          padding: 0 12px;
+        }
+      }
+
+      .react-datepicker-wrapper {       
+        margin-right: 10px;
+
+        input {
+          width: 160px;
+          height: 35px;
+          padding: 0 12px;
+          border: none;
+          outline: none;
+          font-size: $paragraph-small;
+          background-color: $color-tertiary-black;
+          color: $color-white;
+        }
+      }
+
+      .react-datepicker__day--selected {
+        color: $color-black;
+        background-color: $color-secondary-yellow;
+      }
+
+      .no-results {
+        color: $color-white;
+        font-weight: 300;
+        font-size: $paragraph-medium;
+        font-family: $font-sans, sans-serif;
+        margin-left: 15px;
+      }
+
+      .results-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        .item {
+          width: 100%;
+          margin-bottom: 15px;
+          background-color: $color-primary-green-lighter;
+
+          &:hover {
+            background-color: $color-primary-green-hover;
+          }
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+        }
+
+        .img-container {
+          height: 115px;
+          width: 170px;
+          display: block;
+          background-color: $color-primary-green-light;
+        }
+
+        .img {
+          display: block;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: 50% 10%;
+        }
+
+        .info {
+          position: relative;
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          justify-content: center;
+          padding: 10px;
+          height: 100%;
+        }
+        .primary {
+          color: $color-white;
+          margin-bottom: 5px;
+        }
+        .secondary {
+          color: $color-grey;
+        }
+        .tertiary {
+          color: $color-white;
+          font-size: $paragraph-medium;
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+        }
+      }
+
+  }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .search {
+    .search-seaction {
+      .results-list {
+        .item {
+          width: calc(50% - 7.5px);
+
+          &:hover {
+            background-color: $color-primary-green-hover;
+          }
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .search {
+    .search-section {
+      .results-list {
+        .item {
+          width: calc(50% - 15px);
+          margin-bottom: 30px;
+          display: flex;
+          align-items: center;
+        }
+
+        .info {
+          margin-left: 10px;
+        }
+      }
+    } 
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-desktop-large) {
+  
+}
+
+

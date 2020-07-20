@@ -9,7 +9,6 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 // Components
-@import './components/dashboard-form.scss';
 @import './components/dashboard-modal.scss';
 @import './components/date-picker.scss';
 @import './components/delete-prompt.scss';
@@ -30,9 +29,9 @@
 @import './pages/homepage.scss';
 @import './pages/artist.scss';
 @import './pages/artists-list.scss';
-@import './pages/playlists-search.scss';
-@import './pages/programmes.scss';
-@import './pages/playlists-list.scss';
+@import './pages/search.scss';
+@import './pages/genres-list.scss';
+@import './pages/genre.scss';
 @import './pages/playlist-programme.scss';
 @import './pages/gallery.scss';
 @import './pages/terms.scss';

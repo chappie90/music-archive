@@ -5,16 +5,32 @@ import API from '../api/api';
 const CancelToken = API.CancelToken;
 let source;
 
-const artistsReducer = (state, action) => {
+const discogsDataReducer = (state, action) => {
   switch (action.type) {
+    case 'search_all':
+      return {
+        ...state,
+        searchResults: action.payload.results,
+        resultsCount: action.payload.pagination.pages
+      };
     case 'get_artists':
       return { 
         ...state, 
         artists: action.payload.results, 
         artistsCount: action.payload.pagination.pages 
       };
+    case 'get_releases_by_genre':
+      return {
+        ...state,
+        releases: action.payload.results,
+        releasesCount: action.payload.pagination.pages
+      };
     case 'get_artist':
-      return { ...state, artist: action.payload };
+      return { 
+        ...state, 
+        artist: action.payload.artist,
+        artistReleases: action.payload.artistReleases
+      };
     case 'get_artist_playlist_results':
       return {
         ...state, 
@@ -35,6 +51,92 @@ const artistsReducer = (state, action) => {
       };
     default:
       return state;
+  }
+};
+
+const searchAll = dispatch => async (search, category, page) => {
+  if (source) {
+    source.cancel();
+  }
+
+  source = CancelToken.source();
+
+  try {
+    const params = { search, category, page };
+
+    const response = await API.get('/discogs/search', {
+      params,
+      cancelToken: source.token
+    });
+
+    console.log(response.data)
+
+    dispatch({ type: 'search_all', payload: response.data });
+
+    return response.data;
+  } catch (err) {
+    if (API.isCancel(err)) {
+      console.log('Request cancelled', err);
+    } else {
+      console.log(err);
+      if (err.response) {
+        console.log(err.response.data.message);
+      }
+      throw err;
+    }
+  }
+};
+
+const getArtist = dispatch => async (id) => {
+  try {
+    const params = { id };
+
+    const response = await API.get('/discogs/artist', { params });
+
+    console.log(response)
+
+    dispatch({ type: 'get_artist', payload: response.data });
+
+    return response.data.artist;
+  } catch (err) {
+    console.log(err);
+    if (err.response) {
+      console.log(err.response.data.message);
+    }
+    throw err;
+  }
+};
+
+const getReleasesByGenre = dispatch => async (genre, decade, page) => {
+  if (source) {
+    source.cancel();
+  }
+
+  source = CancelToken.source();
+
+  try {
+    const params = { genre, decade, page };
+
+    const response = await API.get('/discogs/releases/genre', { 
+      params,
+      cancelToken: source.token 
+    });
+
+    console.log(response)
+
+    dispatch({ type: 'get_releases_by_genre', payload: response.data });
+
+    return response.data;
+  } catch (err) {
+    if (API.isCancel(err)) {
+      console.log('Request cancelled', err);
+    } else {
+      console.log(err);
+      if (err.response) {
+        console.log(err.response.data.message);
+      }
+      throw err;
+    }
   }
 };
 
@@ -102,116 +204,6 @@ const getArtistsManager = dispatch => async (search, page) => {
   }
 };
 
-const getArtist = dispatch => async (id) => {
-  try {
-    const params = { id };
-
-    const response = await API.get('/artist', { params });
-
-    dispatch({ type: 'get_artist', payload: response.data });
-
-    return response.data;
-  } catch (err) {
-    console.log(err);
-    if (err.response) {
-      console.log(err.response.data.message);
-    }
-    throw err;
-  }
-};
-
-const saveArtist = dispatch => async (artistData) => {
-  try {
-    return await API.post('/artist/new', artistData,
-      { 
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
-    );
-  } catch (err) {
-    console.log(err);
-    if (err.response) {
-      console.log(err.response.data.message);
-    }
-    throw err;
-  }
-};
-
-const updateArtist = dispatch => async (artistData) => {
-  try {
-    return await API.patch('/artist/update', artistData,
-      { 
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
-    ); 
-  } catch (err) {
-    console.log(err);
-    if (err.response) {
-      console.log(err.response.data.message);
-    }
-    throw err;
-  }
-};
-
-const deleteArtist = dispatch => async (artistId) => {
-  if (source) {
-    source.cancel();
-  }
-
-  source = CancelToken.source();
-
-  try {
-    const params = { artistId };
-
-    return await API.delete('/artist/delete', { 
-      params,
-      cancelToken: source.token 
-    });
-  } catch (err) {
-    if (API.isCancel(err)) {
-      console.log('Request cancelled', err);
-    } else {
-      console.log(err);
-      if (err.response) {
-        console.log(err.response.data.message);
-      }
-      throw err;
-    }
-  }
-};
-
-const checkArtistAvailability = dispatch => async (search) => {
-  if (source) {
-    source.cancel();
-  }
-
-  source = CancelToken.source();
-
-  try {
-    const params = { search };
-
-    const response = await API.get('/artist/check', { 
-      params,
-      cancelToken: source.token 
-    });
-
-    return response.data;
-  } catch (err) {
-    if (API.isCancel(err)) {
-      console.log('Request cancelled', err);
-    } else {
-      console.log(err);
-      if (err.response) {
-        console.log(err.response.data.message);
-      }
-      throw err;
-    }
-  }
-};
-
 const getPlaylistResultsArtist = dispatch => async (artistId, page) => {
   try {
     const params = { artistId, page };
@@ -266,26 +258,24 @@ const resetLocalArtistsState = dispatch => async (state) => {
 };
 
 export const { Context, Provider } = createDataContext(
-  artistsReducer,
+  discogsDataReducer,
   { 
+    searchAll,
     getArtists, 
     getArtist, 
-    saveArtist, 
-    updateArtist, 
-    deleteArtist, 
-    checkArtistAvailability, 
+    getReleasesByGenre,
     getPlaylistResultsArtist,
     resetLocalArtistsState,
     resetArtistsState,
-    getArtistsManager,
     searchArtists
   },
   { 
     artists: [], 
     artistsCount: 0, 
+    releases: [],
+    releasesCount: 0,
     artist: null, 
-    artistsManager: [],
-    artistsManagerCount: 0,
+    artistReleases: [],
     artistPlaylistResults: {}, 
     artistPlaylistResultsCount: 0,
     artistPlaylistProgrammes: [],

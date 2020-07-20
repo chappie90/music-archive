@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Context as ArtistsContext } from '../../context/ArtistsContext';
+import { Context as DiscogsContext } from '../../context/DiscogsContext';
 import { Context as HomepageContext } from '../../context/HomepageContext';
 
 const NavList = props => {
-  const { resetLocalArtistsState } = useContext(ArtistsContext);
+  const { resetLocalArtistsState } = useContext(DiscogsContext);
   const { toggleNavMenu } = useContext(HomepageContext);
   const [activeNav, setActiveNav] = useState('');
   const location = useLocation();
@@ -21,12 +21,11 @@ const NavList = props => {
       case 'artist':
         setActiveNav('artists');
         break;
-      case 'search-playlists':
-        setActiveNav('playlists');
+      case 'search':
+        setActiveNav('search');
         break;
-      case 'programmes':
-      case 'playlists':
-        setActiveNav('programmes');
+      case 'genres':
+        setActiveNav('genres');
         break;
       case 'gallery':
         setActiveNav('gallery');
@@ -50,6 +49,14 @@ const NavList = props => {
           </Link>
         </li>
         <li className="item">
+          <Link 
+            className={`${activeNav === 'search' ? 'nav-link-active' : 'nav-link'} link link-white`}
+            onClick={() => toggleNavMenu(false)}
+            to="/search">
+            Search
+          </Link>
+        </li>
+        <li className="item">
           <Link
             onClick={(e) => {
               resetLocalArtistsState(true);
@@ -62,18 +69,10 @@ const NavList = props => {
         </li>
         <li className="item">
           <Link 
-            className={`${activeNav === 'playlists' ? 'nav-link-active' : 'nav-link'} link link-white`}
+            className={`${activeNav === 'genres' ? 'nav-link-active' : 'nav-link'} link link-white`}
             onClick={() => toggleNavMenu(false)}
-            to="/search-playlists">
-            Playlists
-          </Link>
-        </li>
-        <li className="item">
-          <Link 
-            className={`${activeNav === 'programmes' ? 'nav-link-active' : 'nav-link'} link link-white`}
-            onClick={() => toggleNavMenu(false)}
-            to="/programmes">
-            Programmes
+            to="/genres">
+            Genres
           </Link>
         </li>
         <li className="item">
@@ -82,14 +81,6 @@ const NavList = props => {
             onClick={() => toggleNavMenu(false)}
             to="/gallery">
             Gallery
-          </Link>
-        </li>
-        <li className="item">
-          <Link 
-            className={`${activeNav === 'dashboard' ? 'nav-link-active' : 'nav-link'} link link-white`}
-            onClick={() => toggleNavMenu(false)}
-            to="/dashboard/homepage">
-            Dashboard
           </Link>
         </li>
       </ul>

@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { Context as ArtistsContext } from '../context/ArtistsContext';
+import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { Context as PlaylistsContext } from '../context/PlaylistsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
 
@@ -16,7 +16,7 @@ const ArtistsList = (props) => {
     getArtists, 
     resetLocalArtistsState,
     resetArtistsState
-  } = useContext(ArtistsContext);
+  } = useContext(DiscogsContext);
   const { getMostPlayed, resetPlaylistsState } = useContext(PlaylistsContext);
   const [activeLetter, setActiveLetter] = useState('A');
   const [page, setPage] = useState(null);
@@ -156,7 +156,7 @@ const ArtistsList = (props) => {
                   className="link"
                   to={{ pathname: `/artist/${urlPrettify(item.title)}/${item.id}`}}
                 >
-                  <img className="img" src={item.cover_image} alt={item.title} /> :
+                  <img className="img" src={item.cover_image} alt={item.title} />
                   <span className="artist">{item.title}</span>
                 </Link>
               </li>

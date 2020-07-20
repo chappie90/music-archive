@@ -6,7 +6,7 @@ import 'normalize.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider as HomepageProvider } from './context/HomepageContext';
-import { Provider as ArtistsProvider } from './context/ArtistsContext';
+import { Provider as DiscogsProvider } from './context/DiscogsContext';
 import { Provider as ProgrammesProvider } from './context/ProgrammesContext';
 import { Provider as SessionsProvider } from './context/SessionsContext';
 import { Provider as PlaylistsProvider } from './context/PlaylistsContext';
@@ -17,24 +17,24 @@ import ScrollToTop from './components/ScrollToTop';
 
 ReactDOM.render(
   <BrowserRouter>
-    <GalleryProvider>
-      <AlbumsProvider>
-        <TracksProvider>
-          <PlaylistsProvider>
-            <SessionsProvider>
-              <ProgrammesProvider>
-                <ArtistsProvider>
-                  <HomepageProvider>
-                      <ScrollToTop />
-                      <App />
-                  </HomepageProvider>
-                </ArtistsProvider>
-              </ProgrammesProvider>
-            </SessionsProvider>
-          </PlaylistsProvider>
-        </TracksProvider>
-      </AlbumsProvider>
-    </GalleryProvider>
+  <GalleryProvider>
+        <AlbumsProvider>
+          <TracksProvider>
+            <PlaylistsProvider>
+              <SessionsProvider>
+                <ProgrammesProvider>
+                  <DiscogsProvider>
+                    <HomepageProvider>
+                        <ScrollToTop />
+                        <App />
+                    </HomepageProvider>
+                  </DiscogsProvider>
+                </ProgrammesProvider>
+              </SessionsProvider>
+            </PlaylistsProvider>
+          </TracksProvider>
+        </AlbumsProvider>
+      </GalleryProvider>
   </BrowserRouter>,
   document.getElementById('root'),
 );

@@ -10,10 +10,10 @@ import Home from './pages/Home';
 import ArtistsList from './pages/ArtistsList';
 import Artist from './pages/Artist';
 import SessionsList from './pages/SessionsList';
-import PlaylistsSearch from './pages/PlaylistsSearch';
-import PlaylistsListProgramme from './pages/PlaylistsListProgramme';
+import Search from './pages/Search';
+import Genre from './pages/Genre';
 import PlaylistProgramme from './pages/PlaylistProgramme';
-import Programmes from './pages/Programmes';
+import GenresList from './pages/GenresList';
 import Gallery from './pages/Gallery';
 import Terms from './pages/Terms';
 import { Context as HomepageContext } from './context/HomepageContext';
@@ -33,13 +33,12 @@ const App = () => {
       }
       <main className="main">
         <Route exact path="/" component={Home} />
+        <Route exact path="/search" component={Search} />
         <Route exact path="/artists/:letter/:search?/:page" component={ArtistsList} />
         <Route exact path="/artist/:artist/:id" component={Artist} />
-        <Route exact path="/search-playlists" component={PlaylistsSearch} />
-        <Route exact path="/playlists/:programme/:shortcode/:year/:page" component={PlaylistsListProgramme} />
+        <Route exact path="/genres/:genre/:decade/:page" component={Genre} />
         <Route exact path="/playlists/:programme/:date/:progcode" component={PlaylistProgramme} />
-        <Route exact path="/sessions/:programme/:shortcode/:year/:page" component={SessionsList} />
-        <Route path="/programmes" component={Programmes} />
+        <Route exact path="/genres" component={GenresList} />
         <Route path="/gallery" component={Gallery} />
         <Route path="/terms-of-use" component={Terms} />
       </main>
