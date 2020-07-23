@@ -8,8 +8,9 @@ import NavList from './components/layout/NavList';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import NewReleases from './pages/NewReleases';
+import Release from './pages/Release';
 import Artist from './pages/Artist';
-import SessionsList from './pages/SessionsList';
+import Label from './pages/Label';
 import Search from './pages/Search';
 import Genre from './pages/Genre';
 import PlaylistProgramme from './pages/PlaylistProgramme';
@@ -35,7 +36,9 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/new-releases/:page" component={NewReleases} />
+        <Route exact path="/release/:release/:id" component={Release} />
         <Route exact path="/artist/:artist/:id" component={Artist} />
+        <Route exact path="/label/:label/:id" component={Label} />
         <Route exact path="/genres/:genre/:decade/:page" component={Genre} />
         <Route exact path="/playlists/:programme/:date/:progcode" component={PlaylistProgramme} />
         <Route exact path="/genres" component={GenresList} />

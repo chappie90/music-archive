@@ -46,11 +46,22 @@
           object-position: 50% 10%;
         }
 
-        .artist {
+        .info {
+          display: flex;
+          flex-direction: column;
           font-size: heading-small;
-          color: $color-white;
-          margin: 10px;
+          text-align: center;
+          margin: 8px;
           flex: 1;
+        }
+
+        .primary {
+          color: $color-white;
+          margin-bottom: 5px;
+        }
+
+        .secondary {
+          color: $color-grey;
         }
       }
   }
@@ -124,7 +135,7 @@
           justify-content: space-between;
 
           .item {
-            width: calc(20% - 15px);
+            width: calc(20% - 25px);
             margin-bottom: 30px;
             background-color: $color-primary-green-lighter;
           }

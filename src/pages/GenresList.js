@@ -32,17 +32,8 @@ const Genres = () => {
                   <div className="info">
                     <div className="primary">
                       <h1 className="heading heading-white programme-name">{item}</h1>
-                      <span className="station">Something</span>
                     </div>
-                    <span className="dates">
-                      <Link 
-                        className="date">
-                      </Link>
-                      {` - `}
-                      <Link 
-                        className="date">
-
-                      </Link>
+                    <span className="border">
                     </span>
                   </div>
                   <Link 

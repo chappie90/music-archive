@@ -22,7 +22,6 @@ const NewReleases = (props) => {
     resetArtistsState
   } = useContext(DiscogsContext);
   const { getMostPlayed, resetPlaylistsState } = useContext(PlaylistsContext);
-  const [activeLetter, setActiveLetter] = useState('A');
   const [page, setPage] = useState(null);
   const [search, setSearch] = useState('');
   const [topArtists, setTopArtists] = useState([]);
@@ -30,7 +29,6 @@ const NewReleases = (props) => {
   const [endDate, setEndDate] = useState(new Date());
   const history = useHistory();
   const location = useLocation();
-  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   useEffect(() => {
     const pageInt = props.match.params.page;
@@ -46,7 +44,6 @@ const NewReleases = (props) => {
   useEffect(() => {
     if (localArtistsReset) {
       setPage(1);
-      setActiveLetter('A');
       getNewReleases(1);
       setSearch('');
       resetLocalArtistsState(false);
@@ -72,17 +69,24 @@ const NewReleases = (props) => {
           </h2>
           {totalReleases && <span className="count">{totalReleases.toLocaleString()} results</span>}
           <ul className="list">
-            {releases.length > 0 && releases.map(item => (
-              <li className="item" key={item.id}>
-                <Link 
-                  className="link"
-                  to={{ pathname: `/artist/${urlPrettify(item.title)}/${item.id}`}}
-                >
-                  <img className="img" src={item.cover_image} alt={item.title} />
-                  <span className="artist">{item.title}</span>
-                </Link>
-              </li>
-            ))}
+            {releases.length > 0 && releases.map(item => {
+              const release = item.title.split('-')[1].slice(1);
+              const artist = item.title.split('-')[0];
+              return (
+                <li className="item" key={item.id}>
+                  <Link 
+                    className="link"
+                    to={{ pathname: `/release/${urlPrettify(release)}/${item.id}`}}
+                  >
+                    <img className="img" src={item.cover_image} alt={item.title} />
+                    <div className="info">
+                      <span className="primary">{release}</span>
+                      <span className="secondary">{artist}</span>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           {releasesCount > 1 && <ReactPaginate 
             pageCount={releasesCount}

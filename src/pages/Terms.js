@@ -80,8 +80,8 @@ const Terms = () => {
           </p>
           <p>You can contact us by email to admin@bobharris.org.</p>
           <p>
-            This website disclaimer is based on a template created by <a href="https://www.website-contracts.co.uk/" target="_blank">Website-contracts.co.uk</a> and distributed
-            by <a href="https://seqlegal.com/legal-services/website-law" target="_blank">Website-law.co.uk</a>
+            This website disclaimer is based on a template created by <a href="https://www.website-contracts.co.uk/" rel="noopener noreferrer" target="_blank">Website-contracts.co.uk</a> 
+            and distributed by <a href="https://seqlegal.com/legal-services/website-law" rel="noopener noreferrer" target="_blank">Website-law.co.uk</a>
           </p>
         </div>
       </section>

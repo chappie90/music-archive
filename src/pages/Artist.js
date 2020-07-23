@@ -3,19 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { IoIosArrowDropdownCircle, IoIosArrowDropupCircle, IoIosArrowDown } from 'react-icons/io';
 import ImageGallery from 'react-image-gallery';
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  EmailIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  TwitterIcon
-} from "react-share";
-
 import { Context as DiscogsContext } from '../context/DiscogsContext';
-import { Context as SessionsContext } from '../context/SessionsContext';
 import ArtistSocialLinks from '../components/ArtistSocialLinks';
 import YoutubeVideo from '../components/YoutubeVideo';
 import { formatProgrammeName } from '../helpers/formatProgrammeName';
@@ -59,11 +47,6 @@ const Artist = (props) => {
         resetArtistsState();
       };
   }, []);
-
-  useEffect(() => {
-    console.log('arty')
-    console.log(artistReleases)
-  }, [artistReleases])
 
   const pageClickHandler = data => {
     if (page === `${data.selected} + 1`) {

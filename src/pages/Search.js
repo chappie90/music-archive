@@ -108,9 +108,17 @@ const Search = (props) => {
   };
 
   const renderResultsItemLink = (item) => {
+    console.log(item)
     let link;
     if (item.type === 'artist') {
       link = { pathname: `/artist/${urlPrettify(item.title)}/${item.id}`}
+    }
+    if (item.type === 'release') {
+      const release = item.title.split('-')[1].slice(1);
+      link = { pathname: `/release/${urlPrettify(release)}/${item.id}` }  
+    }
+    if (item.type === 'label') {
+      link = { pathname: `/label/${urlPrettify(item.title)}/${item.id}` }  
     }
     return link;
   };

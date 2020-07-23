@@ -89,6 +89,64 @@ const getArtist = async (req, res) => {
   }
 };
 
+const getRelease = async (req, res) => {
+  try {
+    const id = req.query.id;
+
+    const release = await axios.get(`${
+      config.BASE_URL}/releases/${id}`,
+      { 
+        headers: { 
+          'User-Agent': config.USER_AGENT,
+          'Authorization': `Discogs key=${config.KEY}, secret=${config.SECRET}`
+        }   
+      }
+    );
+
+    res.status(200).send(release.data);
+  } catch (error) {
+    console.error(error);
+    res.status(422).send({ message: 'Could not fetch release' });
+  }
+};
+
+const getLabel = async (req, res) => {
+  try {
+    const id = req.query.id;
+
+    const label = await axios.get(`${
+      config.BASE_URL}/labels/${id}`,
+      { 
+        headers: { 
+          'User-Agent': config.USER_AGENT,
+          'Authorization': `Discogs key=${config.KEY}, secret=${config.SECRET}`
+        }   
+      }
+    );
+
+    const labelReleases = await axios.get(`${
+      config.BASE_URL}/labels/${id}/releases?year=desc`,
+      { 
+        headers: { 
+          'User-Agent': config.USER_AGENT,
+          'Authorization': `Discogs key=${config.KEY}, secret=${config.SECRET}`
+        }   
+      }
+    );
+
+    const data = {
+      label: label.data,
+      labelReleases: labelReleases.data
+    };
+
+    res.status(200).send(data);
+
+  } catch (error) {
+    console.error(error);
+    res.status(422).send({ message: 'Could not fetch label' });
+  }
+};
+
 const getReleasesByGenre = async (req, res) => {
   try {
     const genre = req.query.genre;
@@ -115,6 +173,8 @@ const getReleasesByGenre = async (req, res) => {
 module.exports = {
   searchPlaylists,
   getArtist,
+  getRelease,
+  getLabel,
   getReleasesByGenre,
   getNewReleases
 };

@@ -32,6 +32,27 @@ const discogsDataReducer = (state, action) => {
         artist: action.payload.artist,
         artistReleases: action.payload.artistReleases
       };
+    case 'get_release':
+      return { 
+        ...state, 
+        release: action.payload
+      };
+    case 'reset_release':
+      return {
+        ...state, 
+        release: []
+      };
+    case 'get_label':
+      return { 
+        ...state, 
+        label: action.payload.label,
+        labelReleases: action.payload.labelReleases
+      };
+    case 'reset_label':
+      return {
+        ...state, 
+        label: []
+      };
     case 'get_artist_playlist_results':
       return {
         ...state, 
@@ -94,8 +115,6 @@ const getArtist = dispatch => async (id) => {
 
     const response = await API.get('/discogs/artist', { params });
 
-    console.log(response)
-
     dispatch({ type: 'get_artist', payload: response.data });
 
     return response.data.artist;
@@ -123,7 +142,7 @@ const getReleasesByGenre = dispatch => async (genre, decade, page) => {
       cancelToken: source.token 
     });
 
-    console.log(response)
+    console.log(response.data)
 
     dispatch({ type: 'get_releases_by_genre', payload: response.data });
 
@@ -170,6 +189,54 @@ const getNewReleases = dispatch => async (page) => {
       throw err;
     }
   }
+};
+
+const getRelease = dispatch => async (id) => {
+  try {
+    const params = { id };
+
+    const response = await API.get('/discogs/release', { params });
+
+    console.log(response.data)
+
+    dispatch({ type: 'get_release', payload: response.data });
+
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    if (err.response) {
+      console.log(err.response.data.message);
+    }
+    throw err;
+  }
+};
+
+const resetRelease = dispatch => async () => {
+  dispatch({ type: 'reset_release' });
+};
+
+const getLabel = dispatch => async (id) => {
+  try {
+    const params = { id };
+
+    const response = await API.get('/discogs/label', { params });
+
+    console.log(response.data)
+
+    dispatch({ type: 'get_label', payload: response.data });
+
+    return response.data.label;
+  } catch (err) {
+    console.log(err);
+    if (err.response) {
+      console.log(err.response.data.message);
+    }
+    throw err;
+  }
+};
+
+const resetLabel = dispatch => async () => {
+  dispatch({ type: 'reset_label' });
 };
 
 const getArtistsManager = dispatch => async (search, page) => {
@@ -260,7 +327,11 @@ export const { Context, Provider } = createDataContext(
   discogsDataReducer,
   { 
     searchAll,
-    getArtist, 
+    getArtist,
+    getRelease, 
+    getLabel,
+    resetRelease,
+    resetLabel,
     getReleasesByGenre,
     getPlaylistResultsArtist,
     resetLocalArtistsState,
@@ -273,8 +344,10 @@ export const { Context, Provider } = createDataContext(
     artistsCount: 0, 
     releases: [],
     releasesCount: 0,
+    labelReleases: [],
     totalReleases: '',
     artist: null, 
+    release: null,
     artistReleases: [],
     artistPlaylistResults: {}, 
     artistPlaylistResultsCount: 0,
