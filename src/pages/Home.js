@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import API from '../api/api';
@@ -6,6 +6,8 @@ import { Context as HomepageContext } from '../context/HomepageContext';
 import CustomLink from '../components/CustomLink';
 
 const Home = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const topBanners = [
     {
       title: 'Foo Fighters',
@@ -74,7 +76,8 @@ const Home = () => {
         </div>
         <div className="img-container">
           <img 
-            className="img" 
+            onLoad={() => setImageLoaded(true)}
+            className={imageLoaded ? 'img' : 'img-loading'}
             src="hero-banner.jpg"
             alt="" />
         </div>
