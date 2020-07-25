@@ -7,15 +7,18 @@ const config = {
   USER_AGENT: 'MusicArchive/0.1 +https://music-archive.com'
 };
 
-const searchPlaylists = async (req, res) => {
+const searchAll = async (req, res) => {
   try {
     const search = req.query.search;
     const category = req.query.category === 'all' ? '' : req.query.category;
+    const genre = req.query.genre === 'all' ? '' : req.query.genre;
+    const style = req.query.style === 'all' ? '' : req.query.style;
+    const country = req.query.country === 'all' ? '' : req.query.country;
     const page = req.query.page;
 
     const response = await axios.get(`${
       config.BASE_URL}/database/search?query=${
-      search ? search : ''}&type=${category}&page=${page}&per_page=20`,
+      search ? search : ''}&type=${category}&genre=${genre}&style=${style}&country=${country}&page=${page}&per_page=20`,
       { 
         headers: { 
           'User-Agent': config.USER_AGENT,
@@ -110,6 +113,42 @@ const getRelease = async (req, res) => {
   }
 };
 
+const getMaster = async (req, res) => {
+  try {
+    const id = req.query.id;
+
+    const master = await axios.get(`${
+      config.BASE_URL}/masters/${id}`,
+      { 
+        headers: { 
+          'User-Agent': config.USER_AGENT,
+          'Authorization': `Discogs key=${config.KEY}, secret=${config.SECRET}`
+        }   
+      }
+    );
+
+    const masterVersions = await axios.get(`${
+      config.BASE_URL}/masters/${id}/versions`,
+      { 
+        headers: { 
+          'User-Agent': config.USER_AGENT,
+          'Authorization': `Discogs key=${config.KEY}, secret=${config.SECRET}`
+        }   
+      }
+    );
+
+    const data = {
+      master: master.data,
+      masterVersions: masterVersions.data
+    };
+
+    res.status(200).send(data);
+  } catch (error) {
+    console.error(error);
+    res.status(422).send({ message: 'Could not fetch master' });
+  }
+};
+
 const getLabel = async (req, res) => {
   try {
     const id = req.query.id;
@@ -171,9 +210,10 @@ const getReleasesByGenre = async (req, res) => {
 
 
 module.exports = {
-  searchPlaylists,
+  searchAll,
   getArtist,
   getRelease,
+  getMaster,
   getLabel,
   getReleasesByGenre,
   getNewReleases

@@ -9,7 +9,6 @@
 
     .count {
       color: $color-grey;
-      font-size: $heading-medium;
     }
 
       .no-results {
@@ -22,7 +21,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 20px;
+        margin-top: 10px;
 
         .item {
           width: 100%;

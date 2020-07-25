@@ -17,8 +17,7 @@ const NavList = props => {
       case '':
         setActiveNav('home');
         break;
-      case 'artists':
-      case 'artist':
+      case 'new-releases':
         setActiveNav('new-releases');
         break;
       case 'search':
@@ -26,9 +25,6 @@ const NavList = props => {
         break;
       case 'genres':
         setActiveNav('genres');
-        break;
-      case 'gallery':
-        setActiveNav('gallery');
         break;
       case 'dashboard':
         setActiveNav('dashboard');
@@ -62,7 +58,7 @@ const NavList = props => {
               resetLocalArtistsState(true);
               toggleNavMenu(false);
             }}
-            className={`${activeNav === 'artists' ? 'nav-link-active' : 'nav-link'} link link-white`} 
+            className={`${activeNav === 'new-releases' ? 'nav-link-active' : 'nav-link'} link link-white`} 
             to="/new-releases/1">
             New Releases
           </Link>
@@ -73,14 +69,6 @@ const NavList = props => {
             onClick={() => toggleNavMenu(false)}
             to="/genres">
             Genres
-          </Link>
-        </li>
-        <li className="item">
-          <Link 
-            className={`${activeNav === 'gallery' ? 'nav-link-active' : 'nav-link'} link link-white`}
-            onClick={() => toggleNavMenu(false)}
-            to="/gallery">
-            Gallery
           </Link>
         </li>
       </ul>

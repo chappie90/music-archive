@@ -11,7 +11,8 @@ const discogsDataReducer = (state, action) => {
       return {
         ...state,
         searchResults: action.payload.results,
-        resultsCount: action.payload.pagination.pages
+        resultsCount: action.payload.pagination.pages,
+        searchTotal: action.payload.pagination.items
       };
     case 'get_new_releases':
       return { 
@@ -41,6 +42,17 @@ const discogsDataReducer = (state, action) => {
       return {
         ...state, 
         release: []
+      };
+    case 'get_master':
+      return { 
+        ...state, 
+        master: action.payload.master,
+        masterVersions: action.payload.masterVersions
+      };  
+    case 'reset_master':
+      return {
+        ...state, 
+        master: []
       };
     case 'get_label':
       return { 
@@ -76,7 +88,7 @@ const discogsDataReducer = (state, action) => {
   }
 };
 
-const searchAll = dispatch => async (search, category, page) => {
+const searchAll = dispatch => async (search, category, genre, style, country, page) => {
   if (source) {
     source.cancel();
   }
@@ -84,14 +96,12 @@ const searchAll = dispatch => async (search, category, page) => {
   source = CancelToken.source();
 
   try {
-    const params = { search, category, page };
+    const params = { search, category, genre, style, country, page };
 
     const response = await API.get('/discogs/search', {
       params,
       cancelToken: source.token
     });
-
-    console.log(response.data)
 
     dispatch({ type: 'search_all', payload: response.data });
 
@@ -197,8 +207,6 @@ const getRelease = dispatch => async (id) => {
 
     const response = await API.get('/discogs/release', { params });
 
-    console.log(response.data)
-
     dispatch({ type: 'get_release', payload: response.data });
 
     return response.data;
@@ -213,6 +221,31 @@ const getRelease = dispatch => async (id) => {
 
 const resetRelease = dispatch => async () => {
   dispatch({ type: 'reset_release' });
+};
+
+const getMaster = dispatch => async (id) => {
+  try {
+    const params = { id };
+
+    const response = await API.get('/discogs/master', { params });
+
+    console.log('master')
+    console.log(response.data)
+
+    dispatch({ type: 'get_master', payload: response.data });
+
+    return response.data.master;
+  } catch (err) {
+    console.log(err);
+    if (err.response) {
+      console.log(err.response.data.message);
+    }
+    throw err;
+  }
+};
+
+const resetMaster = dispatch => async () => {
+  dispatch({ type: 'reset_master' });
 };
 
 const getLabel = dispatch => async (id) => {
@@ -237,37 +270,6 @@ const getLabel = dispatch => async (id) => {
 
 const resetLabel = dispatch => async () => {
   dispatch({ type: 'reset_label' });
-};
-
-const getArtistsManager = dispatch => async (search, page) => {
-  if (source) {
-    source.cancel();
-  }
-
-  source = CancelToken.source();
-
-  try {
-    const params = { search, page };
-
-    const response = await API.get('/artists/manager', { 
-      params,
-      cancelToken: source.token 
-    });
-
-    dispatch({ type: 'get_artists_manager', payload: response.data });
-
-    return response.data.artists;
-  } catch (err) {
-    if (API.isCancel(err)) {
-      console.log('Request cancelled', err);
-    } else {
-      console.log(err);
-      if (err.response) {
-        console.log(err.response.data.message);
-      }
-      throw err;
-    }
-  }
 };
 
 const getPlaylistResultsArtist = dispatch => async (artistId, page) => {
@@ -329,8 +331,10 @@ export const { Context, Provider } = createDataContext(
     searchAll,
     getArtist,
     getRelease, 
+    getMaster,
     getLabel,
     resetRelease,
+    resetMaster,
     resetLabel,
     getReleasesByGenre,
     getPlaylistResultsArtist,
@@ -345,9 +349,12 @@ export const { Context, Provider } = createDataContext(
     releases: [],
     releasesCount: 0,
     labelReleases: [],
+    masterVersions: [],
+    searchTotal: '',
     totalReleases: '',
     artist: null, 
     release: null,
+    master: null,
     artistReleases: [],
     artistPlaylistResults: {}, 
     artistPlaylistResultsCount: 0,

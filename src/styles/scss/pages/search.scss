@@ -3,6 +3,16 @@
   .search-section {
     background-color: $color-primary-green;
 
+    .section-heading {
+      margin-bottom: 10px;
+    }
+
+      .helper-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
       .form {
         display: flex;
       }
@@ -15,7 +25,7 @@
       .reset-icon {
         position: absolute;
         top: 50%;
-        right: 10px;
+        right: 110px;
         transform: translateY(-50%);
         color: $color-grey;
         cursor: pointer;
@@ -54,7 +64,7 @@
 
         .item {
           list-style-type: none;     
-          width: 170px;
+          width: 140px;
           height: 35px;
           display: flex;
           align-items: center;
@@ -116,6 +126,12 @@
         background-color: $color-secondary-yellow;
       }
 
+      .count {
+        color: $color-grey;
+        margin-top: 30px;
+        display: inline-block;
+      }
+
       .no-results {
         color: $color-white;
         font-weight: 300;
@@ -128,7 +144,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 20px;
+        margin-top: 10px;
 
         .item {
           width: 100%;
