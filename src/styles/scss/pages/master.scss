@@ -1,5 +1,5 @@
-.release {
-  .release-section {
+.master {
+  .master-section {
 
     .helper-container {
       display: flex;
@@ -16,12 +16,14 @@
 
     .intro {
       display: flex;
-      // background-color: $color-primary-green-dark;
+      padding: 20px;
+      background-color: $color-primary-green-light;
     }
 
     .img-container {
       max-height: 40  0px;
       max-width: 260px;
+      margin-right: 20px;
     }
 
     .img {
@@ -37,12 +39,16 @@
 
       .row {
         display: flex;
-        align-items: center;
-        margin-bottom: 6px;
+        align-items: flex-start;
+        margin-bottom: 10px;
       }
 
       .label {
+        color: $color-secondary-yellow-dark; 
+        margin-right: 20px;     
+      }
 
+      .value {
       }
 
       .divider {
@@ -56,6 +62,10 @@
           display: inline-block;
         }
       }
+    }
+
+    .more-images {
+      margin-top: 30px;
     }
 
     .gallery-slider {
@@ -194,6 +204,10 @@
       }
     }
 
+    .videos {
+      margin-top: 30px;
+    }
+
     .video-container {
       margin-top: 30px;
 
@@ -241,17 +255,20 @@
         }
       }
     }
+  }
 
-    .master-versions {
+  .master-versions-section {
+      background-color: $color-primary-green-dark;
+
       .list {
       margin-bottom: 10px;
+      color: $color-white;
       
       .list-header {
         display: flex;
         justify-content: space-around;
         background-color: $color-tertiary-black;
-        color: $color-white;
-
+        
         span {
           padding: 10px 20px;
           text-transform: uppercase;
@@ -263,11 +280,11 @@
         }
 
         span:nth-of-type(2) {
-          width: 30%;
+          width: 25%;
         }
 
         span:nth-of-type(3) {
-          width: 12%;
+          width: 17%;
         }
 
         span:nth-of-type(4) {
@@ -294,11 +311,11 @@
           }
 
           span:nth-of-type(2) {
-            width: 30%;
+            width: 25%;
           }
 
           span:nth-of-type(3) {
-            width: 12%;
+            width: 17%;
           }
 
           span:nth-of-type(4) {
@@ -343,7 +360,6 @@
       }
     }
     }
-  }
 }
 
 @media screen and (min-width: $breakpoint-mobile) {
@@ -356,8 +372,8 @@
 }
 
 @media screen and (min-width: $breakpoint-desktop-small) {
-  .release {
-    .release-section {
+  .master {
+    .master-section {
 
       .helper-container {
         flex-direction: row;

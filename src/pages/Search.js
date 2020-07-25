@@ -30,7 +30,6 @@ const Search = (props) => {
   const [search, setSearch] = useState('');
   const [searchSubmitted, setSearchSubmitted] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
-  const [activeTopCategory, setActiveTopCategory] = useState('artists');
   const [genre, setGenre] = useState('all');
   const [style, setStyle] = useState('all');
   const [country, setCountry] = useState('all');
@@ -71,6 +70,7 @@ const Search = (props) => {
 
   useEffect(() => {
     let initialSearch = '';
+    let initialCategory = 'all';
     let initialGenre = 'all';
     let initialStyle = 'all';
     let initialCountry = 'all';
@@ -80,6 +80,10 @@ const Search = (props) => {
     if (paramsObj.query) {
       initialSearch = paramsObj.query;
       setSearch(initialSearch);
+    }
+    if (paramsObj.type) {
+      initialCategory = paramsObj.type;
+      setActiveCategory(initialCategory);
     }
     if (paramsObj.genre) {
       initialGenre = paramsObj.genre;
@@ -93,7 +97,7 @@ const Search = (props) => {
       initialCountry = paramsObj.country;
       setCountry(initialCountry);
     }
-    searchAll(initialSearch, activeCategory, initialGenre, initialStyle, initialCountry, 1);
+    searchAll(initialSearch, initialCategory, initialGenre, initialStyle, initialCountry, 1);
 
     return () => {
       // resetPlaylistsState();
@@ -123,6 +127,18 @@ const Search = (props) => {
     } else {
       // resetPlaylistsSearchState();
     }
+  };
+
+  const onResetSearch = () => {
+    const params = location.search.slice(1);
+    const paramsObj = qs.parse(params);
+    paramsObj.query = undefined;
+    const paramsStr = qs.stringify(paramsObj);
+    history.push(`/search/search?${paramsStr}`);
+    setSearch('');
+    setSearchSubmitted(false);
+    setPage(1);    
+    resetPlaylistsSearchState();   
   };
 
   const handleKeyDown = (event) => {
@@ -199,7 +215,7 @@ const Search = (props) => {
     
   };
 
-  const setDateRangeHandler = (type, value) => {
+  const onSetDate = (type, value) => {
     if (type === 0) {
       setStartDate(value);
     } else {
@@ -208,7 +224,7 @@ const Search = (props) => {
     const range = [startDate, endDate];
   };  
 
-  const categoryClickHandler = (category) => {
+  const onCategoryChange = (category) => {
     const params = location.search.slice(1);
     const paramsObj = qs.parse(params);
     if (category !== 'all') {
@@ -251,7 +267,7 @@ const Search = (props) => {
             </select>
             <DatePicker
               selected={startDate}
-              onChange={val => setDateRangeHandler(0, val)}
+              onChange={val => onSetDate(0, val)}
               popperClassName="date-input" 
               showMonthDropdown
               showYearDropdown
@@ -300,32 +316,23 @@ const Search = (props) => {
                     placeholder="Search artists, albums and more..."
                     value={search}
                   />
-                  {search && <IoMdClose 
-                      onClick={() => {
-                        setSearch('');
-                        setSearchSubmitted(false);
-                        setPage(1);    
-                        resetPlaylistsSearchState();                   
-                      }} 
-                      className="reset-icon" size={25} 
-                    />
-                  }
+                  {search && <IoMdClose onClick={onResetSearch} className="reset-icon" size={25} />}
                   <button type="button" className="submit-button" onClick={() => onSearchSubmit()}>Search</button>
                 </div>
               <ul className="categories-list">
-               <li className={activeCategory === 'all' ? 'item active ' : 'item'} onClick={() => categoryClickHandler('all')}>
+               <li className={activeCategory === 'all' ? 'item active ' : 'item'} onClick={() => onCategoryChange('all')}>
                   All
                 </li>
-                <li className={activeCategory === 'release' ? 'item active ' : 'item'} onClick={() => categoryClickHandler('release')}>
+                <li className={activeCategory === 'release' ? 'item active ' : 'item'} onClick={() => onCategoryChange('release')}>
                   Release
                 </li>
-                <li className={activeCategory === 'master' ? 'item active ' : 'item'} onClick={() => categoryClickHandler('master')}>
+                <li className={activeCategory === 'master' ? 'item active ' : 'item'} onClick={() => onCategoryChange('master')}>
                   Master
                 </li>
-                <li className={activeCategory === 'artist' ? 'item active ' : 'item'} onClick={() => categoryClickHandler('artist')}>
+                <li className={activeCategory === 'artist' ? 'item active ' : 'item'} onClick={() => onCategoryChange('artist')}>
                   Artist
                 </li>
-                <li className={activeCategory === 'label' ? 'item active ' : 'item'} onClick={() => categoryClickHandler('label')}>
+                <li className={activeCategory === 'label' ? 'item active ' : 'item'} onClick={() => onCategoryChange('label')}>
                   Label
                 </li>
               </ul>

@@ -53,13 +53,15 @@ const Master = (props) => {
   };
 
   return (
-    <div className="content-page release">
-      <section className="release-section">
+    <div className="content-page master">
+      <section className="master-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
           <div className="helper-container">
             <div className="left-column">
               <h2 className="section-heading heading-white">
-                <span>Releases</span>
+                <span>Masters</span>
+                <span className="slash">/</span> 
+                <span>{master?.artists[0].name}</span>
                 <span className="slash">/</span> 
                 <span>{master?.title}</span>
               </h2>
@@ -72,27 +74,12 @@ const Master = (props) => {
                 </div>
                 <div className="info">
                   {master && master.artists && master.artists[0].name && <div className="row">
-                    <span className="label">Artist</span><span className="divider">|</span>
-                      <span className="value">{master.artists[0].name}</span>
-                    </div>
-                  }
-                  {master && master.labels && master?.labels[0]?.name && <div className="row">
-                      <span className="label">Label</span><span className="divider">|</span>
-                      <span className="value">{master.labels[0].name}</span>
-                    </div>
-                  }
-                  {master?.released && <div className="row">
-                      <span className="label">Released</span><span className="divider">|</span>
-                      <span className="value">{formatDate(master.released)}</span>
-                    </div>
-                  }
-                  {master?.country && <div className="row">
-                      <span className="label">Country</span><span className="divider">|</span>
-                      <span className="value">{master.country}</span>
+                    <span className="label">Artist:</span>
+                    <span className="value">{master.artists[0].name}</span>
                     </div>
                   }
                   {master?.genres && <div className="row">
-                      <span className="label">Genre</span><span className="divider">|</span>
+                      <span className="label">Genre:</span>
                       <ul className="values-list">
                         {master.genres.map((item, index) => (
                           <li className="item" key={index}>
@@ -103,44 +90,46 @@ const Master = (props) => {
                     </div>
                   }
                   {master?.styles && <div className="row">
-                      <span className="label">Styles</span><span className="divider">|</span>
+                      <span className="label">Style:</span>
                       <ul className="values-list">
-                        {master.styles.map((item, index) => (
-                          <li className="item" key={index}>
-                            {index === 0 ? `${item}` : `, ${item}`}
-                          </li>
-                        ))}
+                        {master.styles.join(', ')}
                       </ul>
                     </div>
                   }
                   {master?.year && <div className="row">
-                      <span className="label">Added</span><span className="divider">|</span>
+                      <span className="label">Year:</span>
                       <span className="value">{master.year}</span>
                     </div>
                   }
                 </div>
               </div>
               {master?.images?.length > 1 && 
-                <ImageGallery 
-                  showPlayButton={false} 
-                  showIndex={true} 
-                  onSlide={(currentIndex) => console.log(currentIndex)}
-                  items={images}
-                  additionalClass="gallery-slider" /> 
+                <div className="more-images">
+                  <h2 className="section-heading heading-white">Images</h2>
+                  <ImageGallery 
+                    showPlayButton={false} 
+                    showIndex={true} 
+                    onSlide={(currentIndex) => console.log(currentIndex)}
+                    items={images}
+                    additionalClass="gallery-slider" /> 
+                </div>
               }
               {master?.videos &&
-                <div className="video-container">
-                  {activeVideo && <YoutubeVideo videoUrl={activeVideo?.uri} />}
-                  {master?.videos.length > 1 && <ul className="list">
-                    {master?.videos.map((item, index) => (
-                      <li onClick={() => onSetActiveVideo(item)} className="item" key={index}>
-                        <YoutubeVideo videoUrl={item.uri} />
-                        <span className="title">{item.title}</span>
-                        <span className="duration">{moment.utc(item.duration * 1000).format('mm:ss')}</span>
-                      </li>
-                    ))}
-                    </ul> 
-                  }
+                <div className="videos">
+                  <h2 className="section-heading heading-white">Videos</h2>
+                  <div className="video-container">
+                    {activeVideo && <YoutubeVideo videoUrl={activeVideo?.uri} />}
+                    {master?.videos.length > 1 && <ul className="list">
+                      {master?.videos.map((item, index) => (
+                        <li onClick={() => onSetActiveVideo(item)} className="item" key={index}>
+                          <YoutubeVideo videoUrl={item.uri} />
+                          <span className="title">{item.title}</span>
+                          <span className="duration">{moment.utc(item.duration * 1000).format('mm:ss')}</span>
+                        </li>
+                      ))}
+                      </ul> 
+                    }
+                  </div>
                 </div>
               }
             </div>
@@ -172,8 +161,11 @@ const Master = (props) => {
                   <p className="no-results">No tracks found</p>
                 }
               </div>
+            </div>
           </div>
-          <div className="master-versions">
+        </section>
+        <section className="master-versions-section">
+          <div className="section-wrapper section-wrapper-green-dark">
             <h2 className="section-heading heading-white">
               Versions
             </h2>
@@ -203,8 +195,7 @@ const Master = (props) => {
               <p className="no-results">No playlists found</p>
             }
           </div>
-        </div>
-      </section>
+        </section>
     </div>
   );
 };
