@@ -8,11 +8,7 @@
     }
 
     .styles-list {
-      margin-bottom: 25px;
-      min-height: 45px;
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 -8px;
+      display: none;
 
       .item {
         // height: 35px;
@@ -58,21 +54,23 @@
 
       .link {
         display: flex;
-        align-items: center;
         width: 100%;
       }
 
       .img {
         display: block;
         height: 115px;
-        width: 170px;
+        width: 130px;
         object-fit: cover;
       }
 
       .info {
-        margin: 0 10px;
+        position: relative;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        flex: 1;
       }
 
       .primary {
@@ -84,6 +82,12 @@
       .secondary {
         color: $color-grey;
       }
+      .tertiary {
+        font-size: $paragraph-small;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
     }
   }
 
@@ -91,24 +95,27 @@
 
 @media screen and (min-width: $breakpoint-mobile-small) {
   .genre {
-
-  .playlists-list-section {
-
-    .styles-list {
-
-      .item {
-        color: $color-white;
-        font-size: $paragraph-small;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $color-tertiary-black;
-        border: 1px solid $color-tertiary-black;
-        cursor: pointer;
+    .playlists-list-section {
+      .styles-list {
+        .item {
+          color: $color-white;
+          font-size: $paragraph-small;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $color-tertiary-black;
+          border: 1px solid $color-tertiary-black;
+          cursor: pointer;
+        }
+      }
+      .list {
+        .img {
+          height: 145px;
+          width: 170px;
+        }
       }
     }
   }
-    }
 }
 
 @media screen and (min-width: $breakpoint-mobile) {
@@ -116,9 +123,6 @@
     .playlists-list-section {
 
       .styles-list {
-
-        display: flex;
-        flex-wrap: wrap;
 
         .item {
           color: $color-white;
@@ -136,6 +140,13 @@
           background-color: $color-secondary-yellow;
         }
       }
+
+      .list {
+        .img {
+
+        }
+      }
+      
     }
 
   }
@@ -145,6 +156,14 @@
   .genre {
 
     .playlists-list-section {
+
+      .styles-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 25px;
+        min-height: 45px;
+        margin: 0 -8px;
+      }
 
       .list {
         display: flex;
@@ -162,7 +181,6 @@
 
         .link {
           display: flex;
-          align-items: center;
           width: 100%;
         }
       }
@@ -189,18 +207,17 @@
         }
 
         .info {
-          margin-left: 30px;
+          margin-left: 10px;
         }
 
-        .primary {
-          font-size: $heading-medium;
+      }
+
+      .list {
+        .img {
+
         }
       }
 
-      .img {
-        height: 135px;
-        width: 200px;
-      }
     }
   }
 }

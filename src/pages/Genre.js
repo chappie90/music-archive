@@ -105,7 +105,7 @@ const Genre = props => {
                     <div className="info">
                       <span className="primary">{item.title}</span>
                       <span className="secondary">{item.style[0]}</span>
-                      <span className="tertiary">{item.year}</span>
+                      {item.year && <span className="tertiary">{item.year}</span>}
                     </div>
                   </Link>
                 </li>
