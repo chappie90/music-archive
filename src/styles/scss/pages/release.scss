@@ -8,7 +8,7 @@
 
     .left-column {
       width: 100%;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     .right-column {
       width: 100%;
@@ -75,7 +75,6 @@
         margin: 0;
         max-height: 100%;
         max-width: 100%;
-        object-position: 50% 10%;
       }
 
       .image-gallery-left-nav,
@@ -255,15 +254,6 @@
       .helper-container {
 
       }
-
-      .left-column {
-        width: 100%;
-        margin-bottom: 30px;
-      }
-      .right-column {
-        width: 100%;
-      }
-
       .intro {
 
       }
@@ -275,6 +265,12 @@
 @media screen and (min-width: $breakpoint-tablet) {
   .release {
     .release-section {
+
+      .left-column {
+        margin-bottom: 30px;
+      }
+      .right-column {
+      }
 
       .intro {
         flex-direction: row;

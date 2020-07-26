@@ -15,6 +15,7 @@ const Master = (props) => {
    } = useContext(DiscogsContext);
   const [images, setImages] = useState([]);
   const [activeVideo, setActiveVideo] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -31,6 +32,7 @@ const Master = (props) => {
           });
           setImages(images);
         }
+        setIsLoading(false);
       });
 
     return () => {
@@ -137,7 +139,7 @@ const Master = (props) => {
               <h2 className="section-heading heading-white">
                 Tracklist
               </h2>
-              {master && master.tracklist ?
+              {master && master.tracklist &&
                 <ul className="list">
                   <li className="list-header">  
                     <span>Pos</span>
@@ -157,9 +159,9 @@ const Master = (props) => {
                       </span>
                       </li>
                     ))}
-                  </ul> :
-                  <p className="no-results">No tracks found</p>
+                  </ul> 
                 }
+                {!isLoading && !master.tracklist.length === 0 &&<p className="no-results">No tracks found</p>}
               </div>
             </div>
           </div>
@@ -169,7 +171,7 @@ const Master = (props) => {
             <h2 className="section-heading heading-white">
               Versions
             </h2>
-            {masterVersions.versions && masterVersions.versions.length > 0 ?
+            {masterVersions.versions && masterVersions.versions.length > 0 &&
               <ul className="list">
                 <li className="list-header">  
                   <span>Title (Format)</span>
@@ -179,21 +181,33 @@ const Master = (props) => {
                   <span>Year</span>
                 </li>
                 {masterVersions.versions.map((item, index) => (
-                  <li key={item.id} className="list-row">
-                     <span className="list-cell">
-                        {item.thumb && <img className="release-cover" src={item.thumb} alt={item.title} />}
-                        {item.title}
-                        {` (${item.format})`}
-                      </span>     
-                      <span>{item.label}</span>
-                      <span>{item.catno}</span>
-                      <span>{item.country}</span>
-                      <span>{item.released}</span>
-                  </li>
-                ))}
-              </ul> :
-              <p className="no-results">No playlists found</p>
+                    <li key={item.id} className="list-row">
+                       <div className="list-cell">
+                          {item.thumb && <img className="release-cover" src={item.thumb} alt={item.title} />}
+                          {item.title}
+                          {` (${item.format})`}
+                        </div>     
+                        <div className="list-cell">
+                          <span className="label">Label </span>
+                          <span>{item.label}</span>
+                        </div>
+                        <div className="list-cell">
+                          <span className="label">Cat# </span>
+                          <span>{item.catno}</span>
+                        </div>
+                        <div className="list-cell">
+                          <span className="label">Country </span>
+                          <span>{item.country}</span>
+                        </div>
+                        <div className="list-cell">
+                          <span className="label">Year </span>
+                          <span>{item.released}</span>
+                        </div>
+                    </li>
+                  ))}
+                </ul>
             }
+            {!isLoading && masterVersions.versions.length === 0 && <p className="no-results">No versions found</p>}
           </div>
         </section>
     </div>
