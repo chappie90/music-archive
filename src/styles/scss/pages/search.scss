@@ -9,6 +9,7 @@
 
       .helper-container {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
       }
@@ -19,7 +20,8 @@
 
       .input-group {
         position: relative;
-        display: inline-block;
+        display: flex;
+        width: 100%;
       }
 
       .reset-icon {
@@ -33,7 +35,7 @@
         
       .input {
         height: 35px;
-        width: 320px;
+        flex: 1;
         padding: 0 15px;
         font-size: $heading-small;
         color: $color-black;
@@ -60,13 +62,13 @@
 
       .categories-list {
         display: flex;
+        flex-wrap: wrap;
         margin: 15px 0;
 
         .item {
-          list-style-type: none;     
-          width: 140px;
           height: 35px;
           display: flex;
+          padding: 0 15px;
           align-items: center;
           justify-content: center;
           color: $color-white;
@@ -90,19 +92,28 @@
       .filters-form {
         .input-wrapper {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
         }
 
         .filter {
-          width: 160px;
+          width: calc(50% - 5px);
           font-size: $paragraph-small;
           background-color: $color-tertiary-black;
           color: $color-white;
           outline: none;
           border:none;
-          margin-right: 10px;
           height: 35px;
           padding: 0 12px;
+          margin-bottom: 10px;
+
+          &:nth-of-type(even) {
+
+          }
+
+          &:nth-of-type(odd) {
+            margin-right: 10px;
+          }
         }
 
         .reset-filters {
@@ -118,29 +129,9 @@
         }
       }
 
-      .react-datepicker-wrapper {       
-        margin-right: 10px;
-
-        input {
-          width: 160px;
-          height: 35px;
-          padding: 0 12px;
-          border: none;
-          outline: none;
-          font-size: $paragraph-small;
-          background-color: $color-tertiary-black;
-          color: $color-white;
-        }
-      }
-
-      .react-datepicker__day--selected {
-        color: $color-black;
-        background-color: $color-secondary-yellow;
-      }
-
       .count {
         color: $color-grey;
-        margin-top: 30px;
+        margin-top: 10px;
         display: inline-block;
       }
 
@@ -170,14 +161,13 @@
 
         .link {
           display: flex;
-          align-items: center;
           width: 100%;
           height: 100%;
         }
 
         .img-container {
           height: 115px;
-          width: 170px;
+          width: 130px;
           display: block;
           background-color: $color-primary-green-light;
         }
@@ -219,13 +209,74 @@
 }
 
 @media screen and (min-width: $breakpoint-mobile) {
+  .search {
 
+  .search-section {
+    background-color: $color-primary-green;
+
+      .input-group {
+        display: flex;
+        width: 420px;
+      }
+
+      .input {
+        flex: initial;
+        width: 320px;
+      }
+
+      .categories-list {
+        .item {  
+          width: 100px;
+          padding: 0;
+        }
+      }
+
+      .filters-form {
+        .filter {
+          width: 130px;
+
+          &:nth-of-type(even) {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .results-list {
+        .img-container {
+          width: 170px;
+        }
+      }
+    }
+  }
 }
 
 
 @media screen and (min-width: $breakpoint-tablet) {
   .search {
-    .search-seaction {
+    .search-section {
+
+      .input-group {
+        margin-right: 20px;
+      }
+
+
+      .categories-list {
+        .item {     
+          width: 140px;
+        }
+      }
+
+      .filters-form {
+        .filter {
+          width: 160px;
+          margin-bottom: 0;
+        }
+      }
+
+      .count {
+        margin-top: 30px;
+      }
+
       .results-list {
         .item {
           width: calc(50% - 7.5px);
@@ -237,7 +288,6 @@
 
         .link {
           display: flex;
-          align-items: center;
           width: 100%;
         }
       }
