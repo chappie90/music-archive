@@ -18,8 +18,7 @@ const NewReleases = (props) => {
       totalReleases,
       localArtistsReset }, 
     getNewReleases, 
-    resetLocalArtistsState,
-    resetArtistsState
+    resetReleases
   } = useContext(DiscogsContext);
   const { getMostPlayed, resetPlaylistsState } = useContext(PlaylistsContext);
   const [page, setPage] = useState(null);
@@ -36,19 +35,9 @@ const NewReleases = (props) => {
     getNewReleases(pageInt);
 
     return () => {
-      resetArtistsState();
-      resetPlaylistsState();
+      resetReleases();
     };
   }, []);
-
-  useEffect(() => {
-    if (localArtistsReset) {
-      setPage(1);
-      getNewReleases(1);
-      setSearch('');
-      resetLocalArtistsState(false);
-    }
-  }, [localArtistsReset]);
 
   const pageClickHandler = data => {
     if (page === `${data.selected} + 1`) {

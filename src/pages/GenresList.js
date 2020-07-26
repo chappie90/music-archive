@@ -12,7 +12,7 @@ const Genres = () => {
     'Pop', 
     'Folk, World, & Country',
     'Jazz',
-    'Funk / Soul',
+    'Funk | Soul',
     'Classical',
     'Hip Hop',
     'Latin',
@@ -38,10 +38,7 @@ const Genres = () => {
                   </div>
                   <Link 
                     className="link link-black"
-                    to={{ 
-                        pathname: `/genres/${urlPrettify(item)}/${2020}/1`, 
-                        shortcode: item.shortcode
-                      }}>
+                    to={{ pathname: `/genres/${urlPrettify(item)}/1` }}>
                     <span className="text">Explore Releases</span>
                     <span className="icon-wrapper">
                       <BsArrowRight className="icon" size={30} />

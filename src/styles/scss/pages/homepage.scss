@@ -2,7 +2,8 @@
 
   .header-section {
     background-color: $color-tertiary-black;
-    height: 540px;
+    height: calc(100vh - 90px);
+    max-height: 500px;
     position: relative;
 
     .content-wrapper {
@@ -18,6 +19,7 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
+      justify-content: center;
 
       .heading {
         font-size: $heading-extra-large;
@@ -96,15 +98,15 @@
         } 
 
         .img-big {
-          width: 100%;
-          height: 210px;
+          height: 100%;
+          width: calc(45% - 7.5px);
           object-fit: cover;
           object-position: 50% 10%;
         }
 
         .img-small {
           height: 100%;
-          width: calc(50% - 7.5px);
+          width: calc(45% - 7.5px);
           object-fit: cover;
           object-position: 50% 10%;
         }
@@ -117,21 +119,17 @@
 
       .top-banner-big {
         width: 100%;
-        height: 320px;
+        height: 26vw;
         margin-bottom: 15px;
-
-        .link {
-          flex-direction: column;
-        }
   
         .heading {
-          font-size: $heading-big;
+          font-size: $heading-medium;
         }
       }
 
       .top-banner-small {
         width: 100%;
-        height: 100px;
+        height: 26vw;
         flex-direction: row;
 
         .heading {
@@ -159,9 +157,13 @@
 
       .item {
         width: calc(50% - 7.5px);
-        height: 190px;
+        // height: 45vw;
         background-color: $color-primary-green-lighter;
         margin-bottom: 15px;
+
+        &:last-of-type {
+          display: none;
+        }
 
         &:hover {
           background-color: $color-primary-green-hover;
@@ -182,11 +184,12 @@
           font-size: $heading-medium;
           margin: 5px 10px;
           line-height: 1.3;
+          padding: 10px;
         }
 
         .img {
           width: 100%;
-          height: 115px;
+          height: 33vw;
           object-fit: cover;
           object-position: 50% 10%;
         }
@@ -266,6 +269,8 @@
   .homepage {
     .section-heading {}
     .header-section {
+      height: 540px;
+
       .content-wrapper {}
       
       .text {
@@ -285,6 +290,7 @@
 
         .img-big {
           height: 320px;
+          width: 100%;
           object-position: 50% 10%;
         }
 
@@ -300,6 +306,10 @@
         width: calc(50% - 6.6px);
         margin-right: 10px;
         margin-bottom: 0;
+
+        .link {
+          flex-direction: column;
+        }
       }
 
       .top-banner-small {
@@ -328,11 +338,19 @@
         height: 280px;
         margin-bottom: 0;
 
+        &:last-of-type {
+          display: block;
+        }
+
         .img {
           width: 100%;
           height: 125px;
           object-fit: cover;
           object-position: 50% 10%;
+        }
+
+        .heading {
+           padding: 0;
         }
 
         &:not(:last-of-type) {

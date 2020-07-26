@@ -3,15 +3,22 @@
   .playlists-list-section {
     background-color: $color-primary-green;
 
-    .years-list {
+    .styles-wrapper {
+      margin-bottom: 30px;
+    }
+
+    .styles-list {
       margin-bottom: 25px;
       min-height: 45px;
       display: flex;
       flex-wrap: wrap;
+      margin: 0 -8px;
 
       .item {
-        height: 35px;
-        width: 60px;
+        // height: 35px;
+        padding: 4px 10px;
+        margin-left: 8px;
+        margin-bottom: 6px;
         color: $color-white;
         font-size: $paragraph-small;
         display: flex;
@@ -31,6 +38,10 @@
         color: $color-black;
         background-color: $color-secondary-yellow;
       }
+    }
+
+    .count {
+      color: $color-grey;
     }
 
     .list {
@@ -83,13 +94,9 @@
 
   .playlists-list-section {
 
-    .years-list {
-      margin-bottom: 25px;
-      min-height: 45px;
+    .styles-list {
 
       .item {
-        height: 35px;
-        width: 60px;
         color: $color-white;
         font-size: $paragraph-small;
         display: flex;
@@ -108,15 +115,12 @@
   .genre {
     .playlists-list-section {
 
-      .years-list {
-        margin-bottom: 25px;
-        min-height: 45px;
+      .styles-list {
+
         display: flex;
         flex-wrap: wrap;
 
         .item {
-          height: 35px;
-          width: 60px;
           color: $color-white;
           font-size: $paragraph-small;
           display: flex;
@@ -214,23 +218,11 @@
       font-family: $font-serif, serif;
     }
 
-    .years-list {
-      margin-bottom: 25px;
-      min-height: 45px;
+    .styles-list {
       display: flex;
       flex-wrap: wrap;
 
       .item {
-        height: 35px;
-        width: 60px;
-        color: $color-white;
-        font-size: $paragraph-small;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $color-tertiary-black;
-        border: 1px solid $color-tertiary-black;
-        cursor: pointer;
 
         &:hover {
           color: $color-black;

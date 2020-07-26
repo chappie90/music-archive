@@ -1,52 +1,36 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import { MdAudiotrack } from 'react-icons/md';
-import { IoMdMusicalNote } from 'react-icons/io';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
-import { Context as PlaylistsContext } from '../context/PlaylistsContext';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
 import { routeToState } from '../helpers/routeToState';
 
 const Genre = props => {
-  const { 
-    state: { 
-      playlists, 
-      playlistsCount, 
-      playlistsYears, 
-      mostPlayed, 
-      mostPlayedCount,
-      playlistsGroupByDate
-    }, 
-    getPlaylistsByYear, 
-    resetPlaylistsState,
-    getMostPlayed
-  } = useContext(PlaylistsContext);
-  const { state: { releases, releasesCount }, getReleasesByGenre } = useContext(DiscogsContext);
+  const { state: { releases, releasesCount, totalReleases }, getReleasesByGenre, resetReleases } = useContext(DiscogsContext);
   const [page, setPage] = useState(1);
   const [activeDecade, setActiveDecade] = useState(null);
   const [genre, setGenre] = useState('');
-  const [startDate, setStartDate] = useState(new Date('1998-01-01'));
-  const [endDate, setEndDate] = useState(new Date());
-  const [topTracks, setTopTracks] = useState([]);
-  const [sliderSettings, setSliderSettings] = useState(null);
+  const [style, setStyle] = useState('all');
   const history = useHistory();
   const location = useLocation();
   const { pathname } = location;
-  const decades = ['1960', '1970', '1980', '1990', '2000', '2010', '2020'];
+
+  const styles = [
+    'Pop Rock', 'House', 'Vocal', 'Experimental', 'Punk', 'Alternative Rock', 'Techno', 'Disco',
+    'Soul', 'Indie Rock', 'Hardcore', 'Ambient', 'Electro', 'Folk', 'Hard Rock', 'Ballad', 'Country', 'Rock & Roll',
+    'Trance', 'Chanson', 'Heavy Metal', 'Psychedelic Rock', 'Downtempo', 'Folk Rock', 'Classic Rock', 'Prog Rock',
+    'Noise', 'Funk', 'Soundtrack'
+  ];
 
   useEffect(() => {
     const { genre, decade } = props.match.params;
     setGenre(routeToState(genre));
     setActiveDecade(decade);
-    getReleasesByGenre(genre, decade, page);
+    getReleasesByGenre(genre, style, page);
 
     return () => {
-      resetPlaylistsState();
+      resetReleases();
     }
   }, []);
 
@@ -63,39 +47,53 @@ const Genre = props => {
       return;
     }
     setPage(data.selected + 1);
-    const { genre, shortcode } = props.match.params;
-    history.push(`/genres/${genre}/${activeDecade}/${data.selected + 1}`);
+    const { genre } = props.match.params;
+    if (style) {
+      history.push(`/genres/${genre}/${urlPrettify(style)}/${data.selected + 1}`);
+    } else {
+      history.push(`/genres/${genre}/${data.selected + 1}`);
+    }
     window.scrollTo(0, 0);
-    getReleasesByGenre(genre, activeDecade, data.selected + 1);
+    getReleasesByGenre(genre, style, data.selected + 1);
   };
 
-  const setActiveYearHandler = (decade) => {
+  const onSetStyle = (newStyle) => {
     const { genre } = props.match.params;
-    history.push(`/genres/${genre}/${decade}/1`);
-    setActiveDecade(decade);
     setPage(1);
-    getReleasesByGenre(genre, decade, 1);
+    let updateStyle;
+
+    if (newStyle === style) {
+      updateStyle = 'all';
+      setStyle(updateStyle);
+      history.push(`/genres/${genre}/1`);
+    } else {
+      history.push(`/genres/${genre}/${urlPrettify(newStyle)}/1`);
+      updateStyle = newStyle;
+      setStyle(updateStyle);
+    }
+
+    getReleasesByGenre(genre, updateStyle, 1);
   };
 
   return (
     <div className="content-page genre">
       <section className="playlists-list-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
-          <h2 className="section-heading heading-white">{genre}
+          <h2 className="section-heading heading-white">
+            <span>Genres</span>
             <span className="slash">/</span> 
-            <span>Playlists</span>
-            <span className="slash">/</span> 
-            <span>{activeDecade}</span>
+            <span>{genre}</span>
           </h2>
-          <div className="years-wrapper">
-            <ul className="years-list">
-              {decades.map((item, index) => (
-                <li className={activeDecade === item ? 'active item' : 'item'} onClick={() => setActiveYearHandler(item)} key={item}>
+          <div className="styles-wrapper">
+            <ul className="styles-list">
+              {styles.map((item, index) => (
+                <li className={style === item ? 'active item' : 'item'} onClick={() => onSetStyle(item)} key={item}>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
+          {totalReleases && <span className="count">{totalReleases.toLocaleString()} results</span>}
            <ul className="list">
             {releases.map((item, index) => {
               return (

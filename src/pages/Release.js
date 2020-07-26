@@ -74,27 +74,27 @@ const Release = (props) => {
                 </div>
                 <div className="info">
                   {release && release.artists && release.artists[0].name && <div className="row">
-                    <span className="label">Artist</span><span className="divider">|</span>
+                    <span className="label">Artist:</span>
                       <span className="value">{release.artists[0].name}</span>
                     </div>
                   }
                   {release && release.labels && release?.labels[0]?.name && <div className="row">
-                      <span className="label">Label</span><span className="divider">|</span>
+                      <span className="label">Label:</span>
                       <span className="value">{release.labels[0].name}</span>
                     </div>
                   }
                   {release?.released && <div className="row">
-                      <span className="label">Released</span><span className="divider">|</span>
+                      <span className="label">Released:</span>
                       <span className="value">{formatDate(release.released)}</span>
                     </div>
                   }
                   {release?.country && <div className="row">
-                      <span className="label">Country</span><span className="divider">|</span>
+                      <span className="label">Country:</span>
                       <span className="value">{release.country}</span>
                     </div>
                   }
                   {release?.genres && <div className="row">
-                      <span className="label">Genre</span><span className="divider">|</span>
+                      <span className="label">Genre:</span>
                       <ul className="values-list">
                         {release.genres.map((item, index) => (
                           <li className="item" key={index}>
@@ -105,18 +105,14 @@ const Release = (props) => {
                     </div>
                   }
                   {release?.styles && <div className="row">
-                      <span className="label">Styles</span><span className="divider">|</span>
+                      <span className="label">Styles:</span>
                       <ul className="values-list">
-                        {release.styles.map((item, index) => (
-                          <li className="item" key={index}>
-                            {index === 0 ? `${item}` : `, ${item}`}
-                          </li>
-                        ))}
+                        {release.styles.join(', ')}
                       </ul>
                     </div>
                   }
                   {release?.year && <div className="row">
-                      <span className="label">Added</span><span className="divider">|</span>
+                      <span className="label">Added:</span>
                       <span className="value">{release.year}</span>
                     </div>
                   }

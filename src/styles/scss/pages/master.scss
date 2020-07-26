@@ -21,7 +21,7 @@
     }
 
     .img-container {
-      max-height: 40  0px;
+      max-height: 400px;
       max-width: 260px;
       margin-right: 20px;
     }
@@ -33,7 +33,7 @@
 
     .info {
       flex: 1;
-      background-color: $color-primary-green-lighter;
+      background-color: $color-tertiary-black;
       padding: 15px 20px;
       color: $color-white;
 
@@ -44,17 +44,11 @@
       }
 
       .label {
-        color: $color-secondary-yellow-dark; 
+        color: $color-secondary-yellow; 
         margin-right: 20px;     
       }
 
       .value {
-      }
-
-      .divider {
-        margin: 0 10px;
-        color: $color-secondary-yellow-dark;
-        font-size: $heading-big;
       }
 
       .values-list {

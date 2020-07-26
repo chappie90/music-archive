@@ -190,11 +190,11 @@ const getLabel = async (req, res) => {
 const getReleasesByGenre = async (req, res) => {
   try {
     const genre = req.query.genre;
-    const decade = req.query.decade;
+    const style = req.query.style === 'all' ? '' : req.query.style;
     const page = req.query.page;
 
     const response = await axios.get(`${
-      config.BASE_URL}/database/search?&type=release&genre=${genre}&page=${page}&per_page=20`,
+      config.BASE_URL}/database/search?&type=release&genre=${genre}&style=${style}&page=${page}&per_page=20`,
       { 
         headers: { 
           'User-Agent': config.USER_AGENT,

@@ -25,7 +25,15 @@ const discogsDataReducer = (state, action) => {
       return {
         ...state,
         releases: action.payload.results,
-        releasesCount: action.payload.pagination.pages
+        releasesCount: action.payload.pagination.pages,
+        totalReleases: action.payload.pagination.items
+      };
+     case 'reset_releases':
+      return {
+        ...state, 
+        releases: [],
+        releasesCount: 0,
+        totalReleases: ''
       };
     case 'get_artist':
       return { 
@@ -137,7 +145,7 @@ const getArtist = dispatch => async (id) => {
   }
 };
 
-const getReleasesByGenre = dispatch => async (genre, decade, page) => {
+const getReleasesByGenre = dispatch => async (genre, style, page) => {
   if (source) {
     source.cancel();
   }
@@ -145,7 +153,7 @@ const getReleasesByGenre = dispatch => async (genre, decade, page) => {
   source = CancelToken.source();
 
   try {
-    const params = { genre, decade, page };
+    const params = { genre, style, page };
 
     const response = await API.get('/discogs/releases/genre', { 
       params,
@@ -199,6 +207,10 @@ const getNewReleases = dispatch => async (page) => {
       throw err;
     }
   }
+};
+
+const resetReleases = dispatch => async () => {
+  dispatch({ type: 'reset_releases' });
 };
 
 const getRelease = dispatch => async (id) => {
@@ -341,7 +353,8 @@ export const { Context, Provider } = createDataContext(
     resetLocalArtistsState,
     resetArtistsState,
     searchArtists,
-    getNewReleases
+    getNewReleases,
+    resetReleases
   },
   { 
     artists: [], 

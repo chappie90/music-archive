@@ -16,12 +16,14 @@
 
     .intro {
       display: flex;
-      // background-color: $color-primary-green-dark;
+      padding: 20px;
+      background-color: $color-primary-green-light;
     }
 
     .img-container {
       max-height: 40  0px;
       max-width: 260px;
+      margin-right: 20px;
     }
 
     .img {
@@ -31,24 +33,19 @@
 
     .info {
       flex: 1;
-      background-color: $color-primary-green-lighter;
+      background-color: $color-tertiary-black;
       padding: 15px 20px;
       color: $color-white;
 
       .row {
         display: flex;
-        align-items: center;
-        margin-bottom: 6px;
+        align-items: flex-start;
+        margin-bottom: 10px;
       }
 
       .label {
-
-      }
-
-      .divider {
-        margin: 0 10px;
-        color: $color-secondary-yellow-dark;
-        font-size: $heading-big;
+        color: $color-secondary-yellow; 
+        margin-right: 20px;  
       }
 
       .values-list {

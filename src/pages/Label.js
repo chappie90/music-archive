@@ -61,24 +61,25 @@ const Label = (props) => {
             </div>
             <div className="info">
               {label && label.profile && <div className="row">
-                <span className="label">Profile</span><span className="divider">|</span>
+                <span className="label">Profile:</span>
                   <span className="value">{label.profile}</span>
                 </div>
               }
               {label && label.sublabels && <div className="row">
-                  <span className="label">Sublabels</span><span className="divider">|</span>
+                  <span className="label">Sublabels:</span>
                   <ul className="values-list">
-                    {label.sublabels.map((item, index) => (
-                      <li className="item" key={index}>
-                        {index === 0 ? `${item.name}` : `, ${item.name}`}
-                      </li>
-                    ))}
+                    {Array.prototype.map.call(label.sublabels, s => s.name).join(', ')}
                   </ul>
                 </div>
               }
               {label?.parent_label && <div className="row">
-                  <span className="label">Parent Label</span><span className="divider">|</span>
+                  <span className="label">Parent Label:</span>
                   <span className="value">{label.parent_label.name}</span>
+                </div>
+              }
+              {label && label.contact_info && <div className="row">
+                <span className="label">Contact:</span>
+                  <span className="value">{label.contact_info}</span>
                 </div>
               }
             </div>
@@ -86,12 +87,15 @@ const Label = (props) => {
           <div className="helper-container">
             <div className="left-column">
               {label?.images?.length > 1 && 
-                <ImageGallery 
-                  showPlayButton={false} 
-                  showIndex={true} 
-                  onSlide={(currentIndex) => console.log(currentIndex)}
-                  items={images}
-                  additionalClass="gallery-slider" /> 
+                <div className="more-images">
+                  <h2 className="section-heading heading-white">Images</h2>
+                    <ImageGallery 
+                      showPlayButton={false} 
+                      showIndex={true} 
+                      onSlide={(currentIndex) => console.log(currentIndex)}
+                      items={images}
+                      additionalClass="gallery-slider" /> 
+                </div>
               }
             </div>
             <div className="right-column">
@@ -108,33 +112,35 @@ const Label = (props) => {
               }
             </div>
           </div>
-          <div className="">
-            <h2 className="section-heading heading-white">
-              Label Releases
-            </h2>
-            {labelReleases.releases && labelReleases.releases.length > 0 ?
-              <ul className="list">
-                <li className="list-header">  
-                  <span>Artist</span>
-                  <span>Title</span>
-                  <span>Cat#</span>
-                  <span>Year</span>
+        </div>
+      </section>
+      <section className="label-releaes-section">
+        <div className="section-wrapper section-wrapper-green-dark">
+          <h2 className="section-heading heading-white">
+            Label Releases
+          </h2>
+          {labelReleases.releases && labelReleases.releases.length > 0 ?
+            <ul className="list">
+              <li className="list-header">  
+                <span>Artist</span>
+                <span>Title</span>
+                <span>Cat#</span>
+                <span>Year</span>
+              </li>
+              {labelReleases.releases.map((item, index) => (
+                <li key={item.id} className="list-row">
+                   <span className="list-cell">
+                      {item.thumb && <img className="artist-cover" src={item.thumb} alt={item.title} />}
+                      {item.artist}
+                    </span>     
+                    <span>{item.title}</span>
+                    <span>{item.catno}</span>
+                    <span>{item.year}</span>
                 </li>
-                {labelReleases.releases.map((item, index) => (
-                  <li key={item.id} className="list-row">
-                     <span className="list-cell">
-                        {item.thumb && <img className="artist-cover" src={item.thumb} alt={item.title} />}
-                        {item.artist}
-                      </span>     
-                      <span>{item.title}</span>
-                      <span>{item.catno}</span>
-                      <span>{item.year}</span>
-                  </li>
-                ))}
-              </ul> :
-              <p className="no-results">No playlists found</p>
-            }
-          </div>
+              ))}
+            </ul> :
+            <p className="no-results">No playlists found</p>
+          }
         </div>
       </section>
     </div>

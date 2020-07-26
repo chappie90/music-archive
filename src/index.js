@@ -8,7 +8,6 @@ import * as serviceWorker from './serviceWorker';
 import { Provider as HomepageProvider } from './context/HomepageContext';
 import { Provider as DiscogsProvider } from './context/DiscogsContext';
 import { Provider as ProgrammesProvider } from './context/ProgrammesContext';
-import { Provider as SessionsProvider } from './context/SessionsContext';
 import { Provider as PlaylistsProvider } from './context/PlaylistsContext';
 import { Provider as TracksProvider } from './context/TracksContext';
 import { Provider as AlbumsProvider } from './context/AlbumsContext';
@@ -21,7 +20,6 @@ ReactDOM.render(
         <AlbumsProvider>
           <TracksProvider>
             <PlaylistsProvider>
-              <SessionsProvider>
                 <ProgrammesProvider>
                   <DiscogsProvider>
                     <HomepageProvider>
@@ -30,7 +28,6 @@ ReactDOM.render(
                     </HomepageProvider>
                   </DiscogsProvider>
                 </ProgrammesProvider>
-              </SessionsProvider>
             </PlaylistsProvider>
           </TracksProvider>
         </AlbumsProvider>
