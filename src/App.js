@@ -14,9 +14,7 @@ import Artist from './pages/Artist';
 import Label from './pages/Label';
 import Search from './pages/Search';
 import Genre from './pages/Genre';
-import PlaylistProgramme from './pages/PlaylistProgramme';
 import GenresList from './pages/GenresList';
-import Terms from './pages/Terms';
 import { Context as HomepageContext } from './context/HomepageContext';
 import './styles/scss/styles.scss';
 

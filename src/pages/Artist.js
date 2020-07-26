@@ -6,7 +6,6 @@ import ImageGallery from 'react-image-gallery';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import ArtistSocialLinks from '../components/ArtistSocialLinks';
 import YoutubeVideo from '../components/YoutubeVideo';
-import { formatProgrammeName } from '../helpers/formatProgrammeName';
 import { urlPrettify } from '../helpers/urlPrettify';
 import { formatDate } from '../helpers/formatDate';
 

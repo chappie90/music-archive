@@ -9,7 +9,9 @@ const Footer = () => {
       <div className="wrapper">
         <div className="col col-1">
           <div className="logo">
-            <img src="/logo.svg" alt="logo" />
+            <span className="secondary">The </span>
+            <span className="primary">Music </span>
+            <span className="secondary">Archive</span>
           </div>
         </div>
         <div className="col col-2">
@@ -22,26 +24,20 @@ const Footer = () => {
               <Link className="link" to="/">Home</Link>
             </li>
             <li className="item">
-              <Link className="link" to="/artists/a/1">Artists</Link>
+              <Link className="link" to="/search">Search</Link>
             </li>
             <li className="item">
-              <Link className="link" to="/search-playlists">Playlists</Link>
-            </li>
-            <li className="item">
-              <Link className="link" to="/programmes">Programmes</Link>
+              <Link className="link" to="/new-releases/1">New Releases</Link>
             </li>
           </ul>
         </div>
         <div className="col col-4">
           <ul className="nav-list">
             <li className="item">
-              <Link className="link" to="/gallery">Gallery</Link>
+              <Link className="link" to="/genres">Genres</Link>
             </li>
             <li className="item">
-              <Link className="link" to="/terms-of-use">Terms of Use</Link>
-            </li>
-            <li className="item">
-              <Link className="link" to="/">Contact Bob</Link>
+              <Link className="link" to="/">Terms of Use</Link>
             </li>
           </ul>
         </div>

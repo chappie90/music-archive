@@ -1,4 +1,4 @@
-export const formatProgrammeName = (string) => {
+export const routeToState = (string) => {
   let outputArr = [];
   let stringParts = string.split('-');
   for (let str of stringParts) {

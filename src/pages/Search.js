@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import ReactPaginate from 'react-paginate';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
@@ -9,6 +9,7 @@ import { Context as ProgrammesContext } from '../context/ProgrammesContext';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
 import { formatDate } from '../helpers/formatDate';
+import { routeToState } from '../helpers/routeToState';
 const qs = require('qs');
 
 const Search = (props) => {
@@ -33,8 +34,9 @@ const Search = (props) => {
   const [genre, setGenre] = useState('all');
   const [style, setStyle] = useState('all');
   const [country, setCountry] = useState('all');
+  const [year, setYear] = useState('all');
   const [programmeMostPlayed, setProgrammeMostPlayed] = useState('all');
-  const [startDate, setStartDate] = useState(new Date('1970-01-01'));
+  const [startDate, setStartDate] = useState(new Date('1920-01-01'));
   const [endDate, setEndDate] = useState(new Date());
   const history = useHistory();
   const location = useLocation();
@@ -54,7 +56,7 @@ const Search = (props) => {
   ];
 
   const styles = [
-    'Pop Rock', 'House', 'Vocal', 'Experimental', 'Punk', 'Synth-pop', 'Alternative Rock', 'Techno', 'Disco',
+    'Pop Rock', 'House', 'Vocal', 'Experimental', 'Punk', 'Alternative Rock', 'Techno', 'Disco',
     'Soul', 'Indie Rock', 'Hardcore', 'Ambient', 'Electro', 'Folk', 'Hard Rock', 'Ballad', 'Country', 'Rock & Roll',
     'Trance', 'Chanson', 'Heavy Metal', 'Psychedelic Rock', 'Downtempo', 'Folk Rock', 'Classic Rock', 'Prog Rock',
     'Noise', 'Funk', 'Soundtrack'
@@ -68,12 +70,18 @@ const Search = (props) => {
     'Taiwan', 'South Korea', 'Bulgaria', 'Malaysia', 'Thailand', 'Croatia', 'China', 'Serbia', 'Hong Kong', 'Lithuania'
   ];
 
+  let years = [];
+  for (let i = parseInt(startDate.toISOString().split('-')[0]); i < endDate.toISOString().split('-')[0]; i++) {
+    years.push(i);
+  }
+
   useEffect(() => {
     let initialSearch = '';
     let initialCategory = 'all';
     let initialGenre = 'all';
     let initialStyle = 'all';
     let initialCountry = 'all';
+    let initialYear = 'all';
 
     const params = location.search.slice(1);
     const paramsObj = qs.parse(params);
@@ -86,18 +94,22 @@ const Search = (props) => {
       setActiveCategory(initialCategory);
     }
     if (paramsObj.genre) {
-      initialGenre = paramsObj.genre;
+      initialGenre = routeToState(paramsObj.genre);
       setGenre(initialGenre);
     }
     if (paramsObj.style) {
-      initialStyle = paramsObj.style;
-      setGenre(initialStyle);
+      initialStyle = routeToState(paramsObj.style);
+      setStyle(initialStyle);
     }
     if (paramsObj.country) {
-      initialCountry = paramsObj.country;
+      initialCountry = routeToState(paramsObj.country);
       setCountry(initialCountry);
     }
-    searchAll(initialSearch, initialCategory, initialGenre, initialStyle, initialCountry, 1);
+    if (paramsObj.year) {
+      initialYear = routeToState(paramsObj.year);
+      setYear(initialYear);
+    }
+    searchAll(initialSearch, initialCategory, initialGenre, initialStyle, initialCountry, initialYear, 1);
 
     return () => {
       // resetPlaylistsState();
@@ -163,7 +175,7 @@ const Search = (props) => {
     history.push(`/search/search?${paramsStr}`);
 
     setPage(data.selected + 1);
-    searchAll(search, activeCategory, genre, style, country, data.selected + 1);
+    searchAll(search, activeCategory, genre, style, country, year, data.selected + 1);
     window.scrollTo(0, 0);
   };
 
@@ -171,58 +183,57 @@ const Search = (props) => {
     const params = location.search.slice(1);  
     const paramsObj = qs.parse(params);
     if (e.target.value !== 'all') {
-      paramsObj.genre = e.target.value;
+      paramsObj.genre = urlPrettify(e.target.value);
     } else {
       paramsObj.genre = undefined;
     }
     const paramsStr = qs.stringify(paramsObj);
     history.push(`/search/search?${paramsStr}`);
     setGenre(e.target.value);
-    searchAll(search, activeCategory, e.target.value, style, country, 1);
+    searchAll(search, activeCategory, e.target.value, style, country, year, 1);
   };
 
   const onSetStyle = (e) => {
     const params = location.search.slice(1);  
     const paramsObj = qs.parse(params);
     if (e.target.value !== 'all') {
-      paramsObj.style = e.target.value;
+      paramsObj.style = urlPrettify(e.target.value);
     } else {
       paramsObj.style = undefined;
     }
     const paramsStr = qs.stringify(paramsObj);
     history.push(`/search/search?${paramsStr}`);
     setStyle(e.target.value);
-    searchAll(search, activeCategory, genre, e.target.value, country, 1);
+    searchAll(search, activeCategory, genre, e.target.value, country, year, 1);
   };
 
   const onSetCountry = (e) => {
     const params = location.search.slice(1);  
     const paramsObj = qs.parse(params);
     if (e.target.value !== 'all') {
-      paramsObj.country = e.target.value;
+      paramsObj.country = urlPrettify(e.target.value);
     } else {
       paramsObj.country = undefined;
     }
     const paramsStr = qs.stringify(paramsObj);
     history.push(`/search/search?${paramsStr}`);
     setCountry(e.target.value);
-    searchAll(search, activeCategory, genre, style, e.target.value, 1);
+    searchAll(search, activeCategory, genre, style, e.target.value, year, 1);
   };
 
-  const programmeSetHandler = (e) => {
-
-    setProgrammeMostPlayed(e.target.value);
-    
-  };
-
-  const onSetDate = (type, value) => {
-    if (type === 0) {
-      setStartDate(value);
+  const onSetYear = (e) => {
+    const params = location.search.slice(1);  
+    const paramsObj = qs.parse(params);
+    if (e.target.value !== 'all') {
+      paramsObj.year = urlPrettify(e.target.value);
     } else {
-      setEndDate(value);
+      paramsObj.year = undefined;
     }
-    const range = [startDate, endDate];
-  };  
+    const paramsStr = qs.stringify(paramsObj);
+    history.push(`/search/search?${paramsStr}`);
+    setYear(e.target.value);
+    searchAll(search, activeCategory, genre, style, country, e.target.value, 1);
+  };
 
   const onCategoryChange = (category) => {
     const params = location.search.slice(1);
@@ -236,8 +247,24 @@ const Search = (props) => {
     history.push(`/search/search?${paramsStr}`);
     setPage(1);
     setActiveCategory(category);
-    searchAll(search, category, genre, style, country, 1);
+    searchAll(search, category, genre, style, country, year, 1);
     window.scrollTo(0, 0);
+  };
+
+  const onResetFilters = () => {
+    const params = location.search.slice(1);
+    const paramsObj = qs.parse(params);
+    paramsObj.genre = undefined;
+    paramsObj.style = undefined;
+    paramsObj.country = undefined;
+    paramsObj.year = undefined;
+    const paramsStr = qs.stringify(paramsObj);
+    history.push(`/search/search?${paramsStr}`);
+    setGenre('all');
+    setStyle('all');
+    setCountry('all');
+    setYear('all');
+    searchAll(search, activeCategory, 'all', 'all', 'all', 'all', 1);
   };
 
   const renderFilters = () => {
@@ -247,37 +274,50 @@ const Search = (props) => {
       <div className="filters-form">
         <form className="form">
           <div className="input-wrapper">
-            <select className="filter" onChange={onSetGenre} name="genre">
+            <select className="filter" onChange={onSetGenre} value={genre} name="genre">
                <option value='all'>Genre</option>
               {genres.map(item => (
                 <option key={item} value={item}>{item}</option>
               ))}
             </select>    
-            <select className="filter" onChange={onSetStyle} name="style">
+            <select className="filter" onChange={onSetStyle} value={style} name="style">
                <option value='all'>Style</option>
               {styles.map(item => (
                 <option key={item} value={item}>{item}</option>
               ))}
             </select>                 
-            <select className="filter country-filter" onChange={onSetCountry} name="country">
+            <select className="filter country-filter" onChange={onSetCountry} value={country} name="country">
               <option value='all'>Country</option>
               {countries.map(item => (
                 <option key={item} value={item}>{item}</option>
               ))}
             </select>
-            <DatePicker
-              selected={startDate}
-              onChange={val => onSetDate(0, val)}
-              popperClassName="date-input" 
-              showMonthDropdown
-              showYearDropdown
-              yearDropdownItemNumber={10}
-              adjustDateOnChange
-            />
+            <select className="filter" onChange={onSetYear} value={year} name="year">
+               <option value='all'>Year</option>
+              {years.map(item => (
+                <option key={item} value={item}>{item}</option>
+              ))}
+            </select>
+            {renderResetButton()}
           </div>  
         </form>
       </div>
     );
+  };
+
+  const renderResetButton = () => {
+    if (genre !== 'all' || style !== 'all' || country !== 'all' || year !== 'all') {
+      return (
+        <button type="button" className="reset-filters" onClick={onResetFilters}>
+          Reset Filters
+        </button>
+      );  
+    }
+    
+    return (
+      <Fragment></Fragment>
+    );
+
   };
 
   const renderResultsItemLink = (item) => {

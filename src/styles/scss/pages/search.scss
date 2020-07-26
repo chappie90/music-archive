@@ -70,7 +70,7 @@
           align-items: center;
           justify-content: center;
           color: $color-white;
-          font-size: $heading-medium;
+          font-size: $heading-small;
           cursor: pointer;
           background-color: $color-tertiary-black;
           border: 1px solid $color-tertiary-black;
@@ -103,6 +103,18 @@
           margin-right: 10px;
           height: 35px;
           padding: 0 12px;
+        }
+
+        .reset-filters {
+          background-color: $color-secondary-yellow-dark;
+          color: $color-white;
+          outline: none;
+          border: none;
+          height: 33px;
+          padding: 0 12px;
+          margin-left: 20px;
+          cursor: pointer;
+          font-size: $paragraph-medium;
         }
       }
 
@@ -196,7 +208,7 @@
         }
         .tertiary {
           color: $color-white;
-          font-size: $paragraph-medium;
+          font-size: $paragraph-small;
           position: absolute;
           bottom: 10px;
           right: 10px;

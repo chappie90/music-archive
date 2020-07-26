@@ -88,7 +88,7 @@ const discogsDataReducer = (state, action) => {
   }
 };
 
-const searchAll = dispatch => async (search, category, genre, style, country, page) => {
+const searchAll = dispatch => async (search, category, genre, style, country, year, page) => {
   if (source) {
     source.cancel();
   }
@@ -96,7 +96,7 @@ const searchAll = dispatch => async (search, category, genre, style, country, pa
   source = CancelToken.source();
 
   try {
-    const params = { search, category, genre, style, country, page };
+    const params = { search, category, genre, style, country, year, page };
 
     const response = await API.get('/discogs/search', {
       params,

@@ -15,7 +15,9 @@ const Header = (props) => {
           className="logo"
           to="/"
           onClick={() =>toggleNavMenu(false)}>
-          <img src="/logo.svg" alt="logo" />
+            <span className="secondary">The </span>
+            <span className="primary">Music </span>
+            <span className="secondary">Archive</span>
         </Link>
         <NavBar />
       </div>

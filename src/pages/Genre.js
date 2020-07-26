@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Context as PlaylistsContext } from '../context/PlaylistsContext';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
-import { formatProgrammeName } from '../helpers/formatProgrammeName';
+import { routeToState } from '../helpers/routeToState';
 
 const Genre = props => {
   const { 
@@ -41,7 +41,7 @@ const Genre = props => {
 
   useEffect(() => {
     const { genre, decade } = props.match.params;
-    setGenre(formatProgrammeName(genre));
+    setGenre(routeToState(genre));
     setActiveDecade(decade);
     getReleasesByGenre(genre, decade, page);
 

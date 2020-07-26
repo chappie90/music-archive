@@ -14,11 +14,12 @@ const searchAll = async (req, res) => {
     const genre = req.query.genre === 'all' ? '' : req.query.genre;
     const style = req.query.style === 'all' ? '' : req.query.style;
     const country = req.query.country === 'all' ? '' : req.query.country;
+    const year = req.query.year === 'all' ? '' : req.query.year;
     const page = req.query.page;
 
     const response = await axios.get(`${
       config.BASE_URL}/database/search?query=${
-      search ? search : ''}&type=${category}&genre=${genre}&style=${style}&country=${country}&page=${page}&per_page=20`,
+      search ? search : ''}&type=${category}&genre=${genre}&style=${style}&country=${country}&year=${year}&page=${page}&per_page=20`,
       { 
         headers: { 
           'User-Agent': config.USER_AGENT,

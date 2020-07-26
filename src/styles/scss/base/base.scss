@@ -129,6 +129,16 @@ ul {
   text-decoration: none;
   position: relative;
   z-index: 11;
+  font-size: $heading-big;
+  letter-spacing: 1.2px;
+  font-weight: 300;
+
+  .primary {
+    color: $color-white;
+  }
+  .secondary {
+    color: $color-grey;
+  }
 }
 
 

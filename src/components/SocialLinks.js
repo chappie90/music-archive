@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiFillFacebook, AiOutlineTwitter, AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai';
 
 const SocialLinks = ({ size }) => {
@@ -6,19 +7,19 @@ const SocialLinks = ({ size }) => {
     <div className="social-links">
       <ul className="list">
         <li className="item">
-          <a className="link" href="https://www.facebook.com/WhisperingBobHarris/" target="_blank" rel="noopener noreferrer">
+          <Link className="link" to="/">
             <AiFillFacebook size={size} className="icon" />
-          </a>
+          </Link>
         </li>
         <li className="item">
-          <a className="link" href="https://twitter.com/whisperingbob" target="_blank" rel="noopener noreferrer">
+          <Link className="link" to="/">
             <AiOutlineTwitter size={size} className="icon" />
-          </a>
+          </Link>
         </li>
         <li className="item">
-          <a className="link" href="https://www.instagram.com/whisperingbob/" target="_blank" rel="noopener noreferrer">
+          <Link className="link" to="/">
             <AiOutlineInstagram size={size} className="icon" />
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
