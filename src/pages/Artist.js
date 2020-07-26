@@ -23,6 +23,7 @@ const Artist = (props) => {
   const [page, setPage] = useState(1);
   const [showDates, setShowDates] = useState([]);
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
       const id = props.match.params.id;
@@ -39,6 +40,7 @@ const Artist = (props) => {
             });
             setImages(images);
           }
+          setIsLoading(false);
         });
       getPlaylistResultsArtist(id, page);
 
@@ -101,36 +103,40 @@ const Artist = (props) => {
                 />
               }
               {artist?.images?.length > 1 && 
-                <ImageGallery 
-                  showPlayButton={false} 
-                  showIndex={true} 
-                  onSlide={(currentIndex) => console.log(currentIndex)}
-                  items={images}
-                  additionalClass="gallery-slider" /> 
+                <div className="more-images">
+                  <h2 className="section-heading heading-white">Images</h2>
+                  <ImageGallery 
+                    showPlayButton={false} 
+                    showIndex={true} 
+                    onSlide={(currentIndex) => console.log(currentIndex)}
+                    items={images}
+                    additionalClass="gallery-slider" /> 
+                </div>
               }
             </div>
             <div className="right-column">
               <h2 className="section-heading heading-white">
               Artist Releases
             </h2>
-            <ul className="list">
-              <li className="list-header">  
-                <span>Album / Source</span>
-                <span>Track</span>
-                <span>Year</span>
-              </li>
-              {artistReleases.releases && artistReleases.releases.map((item, index) => (
-                <li key={item.id} className="list-row">
-                   <span className="list-cell album-cell">
-                      {item.thumb && <img className="album-cover" src={item.thumb} alt={item.title} />}
-                      {item.title}
-                    </span>     
-                    <span>{item.artist}</span>
-                    <span>{item.year}</span>
+            {artistReleases.releases && artistReleases.releases.length > 0 && <ul className="list">
+                <li className="list-header">  
+                  <span>Album / Source</span>
+                  <span>Track</span>
+                  <span>Year</span>
                 </li>
-              ))}
-            </ul> :
-              <p className="no-results">No playlists found</p>
+                {artistReleases.releases && artistReleases.releases.map((item, index) => (
+                  <li key={item.id} className="list-row">
+                     <div className="list-cell album-cell">
+                        {item.thumb && <img className="album-cover" src={item.thumb} alt={item.title} />}
+                        {item.title}
+                      </div>     
+                      <div className="list-cell"><span className="label">Track </span><span>{item.artist}</span></div>
+                      <div className="list-cell"><span className="label">Year </span><span>{item.year}</span></div>
+                  </li>
+                ))}
+              </ul>
+            }
+            {!isLoading && !artistReleases.releases && <p className="no-results">No playlists found</p>}
             {artistPlaylistResultsCount > 1 && <ReactPaginate
               pageCount={artistPlaylistResultsCount}
               previousLabel={'previous'}
