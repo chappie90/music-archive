@@ -16,19 +16,19 @@
 
     .intro {
       display: flex;
+      flex-direction: column;
       padding: 20px;
       background-color: $color-primary-green-light;
     }
 
     .img-container {
-      max-height: 40  0px;
-      max-width: 260px;
       margin-right: 20px;
+      margin-bottom: 20px;
     }
 
     .img {
       max-width: 100%;
-      max-height: 100%;
+      max-height: 300px;
     }
 
     .info {
@@ -55,12 +55,16 @@
       }
     }
 
+    .more-images {
+      margin-top: 20px;
+    }
+
     .gallery-slider {
       margin-top: 30px;
 
       .image-gallery-slide  {
         background: $color-primary-green-dark;
-        height: 375px;
+        height: 250px;
 
         div {
           height: 100%;
@@ -191,6 +195,10 @@
       }
     }
 
+    .videos {
+      margin-top: 20px;
+    }
+
     .video-container {
       margin-top: 30px;
 
@@ -242,12 +250,66 @@
 }
 
 @media screen and (min-width: $breakpoint-mobile) {
+  .release {
+    .release-section {
+      .helper-container {
 
+      }
+
+      .left-column {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      .right-column {
+        width: 100%;
+      }
+
+      .intro {
+
+      }
+    }
+  }
 }
 
 
 @media screen and (min-width: $breakpoint-tablet) {
+  .release {
+    .release-section {
 
+      .intro {
+        flex-direction: row;
+      }
+
+      .img-container {
+     
+      }
+
+      .img {
+        max-height: 100%;
+      }
+
+      .img-container {
+        max-width: 260px;
+        margin-bottom: 0;
+      }
+
+      .more-images {
+        margin-top: 30px;
+      }
+
+      .gallery-slider {
+        margin-top: 30px;
+
+        .image-gallery-slide  {
+          height: 375px;
+        }
+      }
+
+      .videos {
+        margin-top: 30px;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: $breakpoint-desktop-small) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import moment from 'moment';
@@ -16,6 +16,7 @@ const Release = (props) => {
    } = useContext(DiscogsContext);
   const [images, setImages] = useState([]);
   const [activeVideo, setActiveVideo] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -32,6 +33,7 @@ const Release = (props) => {
           });
           setImages(images);
         }
+        setIsLoading(false);
       });
 
     return () => {
@@ -41,8 +43,6 @@ const Release = (props) => {
 
   useEffect(() => {
     if (release) {
-      console.log(release)
-      console.log(release.artists)
       if (release.videos) {
         setActiveVideo(release.videos[0]);
       }
@@ -96,11 +96,7 @@ const Release = (props) => {
                   {release?.genres && <div className="row">
                       <span className="label">Genre:</span>
                       <ul className="values-list">
-                        {release.genres.map((item, index) => (
-                          <li className="item" key={index}>
-                            {index === 0 ? `${item}` : `, ${item}`}
-                          </li>
-                        ))}
+                        {release.genres.join(', ')}
                       </ul>
                     </div>
                   }
@@ -111,34 +107,35 @@ const Release = (props) => {
                       </ul>
                     </div>
                   }
-                  {release?.year && <div className="row">
-                      <span className="label">Added:</span>
-                      <span className="value">{release.year}</span>
-                    </div>
-                  }
                 </div>
               </div>
               {release?.images?.length > 1 && 
-                <ImageGallery 
-                  showPlayButton={false} 
-                  showIndex={true} 
-                  onSlide={(currentIndex) => console.log(currentIndex)}
-                  items={images}
-                  additionalClass="gallery-slider" /> 
+                <div className="more-images">
+                  <h2 className="section-heading heading-white">Images</h2>
+                  <ImageGallery 
+                    showPlayButton={false} 
+                    showIndex={true} 
+                    onSlide={(currentIndex) => console.log(currentIndex)}
+                    items={images}
+                    additionalClass="gallery-slider" /> 
+                </div>
               }
               {release?.videos &&
-                <div className="video-container">
-                  {activeVideo && <YoutubeVideo videoUrl={activeVideo?.uri} />}
-                  {release?.videos.length > 1 && <ul className="list">
-                    {release?.videos.map((item, index) => (
-                      <li onClick={() => onSetActiveVideo(item)} className="item" key={index}>
-                        <YoutubeVideo videoUrl={item.uri} />
-                        <span className="title">{item.title}</span>
-                        <span className="duration">{moment.utc(item.duration * 1000).format('mm:ss')}</span>
-                      </li>
-                    ))}
-                    </ul> 
-                  }
+                <div className="videos">
+                  <h2 className="section-heading heading-white">Videos</h2>
+                  <div className="video-container">
+                    {activeVideo && <YoutubeVideo videoUrl={activeVideo?.uri} />}
+                    {release?.videos.length > 1 && <ul className="list">
+                      {release?.videos.map((item, index) => (
+                        <li onClick={() => onSetActiveVideo(item)} className="item" key={index}>
+                          <YoutubeVideo videoUrl={item.uri} />
+                          <span className="title">{item.title}</span>
+                          <span className="duration">{moment.utc(item.duration * 1000).format('mm:ss')}</span>
+                        </li>
+                      ))}
+                      </ul> 
+                    }
+                  </div>
                 </div>
               }
             </div>
@@ -146,7 +143,7 @@ const Release = (props) => {
               <h2 className="section-heading heading-white">
                 Tracklist
               </h2>
-              {release && release.tracklist ?
+              {release && release.tracklist &&
                 <ul className="list">
                   <li className="list-header">  
                     <span>Pos</span>
@@ -166,9 +163,9 @@ const Release = (props) => {
                       </span>
                       </li>
                     ))}
-                  </ul> :
-                  <p className="no-results">No tracks found</p>
-                }
+                  </ul>
+                } 
+                {!isLoading && !release.tracklist.length === 0 &&<p className="no-results">No tracks found</p>}
               </div>
           </div>
         </div>
