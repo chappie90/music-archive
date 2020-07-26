@@ -6,9 +6,14 @@
       flex-direction: column;
     }
 
+    .no-results {
+      font-size: $heading-medium;
+      color: $color-white;
+    }
+
     .left-column {
       width: 100%;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     .right-column {
       width: 100%;
@@ -16,19 +21,19 @@
 
     .intro {
       display: flex;
-       padding: 20px;
+      padding: 20px;
+      flex-direction: column;
       background-color: $color-primary-green-lighter;
+      margin-bottom: 20px;
     }
 
     .img-container {
-      max-height: 400px;
-      max-width: 260px;
-      margin-right: 20px;
+      margin-bottom: 20px;
     }
 
     .img {
       max-width: 100%;
-      max-height: 100%;
+      max-height: 300px;
     }
 
     .info {
@@ -40,6 +45,248 @@
 
       .row {
         display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+
+      .label {
+        color: $color-secondary-yellow; 
+        margin-right: 20px; 
+      }
+
+      .values-list {
+        .item {
+          display: inline-block;
+        }
+      }
+    }
+
+    .gallery-slider {
+      margin-top: 30px;
+
+      .image-gallery-slide  {
+        background: $color-primary-green-dark;
+        height: 300px;
+
+        div {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .image-gallery-image {
+        margin: 0;
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        object-position: 50% 10%;
+      }
+
+      .image-gallery-left-nav,
+      .image-gallery-right-nav {
+        display: none;
+      }
+
+      .image-gallery-thumbnails-wrapper {
+        background-color: $color-tertiary-black;
+        height: 100px;
+        padding: 20px;
+      }
+
+      .image-gallery-thumbnails {
+        height: 100%;
+        display: flex;
+        padding: 0;
+      }
+
+      .image-gallery-thumbnail {
+        margin-right: 20px;
+        border: none;
+        width: auto;
+        height: 60px;
+      }
+
+      .image-gallery-thumbnail-image {
+        cursor: pointer;
+        height: 60px;
+        width: auto;
+        object-fit: cover;
+        object-position: 50% 10%;
+      }
+
+      .image-gallery-description {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding: 20px;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .image-gallery-index {
+        display: none;
+      }
+
+      .image-gallery-fullscreen-button {
+        display: none;
+      }
+    }
+
+    .sites-list {
+      .item {
+        background-color: $color-secondary-yellow-dark;
+        font-size: $paragraph-small;
+        margin-bottom: 12px;
+        margin-right: 12px;
+        display: inline-block;
+
+        &:hover {
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .link {
+        padding: 6px 10px;
+        display: block;
+      }
+    }
+
+  }
+  .label-releaes-section {
+    background-color: $color-primary-green-dark;
+
+    .list {
+      margin-bottom: 10px;
+      
+      .list-header {
+        display: none;
+
+        span {
+          padding: 10px 20px;
+          text-transform: uppercase;
+          font-size: $paragraph-small;
+        }
+
+        span:first-of-type {
+          width: 35%;
+        }
+
+        span:nth-of-type(2) {
+          width: 35%;
+        }
+
+        span:nth-of-type(3) {
+          width: 20%;
+        }
+
+        span:nth-of-type(4) {
+          width: 10%;
+        }
+      }
+
+      .list-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        justify-content: space-between;
+        color: $color-white;      
+        font-size: $paragraph-medium;
+
+        div {
+          padding: 10px 20px;
+          width: 100%;
+
+          &:nth-child(even) {
+            background-color: $color-primary-green-lighter;
+          }
+
+          &:nth-child(odd) {
+            background-color: $color-primary-green-light;
+          }
+        }
+
+        .list-cell {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .artist-cover {
+          width: 75px;
+          height: 75px;
+          object-fit: cover;
+          margin-right: 15px;
+        }
+
+        .duration {
+          margin-left: auto;
+          margin-right: 0;
+          font-size: $paragraph-small;
+        }
+
+        &:nth-child(even) {
+          background-color: $color-primary-green-lighter;
+        }
+
+        &:nth-child(odd) {
+          background-color: $color-primary-green-light;
+        }
+
+        .link {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .label {
+  .label-section {
+
+    .helper-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left-column {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .right-column {
+      width: 100%;
+    }
+
+    .intro {
+      flex-direction: row;
+    }
+
+    .img-container {
+      max-width: 260px;
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+
+    .img {
+      max-height: 100%;
+    }
+
+    .info {
+      flex: 1;
+      background-color: $color-tertiary-black;
+      padding: 15px 20px;
+      color: $color-white;
+      line-height: 1.5;
+
+      .row {
         align-items: flex-start;
         margin-bottom: 10px;
       }
@@ -185,28 +432,39 @@
       }
 
       .list-row {
-        display: flex;
-        color: $color-white;      
-        font-size: $paragraph-medium;
+        flex-direction: row;
         align-items: center;
+         margin-bottom: 0;
 
-        span {
-          padding: 10px 20px;
+        .label {
+          display: none;
         }
 
-         span:first-of-type {
+        div {
+          padding: 10px 20px;
+
+          &:nth-child(even) {
+            background-color: transparent;
+          }
+
+          &:nth-child(odd) {
+            background-color: transparent;
+          }
+        }
+
+         div:first-of-type {
             width: 35%;
           }
 
-          span:nth-of-type(2) {
+          div:nth-of-type(2) {
             width: 35%;
           }
 
-          span:nth-of-type(3) {
+          div:nth-of-type(3) {
             width: 20%;
           }
 
-          span:nth-of-type(4) {
+          div:nth-of-type(4) {
             width: 10%;
           }
 
@@ -245,14 +503,6 @@
     }
   }
 }
-
-@media screen and (min-width: $breakpoint-mobile) {
-
-}
-
-
-@media screen and (min-width: $breakpoint-tablet) {
-
 }
 
 @media screen and (min-width: $breakpoint-desktop-small) {
