@@ -50,7 +50,7 @@ const NewReleases = (props) => {
   };
 
 	return (
-    <div className="content-page artists-list">
+    <div className="content-page new-releases">
   		<section className="list-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
           <h2 className="section-heading heading-white">

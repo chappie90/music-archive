@@ -1,4 +1,4 @@
-.artists-list {
+.new-releases {
 
   .list-section {
     .search-container {
@@ -25,7 +25,6 @@
 
         .item {
           width: 100%;
-          height: 270px;
           margin-bottom: 15px;
           background-color: $color-primary-green-lighter;
         }
@@ -39,7 +38,7 @@
 
         .img {
           display: block;
-          height: 185px;
+          height: 60vw;
           width: 100%;
           object-fit: cover;
           object-position: 50% 10%;
@@ -50,8 +49,9 @@
           flex-direction: column;
           font-size: heading-small;
           text-align: center;
-          margin: 8px;
+          padding: 10px;
           flex: 1;
+          min-height: 80px;
         }
 
         .primary {
@@ -68,19 +68,27 @@
 }
 
 @media screen and (min-width: $breakpoint-mobile) {
-  .artists-list {
+  .new-releases {
 
     .list-section {
       .search-container {
       }
-
+      .list {
+        .item {
+          height: 270px;
+          width: calc(50% - 7.5px);
+        }
+        .img {
+          height: 185px;
+        }
+      }
     }
   }
 }
 
 
 @media screen and (min-width: $breakpoint-tablet) {
-  .artists-list {
+  .new-releases {
 
   .list-section {
 
@@ -96,7 +104,7 @@
         justify-content: space-between;
 
         .item {
-          width: calc(50% - 7.5px);
+          width: calc(33.3% - 7.5px);
           background-color: $color-primary-green-lighter;
 
           &:hover {
@@ -116,7 +124,7 @@
 }
 
 @media screen and (min-width: $breakpoint-desktop-small) {
-  .artists-list {
+  .new-releases {
 
     .list-section {
 
@@ -154,7 +162,7 @@
 }
 
 @media screen and (min-width: $breakpoint-desktop-large) {
-  .artists-list {
+  .new-releases {
 
     .list-section {
 
