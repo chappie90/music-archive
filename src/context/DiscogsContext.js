@@ -14,6 +14,13 @@ const discogsDataReducer = (state, action) => {
         resultsCount: action.payload.pagination.pages,
         searchTotal: action.payload.pagination.items
       };
+    case 'reset_search_all':
+      return {
+        ...state,
+        searchResults: [],
+        resultsCount: 0,
+        searchTotal: ''
+      };
     case 'get_new_releases':
       return { 
         ...state, 
@@ -126,6 +133,11 @@ const searchAll = dispatch => async (search, category, genre, style, country, ye
     }
   }
 };
+
+const resetSearchAll = dispatch => async () => {
+   dispatch({ type: 'reset_search_all' });
+};
+
 
 const getArtist = dispatch => async (id) => {
   try {
@@ -341,6 +353,7 @@ export const { Context, Provider } = createDataContext(
   discogsDataReducer,
   { 
     searchAll,
+    resetSearchAll,
     getArtist,
     getRelease, 
     getMaster,
@@ -350,7 +363,6 @@ export const { Context, Provider } = createDataContext(
     resetLabel,
     getReleasesByGenre,
     getPlaylistResultsArtist,
-    resetLocalArtistsState,
     resetArtistsState,
     searchArtists,
     getNewReleases,
@@ -371,8 +383,7 @@ export const { Context, Provider } = createDataContext(
     artistReleases: [],
     artistPlaylistResults: {}, 
     artistPlaylistResultsCount: 0,
-    artistPlaylistProgrammes: [],
-    localArtistsReset: false 
+    artistPlaylistProgrammes: []
   }
 );
 

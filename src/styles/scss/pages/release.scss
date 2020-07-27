@@ -1,4 +1,325 @@
+@keyframes isLoading {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
 .release {
+  .masker {
+    position: absolute;
+    background-color: $color-primary-green-lighter;
+  }
+
+  .animated-background-release {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 500px;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-left-mask {
+      left: 0;
+      top: 0;
+      height: 300px;
+      width: 20%;
+    }
+    .middle-right-mask {
+      right: 0;
+      top: 0;
+      height: 300px;
+      width: 20%;
+    }
+    .middle-bottom-mask {
+      top: 300px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+  }
+
+  .animated-background-images {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 350px;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-left-mask {
+      left: 0;
+      top: 0;
+      height: 250px;
+      width: 20%;
+    }
+    .middle-right-mask {
+      right: 0;
+      top: 0;
+      height: 250px;
+      width: 20%;
+    }
+    .middle-bottom-mask {
+      top: 250px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+  }
+
+  .animated-background-videos {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: calc(56vw + 340px);
+    width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-first-mask {
+      left: 0;
+      bottom: 360px;
+      height: 20px;
+      width: 100%;
+    }
+    .middle-second-mask {
+      right: 0;
+      bottom: 300px;
+      height: 20px;
+      width: 100%;
+    }
+    .middle-third-mask {
+      bottom: 240px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-fourth-mask {
+      bottom: 180px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-fifth-mask {
+      bottom: 120px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-sixth-mask {
+      bottom: 60px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-seventh-mask {
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+  }
+
+  .animated-background-tracklist {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 600px;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-first-mask {
+      left: 0;
+      top: 0;
+      height: 50px;
+      width: 100%;
+    }
+    .middle-second-mask {
+      right: 0;
+      top: 80px;
+      height: 20px;
+      width: 100%;
+    }
+    .middle-third-mask {
+      top: 130px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-fourth-mask {
+      top: 180px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-fifth-mask {
+      top: 230px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-sixth-mask {
+      top: 280px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-seventh-mask {
+      top: 330px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-eight-mask {
+      top: 380px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-ninth-mask {
+      top: 430px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-thenth-mask {
+      top: 480px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-eleventh-mask {
+      top: 530px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+  }
+
   .release-section {
 
     .helper-container {
@@ -22,7 +343,8 @@
     }
 
     .img-container {
-      margin-right: 20px;
+      display: flex;
+      justify-content: center;
       margin-bottom: 20px;
     }
 
@@ -264,6 +586,47 @@
 
 @media screen and (min-width: $breakpoint-tablet) {
   .release {
+    .animated-background-release {
+      height: 300px;
+      margin-bottom: 30px;
+
+      .middle-left-mask {
+        display: none;
+      }
+      .middle-right-mask {
+        display: none;
+      }
+      .middle-bottom-mask {
+        top: 0;
+        left: 280px;
+        width: 20px;
+        height: 100%;
+      }
+    }
+
+    .animated-background-images {
+      height: 470px;
+
+      .middle-left-mask {
+        left: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-right-mask {
+        right: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-bottom-mask {
+        top: 370px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+    }
+
     .release-section {
 
       .left-column {
@@ -277,7 +640,7 @@
       }
 
       .img-container {
-     
+        margin-right: 20px;
       }
 
       .img {
@@ -310,17 +673,65 @@
 
 @media screen and (min-width: $breakpoint-desktop-small) {
   .release {
+    .animated-background-videos {
+      height: calc(715px);
+      margin-bottom: 30px;
+
+      .middle-first-mask {
+        left: 0;
+        bottom: 360px;
+        height: 20px;
+        width: 100%;
+      }
+      .middle-second-mask {
+        right: 0;
+        bottom: 300px;
+        height: 20px;
+        width: 100%;
+      }
+      .middle-third-mask {
+        bottom: 240px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-fourth-mask {
+        bottom: 180px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-fifth-mask {
+        bottom: 120px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-sixth-mask {
+        bottom: 60px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-seventh-mask {
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+    }
+
     .release-section {
 
       .helper-container {
         flex-direction: row;
       }
       .left-column {
-        width: 60%;
+        width: calc(60% - 20px);
         margin-right: 40px;
       }
       .right-column {
-        width: 40%;
+        width: calc(40% - 20px);
       }
     }
   }

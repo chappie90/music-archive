@@ -24,7 +24,15 @@ const Search = (props) => {
     getMostPlayed,
     resetPlaylistsSearchState
   } = useContext(PlaylistsContext); 
-  const { state: { searchResults, resultsCount, searchTotal }, searchAll } = useContext(DiscogsContext);
+  const { 
+    state: { 
+      searchResults, 
+      resultsCount, 
+      searchTotal 
+    }, 
+    searchAll,
+    resetSearchAll 
+  } = useContext(DiscogsContext);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [searchSubmitted, setSearchSubmitted] = useState(false);
@@ -80,6 +88,7 @@ const Search = (props) => {
     let initialStyle = 'all';
     let initialCountry = 'all';
     let initialYear = 'all';
+    let initialPage = 1;
 
     const params = location.search.slice(1);
     const paramsObj = qs.parse(params);
@@ -107,17 +116,20 @@ const Search = (props) => {
       initialYear = routeToState(paramsObj.year);
       setYear(initialYear);
     }
-    searchAll(initialSearch, initialCategory, initialGenre, initialStyle, initialCountry, initialYear, 1);
+    if (paramsObj.page) {
+      initialPage = routeToState(paramsObj.page);
+      setPage(initialPage);
+    }
+    searchAll(initialSearch, initialCategory, initialGenre, initialStyle, initialCountry, initialYear, initialPage);
 
     return () => {
-      // resetPlaylistsState();
+      resetSearchAll();
     };
   }, []);
 
   const onSearchChanged = (text) => {
     setSearch(text);
     if (!text) {
-      // resetPlaylistsSearchState();
       setSearchSubmitted(false);
     }
   };

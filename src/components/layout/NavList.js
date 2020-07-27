@@ -5,7 +5,6 @@ import { Context as DiscogsContext } from '../../context/DiscogsContext';
 import { Context as HomepageContext } from '../../context/HomepageContext';
 
 const NavList = props => {
-  const { resetLocalArtistsState } = useContext(DiscogsContext);
   const { toggleNavMenu } = useContext(HomepageContext);
   const [activeNav, setActiveNav] = useState('');
   const location = useLocation();
@@ -55,7 +54,6 @@ const NavList = props => {
         <li className="item">
           <Link
             onClick={(e) => {
-              resetLocalArtistsState(true);
               toggleNavMenu(false);
             }}
             className={`${activeNav === 'new-releases' ? 'nav-link-active' : 'nav-link'} link link-white`} 

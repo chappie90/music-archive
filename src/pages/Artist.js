@@ -67,6 +67,19 @@ const Artist = (props) => {
     }
   };
 
+  const renderProfileImage = () => {
+    if (artist && artist.images) {
+      return (
+        <div className="img-container">
+          <img 
+            className="img" 
+            src={artist.images[0].uri} 
+            alt={artist.name} />
+        </div>
+      );  
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="content-page artist">
@@ -93,6 +106,17 @@ const Artist = (props) => {
                   <div className="masker middle-left-mask"></div>
                   <div className="masker middle-right-mask"></div>
                   <div className="masker middle-bottom-mask"></div>
+                </div>
+                <h2 className="section-heading heading-white">Sites</h2>
+                <div className="animated-background-sites">
+                  <div className="masker left-mask"></div>
+                  <div className="masker right-mask"></div>
+                  <div className="masker first-mask"></div>
+                  <div className="masker second-mask"></div>
+                  <div className="masker third-mask"></div>
+                  <div className="masker fourth-mask"></div>
+                  <div className="masker fifth-mask"></div>
+                  <div className="masker sixth-mask"></div>
                 </div>
               </div>
               <div className="right-column">
@@ -136,29 +160,12 @@ const Artist = (props) => {
                 <span>{artist?.name}</span>
               </h2>
               <div className="intro">
-                {artist?.images[0].type ==='primary' && <div className="img-container">
-                  <img 
-                    className="img" 
-                    src={artist.images[0].uri} 
-                    alt={artist.name} />
-                  </div>
-                }
+                {renderProfileImage()}
                 {artist?.profile && <div className="bio">
                     <p className="paragraph">{artist.profile}</p>
                   </div>
                 }
               </div>
-              {artist?.youtube &&
-                <YoutubeVideo videoId={artist.youtube} />
-              }
-              {artist && <ArtistSocialLinks
-                  size={22} 
-                  website={artist.url} 
-                  facebook={artist.facebook} 
-                  twitter={artist.twitter} 
-                  youtube={artist.youtube} 
-                />
-              }
               {artist?.images?.length > 1 && 
                 <div className="more-images">
                   <h2 className="section-heading heading-white">Images</h2>
@@ -168,6 +175,17 @@ const Artist = (props) => {
                     onSlide={(currentIndex) => console.log(currentIndex)}
                     items={images}
                     additionalClass="gallery-slider" /> 
+                </div>
+              }
+              {artist && artist.urls && <div className="sites">
+                  <h2 className="section-heading heading-white">Sites</h2>
+                  <ul className="sites-list">
+                    {artist.urls.map((item, index) => (
+                      <li className="item" key={index}>
+                        <a rel="noopener noreferrer" className="link link-white" href={item} target="_blank" >{item}</a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               }
             </div>
@@ -182,9 +200,12 @@ const Artist = (props) => {
                   <span>Year</span>
                 </li>
                 {artistReleases.releases && artistReleases.releases.map((item, index) => (
-                  <li key={item.id} className="list-row">
+                  <li key={index} className="list-row">
                      <div className="list-cell album-cell">
-                        {item.thumb && <img className="album-cover" src={item.thumb} alt={item.title} />}
+                        {item.thumb && <div className="album-img-container">
+                            <img className="album-cover" src={item.thumb} alt={item.title} />
+                          </div>
+                        }
                         {item.title}
                       </div>     
                       <div className="list-cell"><span className="label">Track </span><span>{item.artist}</span></div>

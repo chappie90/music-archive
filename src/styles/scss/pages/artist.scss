@@ -85,6 +85,7 @@
     width: 100%;
     position: relative;
     padding: 20px;
+    margin-bottom: 20px;
 
     .top-mask {
       top: 0;
@@ -127,6 +128,69 @@
       left: 0;
       width: 100%;
       height: 20px;
+    }
+  }
+
+   .animated-background-sites {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 220px;
+    width: 100%;
+    position: relative;
+
+    .left-mask {
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .first-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .second-mask {
+      top: 48px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .third-mask {
+      top: 88px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .fourth-mask {
+      top: 128px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .fifth-mask {
+      left: 0;
+      top: 168px;
+      width: 100%;
+      height: 12px;
+    }
+    .sixth-mask {
+      left: 0;
+      top: 208px;
+      width: 100%;
+      height: 12px;
     }
   }
 
@@ -241,7 +305,6 @@
         height: 40px;
       }
     }
-
   .artist-section {
 
     .left-column {
@@ -348,12 +411,27 @@
       }
     }
 
-    .youtube-video{
-      margin-top: 30px;
+    .sites {
+      margin-top: 20px;
     }
 
-    .artist-social-links {
-      margin-top: 30px;
+    .sites-list {
+      .item {
+        background-color: $color-secondary-yellow-dark;
+        font-size: $paragraph-small;
+        margin-bottom: 12px;
+        margin-right: 12px;
+        display: inline-block;
+
+        &:hover {
+          background-color: $color-secondary-yellow;
+        }
+      }
+
+      .link {
+        padding: 6px 10px;
+        display: block;
+      }
     }
 
     .list {
@@ -386,7 +464,7 @@
         font-size: $paragraph-medium;
         margin-bottom: 15px;
 
-        div {
+        .list-cell {
           padding: 15px 10px;
           font-size: $paragraph-medium;
           width: 100%;
@@ -410,10 +488,17 @@
           justify-content: space-between;
         }
 
+        .album-img-container {
+          width: 75px;
+          height: 75px;
+          margin-right: 10px;
+        }
+
         .album-cover {
           width: 75px;
           height: 75px;
           margin-right: 10px;
+          object-fit: cover;
         }
 
         .link {
@@ -521,6 +606,9 @@
         }
       }
 
+      .sites {
+        margin-top: 30px;
+      }
 
       .list {
       margin-bottom: 10px;
@@ -562,7 +650,7 @@
           background-color: $color-primary-green-light;
         }
 
-        div {
+        .list-cell {
           padding: 15px 10px;
           font-size: $paragraph-medium;
 
@@ -575,11 +663,11 @@
           }
         }
 
-        div:not(:last-of-type) {
+        .list-cell:not(:last-of-type) {
           width: 42.5%;
         }
 
-        div:last-of-type {
+        .list-cell:last-of-type {
           width: 15%;
         }
 
@@ -592,6 +680,12 @@
           display: flex;
           align-items: center;
           justify-content: flex-start;
+        }
+
+        .album-img-container {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
         }
 
         .album-cover {
