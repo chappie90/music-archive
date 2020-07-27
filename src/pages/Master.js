@@ -54,6 +54,101 @@ const Master = (props) => {
     setActiveVideo(video);
   };
 
+  if (isLoading) {
+    return (
+      <div className="content-page master">
+        <section className="master-section">
+          <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
+            <div className="helper-container">
+              <div className="left-column">
+                <h2 className="section-heading heading-white">Masters</h2>
+                <div className="animated-background-master">
+                  <div className="masker top-mask"></div>
+                  <div className="masker left-mask"></div>
+                  <div className="masker right-mask"></div>
+                  <div className="masker bottom-mask"></div>
+                  <div className="masker middle-left-mask"></div>
+                  <div className="masker middle-right-mask"></div>
+                  <div className="masker middle-bottom-mask"></div>
+                </div>
+                <h2 className="section-heading heading-white">Images</h2>
+                <div className="animated-background-images">
+                  <div className="masker top-mask"></div>
+                  <div className="masker left-mask"></div>
+                  <div className="masker right-mask"></div>
+                  <div className="masker bottom-mask"></div>
+                  <div className="masker middle-left-mask"></div>
+                  <div className="masker middle-right-mask"></div>
+                  <div className="masker middle-bottom-mask"></div>
+                </div>
+                <h2 className="section-heading heading-white">Videos</h2>
+                <div className="animated-background-videos">
+                  <div className="masker left-mask"></div>
+                  <div className="masker right-mask"></div>
+                  <div className="masker top-mask"></div>
+                  <div className="masker bottom-mask-mask"></div>
+                  <div className="masker middle-first-mask"></div>
+                  <div className="masker middle-second-mask"></div>
+                  <div className="masker middle-third-mask"></div>
+                  <div className="masker middle-fourth-mask"></div>
+                  <div className="masker middle-fifth-mask"></div>
+                  <div className="masker middle-sixth-mask"></div>
+                  <div className="masker middle-seventh-mask"></div>
+                </div>
+              </div>
+              <div className="right-column">
+                <h2 className="section-heading heading-white">Tracklist</h2>
+                <div className="animated-background-tracklist">
+                  <div className="masker top-mask"></div>
+                  <div className="masker left-mask"></div>
+                  <div className="masker right-mask"></div>
+                  <div className="masker bottom-mask"></div>
+                  <div className="masker middle-first-mask"></div>
+                  <div className="masker middle-second-mask"></div>
+                  <div className="masker middle-third-mask"></div>
+                  <div className="masker middle-fourth-mask"></div>
+                  <div className="masker middle-fifth-mask"></div>
+                  <div className="masker middle-sixth-mask"></div>
+                  <div className="masker middle-seventh-mask"></div>
+                  <div className="masker middle-eight-mask"></div>
+                  <div className="masker middle-ninth-mask"></div>
+                  <div className="masker middle-thenth-mask"></div>
+                  <div className="masker middle-eleventh-mask"></div>
+                  <div className="masker middle-twelfth-mask"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="master-versions-section">
+          <div className="section-wrapper section-wrapper-green-dark">
+            <h2 className="section-heading heading-white">
+              Versions
+            </h2>
+            <div className="animated-background-versions">
+              <div className="masker top-mask"></div>
+              <div className="masker left-mask"></div>
+              <div className="masker right-mask"></div>
+              <div className="masker bottom-mask"></div>
+              <div className="masker middle-first-mask"></div>
+              <div className="masker middle-second-mask"></div>
+              <div className="masker middle-third-mask"></div>
+              <div className="masker middle-fourth-mask"></div>
+              <div className="masker middle-fifth-mask"></div>
+              <div className="masker middle-sixth-mask"></div>
+              <div className="masker middle-seventh-mask"></div>
+              <div className="masker middle-eight-mask"></div>
+              <div className="masker middle-ninth-mask"></div>
+              <div className="masker middle-thenth-mask"></div>
+              <div className="masker middle-eleventh-mask"></div>
+              <div className="masker middle-twelfth-mask"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="content-page master">
       <section className="master-section">
@@ -62,8 +157,10 @@ const Master = (props) => {
             <div className="left-column">
               <h2 className="section-heading heading-white">
                 <span>Masters</span>
-                <span className="slash">/</span> 
-                <span>{master?.artists[0].name}</span>
+                <span className="slash">/</span>
+                {master && master?.artists &&
+                  <span>{master.artists[0].name}</span>
+                }
                 <span className="slash">/</span> 
                 <span>{master?.title}</span>
               </h2>
@@ -147,7 +244,7 @@ const Master = (props) => {
                     <span>Duration</span>
                   </li>
                   {master.tracklist.map((item, index) => (
-                    <li key={item.id} className="list-row">
+                    <li key={index} className="list-row">
                       <span className="list-cell">
                         {item.position}
                       </span>   
