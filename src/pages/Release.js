@@ -63,6 +63,8 @@ const Release = (props) => {
               <h2 className="section-heading heading-white">
                 <span>Releases</span>
                 <span className="slash">/</span> 
+                <span>{release?.artists[0].name}</span>
+                <span className="slash">/</span> 
                 <span>{release?.title}</span>
               </h2>
               <div className="intro">

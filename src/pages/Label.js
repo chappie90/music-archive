@@ -43,6 +43,26 @@ const Label = (props) => {
     };
   }, []);
 
+  if (isLoading) {
+    return (
+      <div className="content-page label">
+        <section className="label-section">
+          <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
+            <h2 className="section-heading heading-white">Labels</h2>
+              <div className="animated-background">
+                <div className="masker top-mask"></div>
+                <div className="masker left-mask"></div>
+                <div className="masker right-mask"></div>
+                <div className="masker bottom-mask"></div>
+                <div className="masker middle-top-mask"></div>
+                <div className="masker middle-bottom-mask"></div>
+              </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="content-page label">
       <section className="label-section">

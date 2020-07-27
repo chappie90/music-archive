@@ -1,4 +1,246 @@
+@keyframes isLoading {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
 .artist {
+  .masker {
+    position: absolute;
+    background-color: $color-primary-green-lighter;
+  }
+
+  .animated-background-artist {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 500px;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-left-mask {
+      left: 0;
+      top: 0;
+      height: 250px;
+      width: 25%;
+    }
+    .middle-right-mask {
+      right: 0;
+      top: 0;
+      height: 250px;
+      width: 25%;
+    }
+    .middle-bottom-mask {
+      top: 250px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+  }
+
+  .animated-background-images {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 350px;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-left-mask {
+      left: 0;
+      top: 0;
+      height: 250px;
+      width: 25%;
+    }
+    .middle-right-mask {
+      right: 0;
+      top: 0;
+      height: 250px;
+      width: 25%;
+    }
+    .middle-bottom-mask {
+      top: 250px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+  }
+
+  .animated-background-releases {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 800px;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+
+      .top-mask {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .left-mask {
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 100%;
+      }
+      .right-mask {
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 100%;
+      }
+      .bottom-mask {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-first-mask {
+        left: 0;
+        top: 0;
+        height: 50px;
+        width: 100%;
+      }
+      .middle-second-mask {
+        right: 0;
+        top: 96px;
+        height: 20px;
+        width: 100%;
+      }
+      .middle-third-mask {
+        top: 162px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-fourth-mask {
+        top: 228px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-fifth-mask {
+        top: 294px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-sixth-mask {
+        top: 360px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-seventh-mask {
+        top: 426px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-eight-mask {
+        top: 492px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-ninth-mask {
+        top: 558px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-thenth-mask {
+        top: 624px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-eleventh-mask {
+        top: 690px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+      .middle-twelfth-mask {
+        top: 756px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+      }
+    }
 
   .artist-section {
 
@@ -200,6 +442,52 @@
 
 @media screen and (min-width: $breakpoint-tablet) {
   .artist {
+    .animated-background-artist {
+      height: 620px;
+      margin-bottom: 30px;
+
+      .middle-left-mask {
+        left: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-right-mask {
+        right: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-bottom-mask {
+        top: 370px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+    }
+
+    .animated-background-images {
+      height: 470px;
+
+      .middle-left-mask {
+        left: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-right-mask {
+        right: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-bottom-mask {
+        top: 370px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+    }
 
     .artist-section {
 
@@ -325,17 +613,42 @@
 
 @media screen and (min-width: $breakpoint-desktop-small) {
   .artist {
+    .animated-background-artist {
+      height: 620px;
+      width: 100%;
+      position: relative;
+      margin-right: 40px;
+    }
+
+    .middle-left-mask {
+      left: 0;
+      top: 0;
+      height: 370px;
+      width: 25%;
+    }
+    .middle-right-mask {
+      right: 0;
+      top: 0;
+      height: 370px;
+      width: 25%;
+    }
+    .middle-bottom-mask {
+      top: 370px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
 
   .artist-section {
 
     .left-column {
-      width: 50%;
+      width: calc(50% - 20px);
       margin-right: 40px;
       margin-bottom: 0;
     }
 
     .right-column {
-      width: 50%;
+      width: calc(50% - 20px);
     }
 
     .helper-container {
