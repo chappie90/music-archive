@@ -5,7 +5,6 @@ import { IoMdClose } from 'react-icons/io';
 import DatePicker from 'react-datepicker';
 
 import { Context as PlaylistsContext } from '../context/PlaylistsContext';
-import { Context as ProgrammesContext } from '../context/ProgrammesContext';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
 import { formatDate } from '../helpers/formatDate';
@@ -25,7 +24,6 @@ const Search = (props) => {
     getMostPlayed,
     resetPlaylistsSearchState
   } = useContext(PlaylistsContext); 
-  const { state: { programmes }, getProgrammes } = useContext(ProgrammesContext);
   const { state: { searchResults, resultsCount, searchTotal }, searchAll } = useContext(DiscogsContext);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');

@@ -7,32 +7,20 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider as HomepageProvider } from './context/HomepageContext';
 import { Provider as DiscogsProvider } from './context/DiscogsContext';
-import { Provider as ProgrammesProvider } from './context/ProgrammesContext';
 import { Provider as PlaylistsProvider } from './context/PlaylistsContext';
-import { Provider as TracksProvider } from './context/TracksContext';
-import { Provider as AlbumsProvider } from './context/AlbumsContext';
-import { Provider as GalleryProvider } from './context/GalleryContext';
 import ScrollToTop from './components/ScrollToTop';
 
 ReactDOM.render(
-  <BrowserRouter>
-  <GalleryProvider>
-        <AlbumsProvider>
-          <TracksProvider>
-            <PlaylistsProvider>
-                <ProgrammesProvider>
-                  <DiscogsProvider>
-                    <HomepageProvider>
-                        <ScrollToTop />
-                        <App />
-                    </HomepageProvider>
-                  </DiscogsProvider>
-                </ProgrammesProvider>
-            </PlaylistsProvider>
-          </TracksProvider>
-        </AlbumsProvider>
-      </GalleryProvider>
-  </BrowserRouter>,
+<BrowserRouter>
+  <PlaylistsProvider>
+      <DiscogsProvider>
+        <HomepageProvider>
+            <ScrollToTop />
+            <App />
+        </HomepageProvider>
+      </DiscogsProvider>
+  </PlaylistsProvider>
+</BrowserRouter>,
   document.getElementById('root'),
 );
 
