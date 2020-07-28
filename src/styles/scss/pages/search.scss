@@ -137,10 +137,7 @@
 
       .no-results {
         color: $color-white;
-        font-weight: 300;
-        font-size: $paragraph-medium;
-        font-family: $font-sans, sans-serif;
-        margin-left: 15px;
+        font-size: $heading-medium;
       }
 
       .results-list {
@@ -167,7 +164,7 @@
 
         .img-container {
           height: 115px;
-          width: 130px;
+          width: 110px;
           display: block;
           background-color: $color-primary-green-light;
         }
@@ -208,6 +205,29 @@
   }
 }
 
+@media screen and (min-width: $breakpoint-mobile-small) {
+  .search {
+    .search-section {
+      .results-list {
+        .item {
+
+        }
+
+        .link {
+
+        }
+
+        .img-container {
+          width: 130px;
+        }
+
+        .img {
+
+        }
+    }
+  }
+}
+}
 @media screen and (min-width: $breakpoint-mobile) {
   .search {
 

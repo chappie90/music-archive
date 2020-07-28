@@ -17,9 +17,17 @@ const searchAll = async (req, res) => {
     const year = req.query.year === 'all' ? '' : req.query.year;
     const page = req.query.page;
 
+    let queryParams;
+
+    if (category === 'artist' || category === 'label') {
+      queryParams = `query=${search ? search : ''}&type=${category}&page=${page}&per_page=20`;
+    } else {
+      queryParams = `query=${search ? search : ''}&type=${category}&genre=${genre}&style=${
+        style}&country=${country}&year=${year}&page=${page}&per_page=20`;
+    }
+
     const response = await axios.get(`${
-      config.BASE_URL}/database/search?query=${
-      search ? search : ''}&type=${category}&genre=${genre}&style=${style}&country=${country}&year=${year}&page=${page}&per_page=20`,
+      config.BASE_URL}/database/search?${queryParams}`,
       { 
         headers: { 
           'User-Agent': config.USER_AGENT,

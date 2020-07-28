@@ -11,12 +11,12 @@ const Home = () => {
 
   const topBanners = [
     {
-      title: 'Foo Fighters',
+      title: 'Foo Fighters \' best albums',
       link: 'artist/foo-fighters/198282',
       image: 'foofighters.jpg'
     },
     {
-      title: 'Jeff Buckley',
+      title: 'Jeff Buckley\'s discography',
       link: 'artist/jeff-buckley/159169',
       image: 'jeffbuckley.jpg'
     },

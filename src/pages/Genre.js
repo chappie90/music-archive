@@ -25,9 +25,10 @@ const Genre = props => {
   ];
 
   useEffect(() => {
-    const { genre, decade } = props.match.params;
+    const { genre, style, page } = props.match.params;
     setGenre(routeToState(genre));
-    setActiveDecade(decade);
+    setStyle(routeToState(style));
+    setPage(page);
     getReleasesByGenre(genre, style, page);
 
     return () => {
@@ -37,9 +38,10 @@ const Genre = props => {
 
   useEffect(() => {
     if (history.action === 'POP') {
-      const { year, page } = props.match.params;
-      setActiveDecade(parseInt(year));
+      const { style, page } = props.match.params;
+      setStyle(routeToState(style));
       setPage(page);
+      getReleasesByGenre(genre, style, page);
     }
   }, [pathname]);
 

@@ -32,25 +32,25 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
     .left-mask {
       top: 0;
       left: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .right-mask {
       top: 0;
       right: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .bottom-mask {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
     .middle-left-mask {
       left: 0;
@@ -329,7 +329,7 @@
     }
 
     .bio {
-      padding: 25px;
+      padding: 10px;
       color: $color-white;
       background-color: $color-primary-green-light;
       line-height: 1.8;
@@ -425,6 +425,10 @@
 
         &:hover {
           background-color: $color-secondary-yellow;
+        }
+
+        a {
+          word-break: break-all;
         }
       }
 
@@ -531,6 +535,20 @@
       height: 620px;
       margin-bottom: 30px;
 
+      .left-mask {
+        width: 20px;
+      }
+      .right-mask {
+        width: 20px;
+      }
+
+      .bottom-mask {
+        width: 20px;
+      }
+      .top-mask {
+        width: 20px;
+      }
+
       .middle-left-mask {
         left: 0;
         top: 0;
@@ -593,6 +611,10 @@
         img {
           max-height: 370px;
         }
+      }
+
+       .bio {
+        padding: 25px;
       }
 
       .more-images {

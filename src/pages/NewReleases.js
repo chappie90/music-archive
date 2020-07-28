@@ -24,6 +24,7 @@ const NewReleases = (props) => {
   const [endDate, setEndDate] = useState(new Date());
   const history = useHistory();
   const location = useLocation();
+  const { pathname } = location;
 
   useEffect(() => {
     const pageInt = props.match.params.page;
@@ -34,6 +35,14 @@ const NewReleases = (props) => {
       resetReleases();
     };
   }, []);
+
+  useEffect(() => {
+    if (history.action === 'POP') {
+      const { page } = props.match.params;
+      setPage(page);
+      getNewReleases(page);
+    }
+  }, [pathname]);
 
   const pageClickHandler = data => {
     if (page === `${data.selected} + 1`) {

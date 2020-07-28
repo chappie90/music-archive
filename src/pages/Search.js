@@ -5,7 +5,6 @@ import { IoMdClose } from 'react-icons/io';
 import DatePicker from 'react-datepicker';
 
 import MetaTags from '../components/MetaTags';
-import { Context as PlaylistsContext } from '../context/PlaylistsContext';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
 import { formatDate } from '../helpers/formatDate';
@@ -13,18 +12,6 @@ import { routeToState } from '../helpers/routeToState';
 const qs = require('qs');
 
 const Search = (props) => {
-  const { 
-    state: { 
-      playlists, 
-      playlistsCount, 
-      mostPlayed, 
-      mostPlayedCount
-    }, 
-    searchPlaylists, 
-    resetPlaylistsState, 
-    getMostPlayed,
-    resetPlaylistsSearchState
-  } = useContext(PlaylistsContext); 
   const { 
     state: { 
       searchResults, 
@@ -36,7 +23,6 @@ const Search = (props) => {
   } = useContext(DiscogsContext);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
-  const [searchSubmitted, setSearchSubmitted] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
   const [genre, setGenre] = useState('all');
   const [style, setStyle] = useState('all');
@@ -47,6 +33,7 @@ const Search = (props) => {
   const [endDate, setEndDate] = useState(new Date());
   const history = useHistory();
   const location = useLocation();
+  const { pathname } = location;
 
   const genres = [
     'Rock', 
@@ -78,11 +65,27 @@ const Search = (props) => {
   ];
 
   let years = [];
-  for (let i = parseInt(startDate.toISOString().split('-')[0]); i < endDate.toISOString().split('-')[0]; i++) {
-    years.push(i);
-  }
+  for (
+    let i = parseInt(startDate.toISOString().split('-')[0]); 
+    i < endDate.toISOString().split('-')[0]; 
+    i++
+  ) { years.push(i); }
 
   useEffect(() => {
+    onRouteChange();
+
+    return () => {
+      resetSearchAll();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (history.action === 'POP') {
+      onRouteChange();
+    }
+  }, [location]);
+
+  const onRouteChange = () => {
     let initialSearch = '';
     let initialCategory = 'all';
     let initialGenre = 'all';
@@ -95,73 +98,73 @@ const Search = (props) => {
     const paramsObj = qs.parse(params);
     if (paramsObj.query) {
       initialSearch = paramsObj.query;
-      setSearch(initialSearch);
     }
     if (paramsObj.type) {
       initialCategory = paramsObj.type;
-      setActiveCategory(initialCategory);
-    }
+    } 
     if (paramsObj.genre) {
       initialGenre = routeToState(paramsObj.genre);
-      setGenre(initialGenre);
     }
     if (paramsObj.style) {
       initialStyle = routeToState(paramsObj.style);
-      setStyle(initialStyle);
     }
     if (paramsObj.country) {
       initialCountry = routeToState(paramsObj.country);
-      setCountry(initialCountry);
     }
     if (paramsObj.year) {
-      initialYear = routeToState(paramsObj.year);
-      setYear(initialYear);
+      initialYear = paramsObj.year;
     }
     if (paramsObj.page) {
-      initialPage = routeToState(paramsObj.page);
-      setPage(initialPage);
+      initialPage = paramsObj.page;
     }
-    searchAll(initialSearch, initialCategory, initialGenre, initialStyle, initialCountry, initialYear, initialPage);
 
-    return () => {
-      resetSearchAll();
-    };
-  }, []);
+    setSearch(initialSearch);
+    setActiveCategory(initialCategory);
+    setGenre(initialGenre);
+    setStyle(initialStyle);
+    setCountry(initialCountry);
+    setYear(initialYear);
+    setPage(initialPage);
+
+    searchAll(
+      initialSearch, 
+      initialCategory, 
+      initialGenre, 
+      initialStyle, 
+      initialCountry, 
+      initialYear, 
+      initialPage
+    );
+  };
 
   const onSearchChanged = (text) => {
     setSearch(text);
-    if (!text) {
-      setSearchSubmitted(false);
-    }
   };
 
   const onSearchSubmit = () => {
     const params = location.search.slice(1);
     const paramsObj = qs.parse(params);
-    paramsObj.query = search;
+    if (search) {
+      paramsObj.query = search;
+    } else {
+      paramsObj.query = undefined;
+    }
+    paramsObj.page = undefined;
     const paramsStr = qs.stringify(paramsObj);
     history.push(`/search/search?${paramsStr}`);
-
     setPage(1);
-
-    if (search) {
-      searchAll(search, activeCategory, 1)
-        .then(response => setSearchSubmitted(true));
-    } else {
-      // resetPlaylistsSearchState();
-    }
+    searchAll(search, activeCategory, genre, style, country, year, 1);
   };
 
   const onResetSearch = () => {
     const params = location.search.slice(1);
     const paramsObj = qs.parse(params);
     paramsObj.query = undefined;
+    paramsObj.page = undefined;
     const paramsStr = qs.stringify(paramsObj);
     history.push(`/search/search?${paramsStr}`);
     setSearch('');
-    setSearchSubmitted(false);
-    setPage(1);    
-    resetPlaylistsSearchState();   
+    setPage(1);       
   };
 
   const handleKeyDown = (event) => {
@@ -396,7 +399,7 @@ const Search = (props) => {
             {renderFilters()}
             {searchTotal && <span className="count">{searchTotal.toLocaleString()} results</span>}
             <ul className="results-list">            
-              {searchSubmitted && searchResults.length === 0 && <p className="no-results">No results found</p>}
+              {searchResults && searchResults.length === 0 && <p className="no-results">No results found</p>}
               {searchResults && searchResults.map((item, index) => (
                 <li className="item" key={item.id}>
                   <Link 

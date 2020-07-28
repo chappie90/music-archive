@@ -25,32 +25,31 @@
     height: 500px;
     width: 100%;
     position: relative;
-    padding: 20px;
     margin-bottom: 20px;
 
     .top-mask {
       top: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
     .left-mask {
       top: 0;
       left: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .right-mask {
       top: 0;
       right: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .bottom-mask {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
     .middle-left-mask {
       left: 0;
@@ -232,25 +231,25 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
     .left-mask {
       top: 0;
       left: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .right-mask {
       top: 0;
       right: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .bottom-mask {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
     .middle-first-mask {
       left: 0;
@@ -338,7 +337,7 @@
     .intro {
       display: flex;
       flex-direction: column;
-      padding: 20px;
+      padding: 10px;
       background-color: $color-primary-green-light;
     }
 
@@ -368,6 +367,10 @@
       .label {
         color: $color-secondary-yellow; 
         margin-right: 20px;  
+      }
+
+      .value {
+        word-break: break-all;
       }
 
       .values-list {
@@ -459,7 +462,7 @@
         color: $color-white;
 
         span {
-          padding: 10px 20px;
+          padding: 10px;
           text-transform: uppercase;
           font-size: $paragraph-small;
         }
@@ -483,7 +486,7 @@
         font-size: $paragraph-medium;
 
         .list-cell {
-          padding: 10px 20px;
+          padding: 10px;
 
           &:first-of-type {
             width: 12%;
@@ -492,8 +495,6 @@
           &:nth-of-type(2) {
             width: 80%;
           }
-
-
         }
 
         .duration {
@@ -590,6 +591,19 @@
       height: 300px;
       margin-bottom: 30px;
 
+      .top-mask {
+        height: 20px;
+      }
+      .left-mask {
+        width: 20px;
+      }
+      .right-mask {
+        width: 20px;
+      }
+      .bottom-mask {
+        height: 20px;
+      }
+
       .middle-left-mask {
         display: none;
       }
@@ -627,6 +641,21 @@
       }
     }
 
+    .animated-background-tracklist {
+       .top-mask {
+        height: 20px;
+      }
+      .left-mask {
+        width: 20px;
+      }
+      .right-mask {
+        width: 20px;
+      }
+      .bottom-mask {
+        height: 20px;
+      }
+    }
+
     .release-section {
 
       .left-column {
@@ -637,6 +666,7 @@
 
       .intro {
         flex-direction: row;
+        padding: 20px;
       }
 
       .img-container {
@@ -663,6 +693,22 @@
           height: 375px;
         }
       }
+
+
+    .list {      
+      .list-header {
+
+        span {
+          padding: 10px 20px;
+        }
+      }
+
+      .list-row {
+        .list-cell {
+          padding: 10px 20px;
+        }
+      }
+    }
 
       .videos {
         margin-top: 30px;

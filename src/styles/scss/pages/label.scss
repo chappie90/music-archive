@@ -32,25 +32,25 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
     .left-mask {
       top: 0;
       left: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .right-mask {
       top: 0;
       right: 0;
-      width: 20px;
+      width: 10px;
       height: 100%;
     }
     .bottom-mask {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 10px;
     }
    .middle-left-mask {
       left: 0;
@@ -297,7 +297,7 @@
 
     .intro {
       display: flex;
-      padding: 20px;
+      padding: 10px;
       flex-direction: column;
       background-color: $color-primary-green-lighter;
       margin-bottom: 20px;
@@ -474,7 +474,7 @@
         font-size: $paragraph-medium;
 
         div {
-          padding: 10px 20px;
+          padding: 10px;
           width: 100%;
 
           &:nth-child(even) {
@@ -530,6 +530,19 @@
   .label {
     .animated-background-label {
       height: 600px;
+
+      .top-mask {
+        height: 20px;
+      }
+      .left-mask {
+        width: 20px;
+      }
+      .right-mask {
+        width: 20px;
+      }
+      .bottom-mask {
+        height: 20px;
+      }
 
       .middle-left-mask {
         left: 280px;
@@ -697,6 +710,7 @@
     }
 
     .intro {
+      padding: 20px;
       flex-direction: row;
     }
 
