@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
+import MetaTags from '../components/MetaTags';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
 import { routeToState } from '../helpers/routeToState';
@@ -77,6 +78,7 @@ const Genre = props => {
 
   return (
     <div className="content-page genre">
+      <MetaTags title={`Genre | ${genre} | The Music Archive`} />
       <section className="playlists-list-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
           <h2 className="section-heading heading-white">
@@ -96,10 +98,13 @@ const Genre = props => {
           {totalReleases && <span className="count">{totalReleases.toLocaleString()} results</span>}
            <ul className="list">
             {releases.map((item, index) => {
+              let release = item.title.split('-')[1].slice(1);
+              release = release.split('/').join('-');
               return (
                 <li className="item" key={item.id}>
                   <Link 
                     className="link link-white"
+                    to={`/release/${urlPrettify(release)}/${item.id}`}
                   >
                     <img className="img" src={item.cover_image} alt={item.title} />
                     <div className="info">

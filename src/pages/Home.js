@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import API from '../api/api';
 import { Context as HomepageContext } from '../context/HomepageContext';
 import CustomLink from '../components/CustomLink';
+import MetaTags from '../components/MetaTags';
 
 const Home = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -60,6 +61,7 @@ const Home = () => {
 
 	return (
     <div className="content-page homepage">
+      <MetaTags title="The Music Archive" />
       <section className="header-section">
         <div className="content-wrapper">
           <div className="text">

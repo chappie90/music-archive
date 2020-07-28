@@ -16,11 +16,11 @@ global.appRoot = path.resolve(__dirname);
 
 app.use(discogsRoutes);
 
-// app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
-// app.get('/*', function(req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 const port = process.env.SERVER_PORT || 3006;
 

@@ -8,6 +8,7 @@ import ArtistSocialLinks from '../components/ArtistSocialLinks';
 import YoutubeVideo from '../components/YoutubeVideo';
 import { urlPrettify } from '../helpers/urlPrettify';
 import { formatDate } from '../helpers/formatDate';
+import MetaTags from '../components/MetaTags';
 
 const Artist = (props) => {
   const { 
@@ -83,6 +84,7 @@ const Artist = (props) => {
   if (isLoading) {
     return (
       <div className="content-page artist">
+        <MetaTags title={`Artist | The Music Archive`} />
         <section className="artist-section">
           <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
             <div className="helper-container">
@@ -149,7 +151,8 @@ const Artist = (props) => {
 
 
   return (
-    <div className="content-page artist">
+    <div className="content-page artist"> 
+      <MetaTags title={`Artist | ${artist?.name} | The Music Archive`} />
       <section className="artist-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
           <div className="helper-container">

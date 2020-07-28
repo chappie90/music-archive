@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import MetaTags from '../components/MetaTags';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { Context as PlaylistsContext } from '../context/PlaylistsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
@@ -51,6 +52,7 @@ const NewReleases = (props) => {
 
 	return (
     <div className="content-page new-releases">
+      <MetaTags title="New Releases | The Music Archive" />
   		<section className="list-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
           <h2 className="section-heading heading-white">

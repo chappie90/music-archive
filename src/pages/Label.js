@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery';
 import ReactPaginate from 'react-paginate';
 import moment from 'moment';
 
+import MetaTags from '../components/MetaTags';
 import { formatDate } from '../helpers/formatDate';
 import YoutubeVideo from '../components/YoutubeVideo';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
@@ -46,6 +47,7 @@ const Label = (props) => {
   if (isLoading) {
     return (
       <div className="content-page label">
+        <MetaTags title={`Label | The Music Archive`} />
         <section className="label-section">
           <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
             <h2 className="section-heading heading-white">Labels</h2>
@@ -65,6 +67,7 @@ const Label = (props) => {
 
   return (
     <div className="content-page label">
+      <MetaTags title={`Label | ${label?.name} | The Music Archive`} />
       <section className="label-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
           <h2 className="section-heading heading-white">

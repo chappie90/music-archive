@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
   // baseURL: process.env.REACT_APP_DISCOGS_BASE_URL
-  baseURL: 'http://localhost:3006'
+  baseURL: 'http://206.189.126.134'
 });
 
 instance.CancelToken = axios.CancelToken;

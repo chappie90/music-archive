@@ -16,7 +16,7 @@
         flex-direction: column;
 
         &:not(:last-of-type) {
-          margin-bottom: 15px; 
+          margin-bottom: 20px; 
         }
       }
 
@@ -99,14 +99,8 @@
           flex-direction: column;
         }
 
-        .item {
-          width: 100%;      
-          display: flex;
+        .item {     
           flex-direction: row;
-
-          &:not(:last-of-type) {
-            margin-bottom: 15px; 
-          }
         }
 
         .info {

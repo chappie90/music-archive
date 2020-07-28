@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
 import moment from 'moment';
 
+import MetaTags from '../components/MetaTags';
 import { formatDate } from '../helpers/formatDate';
 import YoutubeVideo from '../components/YoutubeVideo';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
@@ -57,6 +58,7 @@ const Master = (props) => {
   if (isLoading) {
     return (
       <div className="content-page master">
+        <MetaTags title={`Master | The Music Archive`} />
         <section className="master-section">
           <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
             <div className="helper-container">
@@ -151,6 +153,7 @@ const Master = (props) => {
 
   return (
     <div className="content-page master">
+      <MetaTags title={`Master | ${master?.title} | The Music Archive`} />
       <section className="master-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
           <div className="helper-container">

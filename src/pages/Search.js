@@ -4,6 +4,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
 import DatePicker from 'react-datepicker';
 
+import MetaTags from '../components/MetaTags';
 import { Context as PlaylistsContext } from '../context/PlaylistsContext';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
@@ -355,6 +356,7 @@ const Search = (props) => {
 
 	return (
 		<div className="content-page search">
+      <MetaTags title="Search | The Music Archive" />
       <section className="search-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
             <h2 className="section-heading heading-white">

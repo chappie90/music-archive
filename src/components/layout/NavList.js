@@ -25,9 +25,6 @@ const NavList = props => {
       case 'genres':
         setActiveNav('genres');
         break;
-      case 'dashboard':
-        setActiveNav('dashboard');
-        break;
     }
   }, [pathname]);
 
@@ -66,7 +63,7 @@ const NavList = props => {
             className={`${activeNav === 'genres' ? 'nav-link-active' : 'nav-link'} link link-white`}
             onClick={() => toggleNavMenu(false)}
             to="/genres">
-            Genres
+            Browse by Genre
           </Link>
         </li>
       </ul>

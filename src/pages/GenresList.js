@@ -4,6 +4,7 @@ import { BsArrowRight } from 'react-icons/bs';
 
 import { formatDate } from '../helpers/formatDate';
 import { urlPrettify } from '../helpers/urlPrettify';
+import MetaTags from '../components/MetaTags';
 
 const Genres = () => {
   const genres = [
@@ -22,6 +23,7 @@ const Genres = () => {
 
   return (
     <div className="content-page genres-list">
+      <MetaTags title="Genres | The Music Archive" />
       <section className="programmes-list-section">
         <div className="section-wrapper section-wrapper-full-height section-wrapper-green">      
          <h1 className="section-heading heading-white">Music Genres</h1>
