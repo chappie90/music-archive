@@ -333,7 +333,8 @@ const Search = (props) => {
   const renderResultsItemLink = (item) => {
     let link;
     if (item.type === 'artist') {
-      link = { pathname: `/artist/${urlPrettify(item.title)}/${item.id}`}
+      let artist = item.title.split('/').join('-');
+      link = { pathname: `/artist/${urlPrettify(artist)}/${item.id}`}
     }
     if (item.type === 'release') {
       let release = item.title.split('-')[1].slice(1);
@@ -341,11 +342,13 @@ const Search = (props) => {
       link = { pathname: `/release/${urlPrettify(release)}/${item.id}` }  
     }
     if (item.type === 'master') {
-      const master = item.title.split('-')[1].slice(1);
+      let master = item.title.split('-')[1].slice(1);
+      master = master.split('/').join('-');
       link = { pathname: `/master/${urlPrettify(master)}/${item.id}`}
     }
     if (item.type === 'label') {
-      link = { pathname: `/label/${urlPrettify(item.title)}/${item.id}` }  
+      const label = item.title.split('/').join('-');
+      link = { pathname: `/label/${urlPrettify(label)}/${item.id}` }  
     }
     return link;
   };

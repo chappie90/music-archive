@@ -1274,11 +1274,11 @@
         flex-direction: row;
       }
       .left-column {
-        width: 60%;
+        width: calc(60% - 20px);
         margin-right: 40px;
       }
       .right-column {
-        width: 40%;
+        width: calc(40% - 20px);
       }
     }
   }
