@@ -404,7 +404,10 @@ const Search = (props) => {
                     to={renderResultsItemLink(item)}
                   >
                   <div className="img-container">
-                    {item.thumb && <img className="img" src={item.cover_image} alt={item.title} />}  
+                    {item.thumb ?
+                      <img className="img" src={item.cover_image} alt={item.title} /> :
+                      <img className="img" src="/record.jpg" alt="" /> 
+                    }  
                   </div>
                     <div className="info">  
                       <span className="primary">{item.title}</span>

@@ -51,14 +51,67 @@ const Label = (props) => {
         <section className="label-section">
           <div className="section-wrapper section-wrapper-full-height section-wrapper-green">
             <h2 className="section-heading heading-white">Labels</h2>
-              <div className="animated-background">
-                <div className="masker top-mask"></div>
-                <div className="masker left-mask"></div>
-                <div className="masker right-mask"></div>
-                <div className="masker bottom-mask"></div>
-                <div className="masker middle-top-mask"></div>
-                <div className="masker middle-bottom-mask"></div>
+            <div className="animated-background-label">
+              <div className="masker top-mask"></div>
+              <div className="masker left-mask"></div>
+              <div className="masker right-mask"></div>
+              <div className="masker bottom-mask"></div>
+              <div className="masker middle-left-mask"></div>
+              <div className="masker middle-right-mask"></div>
+              <div className="masker middle-bottom-mask"></div>
+            </div>
+            <div className="helper-container">
+              <div className="left-column">
+                <h2 className="section-heading heading-white">Images</h2>
+                <div className="animated-background-images">
+                  <div className="masker top-mask"></div>
+                  <div className="masker left-mask"></div>
+                  <div className="masker right-mask"></div>
+                  <div className="masker bottom-mask"></div>
+                  <div className="masker middle-left-mask"></div>
+                  <div className="masker middle-right-mask"></div>
+                  <div className="masker middle-bottom-mask"></div>
+                </div>
               </div>
+              <div className="right-column">
+                <h2 className="section-heading heading-white">Sites</h2>
+                <div className="animated-background-sites">
+                  <div className="masker left-mask"></div>
+                  <div className="masker right-mask"></div>
+                  <div className="masker first-mask"></div>
+                  <div className="masker second-mask"></div>
+                  <div className="masker third-mask"></div>
+                  <div className="masker fourth-mask"></div>
+                  <div className="masker fifth-mask"></div>
+                  <div className="masker sixth-mask"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="label-releases-section">
+          <div className="section-wrapper section-wrapper-green-dark">
+            <h2 className="section-heading heading-white">
+              Label Releases
+            </h2>
+            <div className="animated-background-releases">
+              <div className="masker top-mask"></div>
+              <div className="masker left-mask"></div>
+              <div className="masker right-mask"></div>
+              <div className="masker bottom-mask"></div>
+              <div className="masker middle-first-mask"></div>
+              <div className="masker middle-second-mask"></div>
+              <div className="masker middle-third-mask"></div>
+              <div className="masker middle-fourth-mask"></div>
+              <div className="masker middle-fifth-mask"></div>
+              <div className="masker middle-sixth-mask"></div>
+              <div className="masker middle-seventh-mask"></div>
+              <div className="masker middle-eight-mask"></div>
+              <div className="masker middle-ninth-mask"></div>
+              <div className="masker middle-thenth-mask"></div>
+              <div className="masker middle-eleventh-mask"></div>
+              <div className="masker middle-twelfth-mask"></div>
+            </div>
           </div>
         </section>
       </div>
@@ -137,7 +190,7 @@ const Label = (props) => {
           </div>
         </div>
       </section>
-      <section className="label-releaes-section">
+      <section className="label-releases-section">
         <div className="section-wrapper section-wrapper-green-dark">
           <h2 className="section-heading heading-white">
             Label Releases

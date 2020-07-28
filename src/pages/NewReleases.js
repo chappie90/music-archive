@@ -2,13 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import ReactPaginate from 'react-paginate';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import MetaTags from '../components/MetaTags';
 import { Context as DiscogsContext } from '../context/DiscogsContext';
-import { Context as PlaylistsContext } from '../context/PlaylistsContext';
 import { urlPrettify } from '../helpers/urlPrettify';
 
 const NewReleases = (props) => {
@@ -21,7 +17,6 @@ const NewReleases = (props) => {
     getNewReleases, 
     resetReleases
   } = useContext(DiscogsContext);
-  const { getMostPlayed, resetPlaylistsState } = useContext(PlaylistsContext);
   const [page, setPage] = useState(null);
   const [search, setSearch] = useState('');
   const [topArtists, setTopArtists] = useState([]);

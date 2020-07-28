@@ -8,7 +8,12 @@
 }
 
 .label {
-  .animated-background {
+  .masker {
+    position: absolute;
+    background-color: $color-primary-green-lighter;
+  }
+
+  .animated-background-label {
     animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
@@ -21,48 +26,253 @@
     width: 100%;
     position: relative;
     padding: 20px;
+    margin-bottom: 20px;
+  
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+   .middle-left-mask {
+      left: 0;
+      top: 0;
+      height: 300px;
+      width: 20%;
+    }
+    .middle-right-mask {
+      right: 0;
+      top: 0;
+      height: 300px;
+      width: 20%;
+    }
+    .middle-bottom-mask {
+      top: 300px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
   }
 
-  .masker {
-    position: absolute;
-    background-color: $color-primary-green-lighter;
+  .animated-background-images {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 350px;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-left-mask {
+      left: 0;
+      top: 0;
+      height: 250px;
+      width: 20%;
+    }
+    .middle-right-mask {
+      right: 0;
+      top: 0;
+      height: 250px;
+      width: 20%;
+    }
+    .middle-bottom-mask {
+      top: 250px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
   }
 
-  .top-mask {
-    top: 0;
-    left: 0;
+   .animated-background-sites {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 220px;
     width: 100%;
-    height: 20px;
+    position: relative;
+
+    .left-mask {
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .first-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .second-mask {
+      top: 48px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .third-mask {
+      top: 88px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .fourth-mask {
+      top: 128px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .fifth-mask {
+      left: 0;
+      top: 168px;
+      width: 100%;
+      height: 12px;
+    }
+    .sixth-mask {
+      left: 0;
+      top: 208px;
+      width: 100%;
+      height: 12px;
+    }
   }
-  .left-mask {
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 100%;
-  }
-  .right-mask {
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 100%;
-  }
-  .bottom-mask {
-    bottom: 0;
-    left: 0;
+
+  .animated-background-releases {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 1560px;
     width: 100%;
-    height: 20px;
-  }
-  .middle-top-mask {
-    left: 320px;
-    top: 0;
-    height: 240px;
-    width: 100%;
-  }
-  .middle-bottom-mask {
-    top: 220px;
-    left: 0;
-    width: 100%;
-    height: 20px;
+    position: relative;
+    padding: 20px;
+
+    .top-mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .left-mask {
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .right-mask {
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .bottom-mask {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-first-mask {
+      left: 0;
+      top: 0;
+      height: 20px;
+      width: 100%;
+    }
+    .middle-second-mask {
+      left: 0;
+      top: 260px;
+      height: 20px;
+      width: 100%;
+    }
+    .middle-third-mask {
+      top: 520px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-fourth-mask {
+      top: 780px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-fifth-mask {
+      top: 1040px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-sixth-mask {
+      top: 1300px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+    .middle-seventh-mask {
+      top: 1560px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
   }
 
   .label-section {
@@ -94,6 +304,8 @@
     }
 
     .img-container {
+      display: flex;
+      justify-content: center;
       margin-bottom: 20px;
     }
 
@@ -221,7 +433,7 @@
     }
 
   }
-  .label-releaes-section {
+  .label-releases-section {
     background-color: $color-primary-green-dark;
 
     .list {
@@ -316,62 +528,158 @@
 
 @media screen and (min-width: $breakpoint-tablet) {
   .label {
-    .animated-background {
-      animation-duration: 1s;
-      animation-fill-mode: forwards;
-      animation-iteration-count: infinite;
-      animation-name: isLoading;
-      animation-timing-function: linear;
-      background: $color-primary-green-dark;
-      background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
-      background-size: 3000px 3000px;
-      height: 500px;
-      width: 100%;
-      position: relative;
-      padding: 20px;
+    .animated-background-label {
+      height: 600px;
+
+      .middle-left-mask {
+        left: 280px;
+        top: 0;
+        height: 100%;
+        width: 20px;
+      }
+      .middle-right-mask {
+        display: none;
+      }
+      .middle-bottom-mask {
+        top: 230px;
+        left: 0;
+        width: 300px;
+        height: 370px;
+      }
     }
 
-    .masker {
-      position: absolute;
-      background-color: $color-primary-green-lighter;
-    }
+    .animated-background-images {
+      height: 470px;
 
-    .top-mask {
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 20px;
-    }
+      .middle-left-mask {
+        left: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-right-mask {
+        right: 0;
+        top: 0;
+        height: 370px;
+        width: 25%;
+      }
+      .middle-bottom-mask {
+        top: 370px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+  }
+
+   .animated-background-sites {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: isLoading;
+    animation-timing-function: linear;
+    background: $color-primary-green-dark;
+    background: linear-gradient(to right, $color-primary-green-lighter 8%, $color-primary-green-light 18%, $color-primary-green-lighter 33%);
+    background-size: 3000px 3000px;
+    height: 220px;
+    width: 100%;
+    position: relative;
+
     .left-mask {
-      top: 0;
       left: 0;
+      top: 0;
       width: 20px;
       height: 100%;
     }
     .right-mask {
-      top: 0;
       right: 0;
+      top: 0;
       width: 20px;
       height: 100%;
     }
-    .bottom-mask {
-      bottom: 0;
+    .first-mask {
+      top: 0;
       left: 0;
       width: 100%;
       height: 20px;
     }
-    .middle-top-mask {
-      left: 280px;
-      top: 0;
-      height: 100%;
-      width: 20px;
-    }
-    .middle-bottom-mask {
-      top: 230px;
+    .second-mask {
+      top: 48px;
       left: 0;
-      width: 300px;
-      height: 270px;
+      width: 100%;
+      height: 12px;
     }
+    .third-mask {
+      top: 88px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .fourth-mask {
+      top: 128px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .fifth-mask {
+      left: 0;
+      top: 168px;
+      width: 100%;
+      height: 12px;
+    }
+    .sixth-mask {
+      left: 0;
+      top: 208px;
+      width: 100%;
+      height: 12px;
+    }
+  }
+
+  .animated-background-releases {
+    height: 780px;
+
+      .middle-first-mask {
+        left: 0;
+        top: 0;
+        height: 60px;
+        width: 100%;
+      }
+      .middle-second-mask {
+        left: 0;
+        top: 160px;
+        height: 40px;
+        width: 100%;
+      }
+      .middle-third-mask {
+        top: 280px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+      }
+      .middle-fourth-mask {
+        top: 400px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+      }
+      .middle-fifth-mask {
+        top: 520px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+      }
+      .middle-sixth-mask {
+        top: 640px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+      }
+      .middle-seventh-mask {
+        top: 760px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+      }
+  }
 
   .label-section {
 
@@ -393,6 +701,7 @@
     }
 
     .img-container {
+      display: block;
       max-width: 260px;
       margin-right: 20px;
       margin-bottom: 0;
@@ -519,7 +828,7 @@
     }
 
   }
-  .label-releaes-section {
+  .label-releases-section {
     background-color: $color-primary-green-dark;
 
     .list {
@@ -592,10 +901,9 @@
           }
 
         .list-cell {
-          display: flex;
-         
+          display: flex;  
           align-items: center;
-
+          justify-content: flex-start;
         }
 
         .artist-cover {
