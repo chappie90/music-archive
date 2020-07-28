@@ -21,7 +21,7 @@ const Home = () => {
       image: 'jeffbuckley.jpg'
     },
     {
-      title: 'Manu Chao',
+      title: 'Manu Chao - Clandestino',
       link: 'artist/manu-chao/30773',
       image: 'manuchao.jpeg'
     }
@@ -86,7 +86,7 @@ const Home = () => {
       </section>
       <section className="top-banners-section">
         <div className="section-wrapper section-wrapper-green">
-        <h2 className="section-heading heading-white">Title</h2>
+        <h2 className="section-heading heading-white">Greatest Artists of All Time</h2>
           <ul className="list">
             {topBanners.map((item, index) => {
               return (
@@ -106,7 +106,7 @@ const Home = () => {
       </section>
       <section className="bottom-banners-section">
         <div className="section-wrapper section-wrapper-green-dark">
-          <h2 className="section-heading heading-white">{bottomBanners[0]?.section_title}</h2>
+          <h2 className="section-heading heading-white">Trending Artists</h2>
           <ul className="list">
             {bottomBanners.map((item, index) => (
               <li className="item">

@@ -26,10 +26,14 @@ const Genre = props => {
 
   useEffect(() => {
     const { genre, style, page } = props.match.params;
+    let initialStyle = 'all';
     setGenre(routeToState(genre));
-    setStyle(routeToState(style));
+    if (style) {
+      initialStyle = routeToState(style); 
+    }
+    setStyle(initialStyle);
     setPage(page);
-    getReleasesByGenre(genre, style, page);
+    getReleasesByGenre(genre, initialStyle, page);
 
     return () => {
       resetReleases();
@@ -38,10 +42,16 @@ const Genre = props => {
 
   useEffect(() => {
     if (history.action === 'POP') {
-      const { style, page } = props.match.params;
-      setStyle(routeToState(style));
+      const { genre, style, page } = props.match.params;
+      let initialStyle = 'all';
+      if (style) {
+        initialStyle = routeToState(style);
+      }
+      let initialGenre = routeToState(genre);
+      setGenre(initialGenre);
+      setStyle(initialStyle);
       setPage(page);
-      getReleasesByGenre(genre, style, page);
+      getReleasesByGenre(initialGenre, initialStyle, page);
     }
   }, [pathname]);
 
