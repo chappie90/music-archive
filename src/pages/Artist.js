@@ -198,8 +198,8 @@ const Artist = (props) => {
             </h2>
             {artistReleases.releases && artistReleases.releases.length > 0 && <ul className="list">
                 <li className="list-header">  
-                  <span>Album / Source</span>
-                  <span>Track</span>
+                  <span>Release</span>
+                  <span>Label</span>
                   <span>Year</span>
                 </li>
                 {artistReleases.releases && artistReleases.releases.map((item, index) => (
@@ -211,7 +211,10 @@ const Artist = (props) => {
                         }
                         {item.title}
                       </div>     
-                      <div className="list-cell"><span className="label">Track </span><span>{item.artist}</span></div>
+                      <div className={item.label ? 'list-cell' : 'list-cell-hide'}>
+                        <span className="label">Label </span>
+                        <span>{item.label}</span>
+                      </div>
                       <div className="list-cell"><span className="label">Year </span><span>{item.year}</span></div>
                   </li>
                 ))}

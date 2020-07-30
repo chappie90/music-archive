@@ -65,7 +65,8 @@ const NewReleases = (props) => {
           {totalReleases && <span className="count">{totalReleases.toLocaleString()} results</span>}
           <ul className="list">
             {releases.length > 0 && releases.map(item => {
-              const release = item.title.split('-')[1].slice(1);
+              let release = item.title.split('-')[1].slice(1);
+              release = release.split('/').join('-');
               const artist = item.title.split('-')[0];
               return (
                 <li className="item" key={item.id}>
